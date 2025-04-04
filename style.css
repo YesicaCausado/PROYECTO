@@ -1,0 +1,143 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #2a3434;
+    color: white;
+}
+
+nav {
+    background-color: #171717;
+    padding: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 60px;
+    overflow: hidden;
+    color: white;
+}
+
+.nav-left {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+}
+
+.nav-left .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-center {
+    flex: 2; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-center input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 60%;
+    margin-right: 10px;
+}
+
+.nav-center button {
+    padding: 5px 15px;
+    border: none;
+    background-color: #cd122d;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-center button:hover {
+    background-color: #e63946;
+}
+
+.nav-right {
+    flex: 1; 
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-right ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+}
+
+.nav-right ul li {
+    flex: 1;
+    margin: 0;
+    height: 100%;
+}
+
+.nav-right ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #171717;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-right ul li:last-child a {
+    border-right: none;
+}
+
+.nav-right ul li a:hover {
+    background-color: #e63946;
+    color: white;
+    transform: scale(1.05);
+}
+
+#categorias {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: ffffff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#categorias div p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+footer{
+    background-color: #171717;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    nav input {
+        width: 100%;
+    }
+}

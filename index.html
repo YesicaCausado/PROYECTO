@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario Gourmet</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-left">
+                <span class="logo">Inventario Gourmet</span>
+            </div>
+          
+            <div class="nav-right">
+                <ul class=" menu">
+                    <li><a href="#Incio">Inicio</a></li>
+                    <li><a href="#Como Funciona">Como funciona</a></li>
+                    <li><a href="#Recetas">Recetas</a></li>
+                    <li><a href="#Contacto">Contacto</a></li>
+                </ul>
+                <a href="#login" class="login-btn">Iniciar sesion</a>
+            </div>
+        </nav>
+
+    </header>
+    <!-- seccion frontal -->
+
+        <section id="home"class="frente">
+        <h1>¡Descubre recetas con lo que tienes en casa!</h1>
+        <p>Ingresa los ingredientes que tienes y encuentra opciones deliciosas.</p>
+            
+        <div class="search-box">
+            <input type="text" id="ingredient-input" placeholder="Ejemplo: tomate, pollo, arroz...">
+            <button id="search-btn">Buscar Recetas</button>
+        </div>
+        </section>
+
+        <section id ="como-funciona" class="como-funciona">
+            <h2>¿Cómo Funciona?</h2>
+            <div class=" pasos">
+                
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Inventario Gourmet - Todos Los Derechos Reservados</p>
+        </footer>
+
+        <script>
+            function BuscarRecetas() {
+                let ingredientes = document.getElementById("ingredientes").value;
+                document.getElementById("resultados").innerHTML = `<p>Buscando recetas con: <strong>${ingredientes}</strong>...</p>`;
+            }
+        </script>
+
+</body>
+</html>
