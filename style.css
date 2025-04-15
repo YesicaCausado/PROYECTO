@@ -18,13 +18,13 @@ nav {
     color: white;
 }
 
-.nav-left {
+.logo {
     flex: 1; 
     display: flex;
     align-items: center;
 }
 
-.nav-left .logo {
+.nav-right .logo {
     font-size: 20px;
     font-weight: bold;
 }
@@ -141,3 +141,67 @@ footer{
         width: 100%;
     }
 }
+
+.login-container {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(179, 0, 0, 0.4);
+    width: 350px;
+    text-align: center;
+  }
+  
+  .login-container h2 {
+    color: #b30000;
+    margin-bottom: 20px;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #e0d4b7;
+    font-size: 16px;
+  }
+  
+  .login-btn {
+    background-color: #b30000;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #cc0000;
+  }
+  
+  .other-methods {
+    margin-top: 25px;
+  }
+  
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a2a2a;
+    border: 1px solid #bfa76f;
+    color: #bfa76f;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .social-btn:hover {
+    background-color: #3a3a3a;
+  }
