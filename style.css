@@ -1,207 +1,258 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Body */
 body {
-    font-family: 'Times New Roman', Times, serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: #2a3434;
-    color: white;
+  background-color: #f5f5f5; /* Gris claro */
+  color: #333;
 }
 
-nav {
-    background-color: #171717;
-    padding: 0px;
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    height: 60px;
-    overflow: hidden;
-    color: white;
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff; /* Blanco */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    flex: 1; 
-    display: flex;
-    align-items: center;
+header .logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4e4e4e; /* Gris oscuro */
+  letter-spacing: 1px;
 }
 
-.nav-right .logo {
-    font-size: 20px;
-    font-weight: bold;
+header .nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #4e4e4e; /* Gris oscuro */
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.nav-center {
-    flex: 2; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+header .nav-links a:hover {
+  color: #b7a99a; /* Beige suave */
 }
 
-.nav-center input {
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    width: 60%;
-    margin-right: 10px;
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding: 100px 20px;
+  background-color: #f1e9d2; /* Beige suave */
 }
 
-.nav-center button {
-    padding: 5px 15px;
-    border: none;
-    background-color: #cd122d;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-.nav-center button:hover {
-    background-color: #e63946;
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #333; /* Gris oscuro */
 }
 
-.nav-right {
-    flex: 1; 
-    display: flex;
-    justify-content: flex-end;
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #333; /* Gris oscuro */
 }
 
-.nav-right ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    gap: 10px;
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
-.nav-right ul li {
-    flex: 1;
-    margin: 0;
-    height: 100%;
+.search-box input {
+  padding: 10px;
+  border: 1px solid #ccc; /* Gris claro */
+  border-radius: 30px;
+  width: 300px;
+  font-size: 1rem;
+  background-color: #ffffff; /* Blanco */
 }
 
-.nav-right ul li a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: #171717;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.search-box button {
+  padding: 10px 20px;
+  background-color: #f1e9d2; /* Beige suave */
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.nav-right ul li:last-child a {
-    border-right: none;
+.search-box button:hover {
+  background-color: #b7a99a; /* Beige más oscuro */
+  color: white;
 }
 
-.nav-right ul li a:hover {
-    background-color: #e63946;
-    color: white;
-    transform: scale(1.05);
+/* Featured Recipes */
+.destacadas {
+  padding: 60px 20px;
+  text-align: center;
 }
 
-#categorias {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: ffffff;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.destacadas h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #333; /* Gris oscuro */
 }
 
-#categorias div p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #333;
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
 }
 
-footer{
-    background-color: #171717;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+.circle-card {
+  width: 250px;
+  height: 250px;
+  background-color: #ffffff; /* Blanco */
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    nav ul li {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
-    nav input {
-        width: 100%;
-    }
+.circle-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.login-container {
-    background-color: #1a1a1a;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(179, 0, 0, 0.4);
-    width: 350px;
-    text-align: center;
-  }
-  
-  .login-container h2 {
-    color: #b30000;
-    margin-bottom: 20px;
-  }
-  
-  input[type="email"],
-  input[type="password"] {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 8px;
-    background-color: #2a2a2a;
-    color: #e0d4b7;
-    font-size: 16px;
-  }
-  
-  .login-btn {
-    background-color: #b30000;
-    color: #fff;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-btn:hover {
-    background-color: #cc0000;
-  }
-  
-  .other-methods {
-    margin-top: 25px;
-  }
-  
-  .social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #2a2a2a;
-    border: 1px solid #bfa76f;
-    color: #bfa76f;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 8px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .social-btn:hover {
-    background-color: #3a3a3a;
-  }
+.circle-card h3 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333; /* Gris oscuro */
+}
+
+.circle-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ver-mas {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #b7a99a; /* Beige suave */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.ver-mas:hover {
+  color: #333; /* Gris oscuro */
+}
+
+/* Tips Section */
+.tips {
+  background-color: #f5f5f5; /* Gris claro */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.tips h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #333; /* Gris oscuro */
+}
+
+.card-container .card {
+  display: inline-block;
+  width: 250px;
+  background-color: #ffffff; /* Blanco */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-container .card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.card-container .card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.card-container .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* About Section */
+.sobre {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #ffffff; /* Blanco */
+}
+
+.sobre h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #333; /* Gris oscuro */
+}
+
+.sobre p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Footer */
+footer {
+  background-color: #333; /* Gris oscuro */
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+footer p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+footer .footer-links {
+  margin-top: 10px;
+}
+
+footer .footer-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+footer .footer-links a:hover {
+  color: #b7a99a; /* Beige suave */
+}
