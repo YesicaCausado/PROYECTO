@@ -1,60 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Match</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecipeMatch - Inicio</title>
+
+  <!-- Fuente limpia y moderna desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  
+  <!-- Archivo de estilos -->
+  <link rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">
-                <span class="logo">Recipe Match</span>
-            </div>
-          
-            <div class="nav-right">
-                <ul class=" menu">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="noticias.html">Noticias</a></li>
-                    <li><a href="recetas.html">Recetas</a></li>
-                    <li><a href="#Contacto">Contacto</a></li>
-                </ul>
-                <a href="login.html" class="login-btn">Iniciar sesion</a>
-            </div>
-        </nav>
+  <!-- ENCABEZADO: logo + navegación -->
+  <header>
+    <div class="logo">🍴 RecipeMatch</div>
+    <nav class="nav-links">
+      <a href="#">Iniciar sesión</a>
+      <a href="#">Registrarse</a>
+    </nav>
+  </header>
 
-    </header>
-    <!-- seccion frontal -->
+  <section class="hero">
+    <!-- Imagen de fondo desenfocada -->
+    <img src="" alt="Fondo cocina" class="hero-bg" />
 
-        <section id="home"class="frente">
-        <h1>¡Descubre recetas con lo que tienes en casa!</h1>
-        <p>Ingresa los ingredientes que tienes y encuentra opciones deliciosas.</p>
-            
-        <div class="search-box">
-            <input type="text" id="ingredient-input" placeholder="Ejemplo: tomate, pollo, arroz...">
-            <button id="search-btn">Buscar Recetas</button>
-        </div>
-        </section>
+    <!-- Contenido de la sección -->
+    <h1>Descubre recetas con lo que ya tienes en casa</h1>
+    <p>Escribe los ingredientes que tienes y te mostraremos qué puedes cocinar.</p>
+  
+    <!-- Formulario de búsqueda -->
+    <form class="search-box">
+      <input type="text" placeholder="Ej: arroz, pollo, tomate..." />
+      <button type="submit">Buscar recetas</button>
+    </form>
+  </section>
+  
 
-        <section id ="como-funciona" class="como-funciona">
-            <h2>¿Cómo Funciona?</h2>
-            <div class=" pasos">
-                
-            </div>
-        </section>
+  <!-- SECCIÓN DE RECETAS DESTACADAS -->
+  <section class="destacadas" id="destacadas">
+    <h2>Recetas destacadas</h2>
+    <div class="card-container circle-layout">
+      <a href="receta1.html" class="circle-card">
+        <img src="imagenes/24c6a7e6e183d78d9d1beea77b6d160e.jpg" alt="Receta 1">
+        <h3>Ensalada fresca</h3>
+      </a>
+      <a href="receta2.html" class="circle-card">
+        <img src="imagenes/6a8832d29a911b320f9c68af86f8e134.jpg" alt="Receta 2">
+        <h3>Arroz con verduras</h3>
+      </a>
+      <a href="receta3.html" class="circle-card">
+        <img src="imagenes/d6f19d6712962532c89fac6af7dfc191.jpg" alt="Receta 3">
+        <h3>Pasta cremosa</h3>
+      </a>
+    </div>
+  
+    <a href="#recetas" class="ver-mas">Ver más recetas</a>
+  </section>
+  
 
-        <footer>
-            <p>&copy; 2025 Inventario Gourmet - Todos Los Derechos Reservados</p>
-        </footer>
+  <!-- SECCIÓN DE TIPS Y NOTAS -->
+  <section class="tips">
+    <h2>Tips y notas</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Cómo conservar frutas</h3>
+        <p>Guía rápida para evitar que se dañen.</p>
+      </div>
+      <div class="card">
+        <h3>Ideas con sobras</h3>
+        <p>Reinventa lo que quedó del almuerzo.</p>
+      </div>
+    </div>
+  </section>
 
-        <script>
-            function BuscarRecetas() {
-                let ingredientes = document.getElementById("ingredientes").value;
-                document.getElementById("resultados").innerHTML = `<p>Buscando recetas con: <strong>${ingredientes}</strong>...</p>`;
-            }
-        </script>
+  <!-- SECCIÓN SOBRE NOSOTROS -->
+  <section class="sobre">
+    <h2>Sobre nosotros</h2>
+    <p>RecipeMatch nace con la misión de ayudarte a cocinar sin desperdiciar. Combinamos ingredientes simples con ideas prácticas.</p>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Contacto</a>
+    </div>
+  </footer>
 
 </body>
 </html>
