@@ -1,0 +1,401 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Body */
+body {
+  background-color: #f5f5f5; /* Gris claro */
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff; /* Blanco */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4e4e4e; /* Gris oscuro */
+  letter-spacing: 1px;
+}
+
+header .nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #4e4e4e; /* Gris oscuro */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+header .nav-links a:hover {
+  color: #b7a99a; /* Beige suave */
+}
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding: 150px 20px; /* Reduce aún más el padding superior e inferior */
+  margin: 15px auto; /* Reduce el margen superior e inferior */
+  background-color: #f1e9d2; /* Beige suave */
+  max-width: 1500px; /* Mantén el mismo ancho máximo */
+  width: 90%; /* Asegura que sea responsivo */
+}
+
+.destacadas,
+.tips,
+.sobre {
+  max-width: 1500px; /* Mantén el mismo ancho máximo */
+  margin: 0 auto; /* Centra las secciones */
+  width: 90%; /* Asegura que sea responsivo */
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #333; /* Gris oscuro */
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #333; /* Gris oscuro */
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box input {
+  padding: 10px;
+  border: 1px solid #ccc; /* Gris claro */
+  border-radius: 30px;
+  width: 300px;
+  font-size: 1rem;
+  background-color: #ffffff; /* Blanco */
+}
+
+.search-box button {
+  padding: 10px 20px;
+  background-color: #f1e9d2; /* Beige suave */
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+  background-color: #b7a99a; /* Beige más oscuro */
+  color: white;
+}
+
+/* Estilos generales */
+section {
+  padding: 50px 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Estilos de ¿Cómo funciona? */
+.como-funciona {
+  background-color: #f8f8f8;
+}
+
+.como-funciona h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.pasos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.paso {
+  max-width: 300px;
+  text-align: center;
+}
+
+.paso img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.paso h3 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.paso p {
+  font-size: 1rem;
+}
+
+/* Estilos del Slider de Beneficios */
+.slider-beneficios {
+  background-color: #fff;
+}
+
+.slider-beneficios h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  overflow: hidden;
+}
+
+.beneficio {
+  width: 250px;
+  text-align: center;
+}
+
+.beneficio img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.beneficio h3 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.beneficio p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Estilos de Sobre nosotros */
+.sobre-nosotros {
+  background-color: #f8f8f8;
+}
+
+.sobre-nosotros h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.sobre-nosotros p {
+  font-size: 1.2rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.imagen-sobre-nosotros img {
+  max-width: 200px;
+  border-radius: 50%;
+}
+
+
+/* Featured Recipes */
+.destacadas {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.destacadas h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #333; /* Gris oscuro */
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.circle-card {
+  width: 250px;
+  height: 250px;
+  background-color: #ffffff; /* Blanco */
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.circle-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.circle-card h3 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333; /* Gris oscuro */
+}
+
+.circle-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ver-mas {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #b7a99a; /* Beige suave */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.ver-mas:hover {
+  color: #333; /* Gris oscuro */
+}
+
+/* Tips Section */
+.tips {
+  background-color: #f5f5f5; /* Gris claro */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.tips h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #333; /* Gris oscuro */
+}
+
+.card-container .card {
+  display: inline-block;
+  width: 250px;
+  background-color: #ffffff; /* Blanco */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-container .card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.card-container .card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.card-container .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  height: 500px; /* Altura más grande */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #fffdf7;
+}
+
+.slide img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.slide h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.slide p {
+  font-size: 1.1rem;
+  max-width: 800px;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Footer */
+footer {
+  background-color: #333; /* Gris oscuro */
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+footer p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+footer .footer-links {
+  margin-top: 10px;
+}
+
+footer .footer-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+footer .footer-links a:hover {
+  color: #b7a99a; /* Beige suave */
+}
