@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecipeMatch - Mi Perfil</title>
+
+    <!-- Icono de la página -->
+    <link rel="icon" href="imagenes/icono.png" type="image/png" />  
+  <!-- Archivo de estilos -->
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+<body>
+
+  <!-- ENCABEZADO:  -->
+  <header>
+    <div class="logo">🍴 RecipeMatch</div>
+    <nav class="nav-links">
+      <a href="#">Inicio</a>
+      <a href="#">¿Cómo funciona?</a>
+      <a href="#">Recetas</a>
+      <a href="#">Sobre nosotros</a>
+      <a href="#">Iniciar sesión/ Registrarse </a>
+
+    </nav>
+  </header>
+<!-- PIE DE PÁGINA -->
+<footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Contacto</a>
+      <a href="#">Preguntas frecuentes</a>
+    </div>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slider .slide");
+  
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
+  
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+  
+    setInterval(nextSlide, 4000);
+  </script>
+   
+</body>
+</html>
