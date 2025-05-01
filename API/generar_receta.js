@@ -1,48 +1,64 @@
+// api/generarReceta.js
+import { Configuration, OpenAIApi } from 'openai';
+
+// Configuración de OpenAI
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
 export default async function handler(req, res) {
-    const { ingrediente } = req.query;
-  
-    if (!ingrediente) {
-      return res.status(400).json({ error: "Falta el parámetro 'ingrediente'" });
-    }
-  
-    try {
-      const apiKey = "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
-                       ";
-  
-      const respuesta = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [
-            {
-              role: "system",
-              content: "Eres un chef creativo que crea recetas fáciles, deliciosas y detalladas."
-            },
-            {
-              role: "user",
-              content: `Por favor crea una receta usando ${ingrediente}. Incluye: nombre de la receta, lista de ingredientes, pasos de preparación y tiempo estimado.`
-            }
-          ],
-          temperature: 0.7
-        })
-      });
-  
-      if (!respuesta.ok) {
-        throw new Error(`Error de la API: ${respuesta.status}`);
-      }
-  
-      const data = await respuesta.json();
-      const recetaGenerada = data.choices[0].message.content;
-  
-      res.status(200).json({ receta: recetaGenerada });
-  
-    } catch (error) {
-      console.error("Error al generar receta:", error);
-      res.status(500).json({ error: error.message || "Error interno del servidor" });
-    }
+  // Permitir solicitudes CORS
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
   }
-  
+
+  // Verificar que sea un método GET
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Método no permitido' });
+  }
+
+  try {
+    // Obtener el ingrediente de la consulta
+    const ingrediente = req.query.ingrediente;
+    
+    if (!ingrediente) {
+      return res.status(400).json({ error: 'Se requiere un ingrediente' });
+    }
+
+    // Preparar el prompt para OpenAI
+    const prompt = `Crea una receta de cocina utilizando principalmente ${ingrediente}. 
+    Incluye:
+    - Título atractivo
+    - Lista de ingredientes con cantidades
+    - Instrucciones paso a paso
+    - Tiempo de preparación
+    - Nivel de dificultad
+    - Consejos adicionales
+
+    Formatea la receta de manera clara y ordenada.`;
+
+    // Hacer la solicitud a la API de OpenAI
+    const completion = await openai.createCompletion({
+      model: "text-davinci-003", // Puedes ajustar el modelo según tu API key
+      prompt: prompt,
+      max_tokens: 1000,
+      temperature: 0.7,
+    });
+
+    // Retornar la receta generada
+    res.status(200).json({ receta: completion.data.choices[0].text.trim() });
+  } catch (error) {
+    console.error('Error al generar la receta:', error);
+    res.status(500).json({ error: 'Error al generar la receta', details: error.message });
+  }
+}

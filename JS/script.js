@@ -13,11 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
           const ingrediente = document.getElementById("ingrediente").value.trim();
           
           if (ingrediente) {
-              // Guardar el ingrediente en localStorage para usarlo en la página de resultados
-              localStorage.setItem("ingredienteBuscado", ingrediente);
-              
-              // Redirigir a la página de resultados
-              window.location.href = "resultados.html";
+              // Redirigir a la página de resultados con el ingrediente como parámetro de URL
+              window.location.href = `resultados.html?ingrediente=${encodeURIComponent(ingrediente)}`;
           } else {
               alert("Por favor ingresa un ingrediente para buscar recetas.");
           }

@@ -424,3 +424,164 @@ footer .footer-links a:hover {
   font-size: 18px;
   max-width: 600px;
 }
+
+/* Estilos para la página de resultados */
+#resultados {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+#resultados h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.receta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.receta-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.receta {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.receta h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 20px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.receta h3 {
+  font-size: 1.4rem;
+  color: #555;
+  margin: 18px 0 12px;
+}
+
+.receta .ingrediente {
+  margin: 5px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.receta .ingrediente:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #b7a99a;
+}
+
+.receta .paso {
+  margin: 10px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.buscar-mas {
+  display: block;
+  margin: 30px auto 0;
+  padding: 12px 25px;
+  background-color: #b7a99a;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buscar-mas:hover {
+  background-color: #a39587;
+}
+
+/* Estilos para mensajes de error y carga */
+.loading, .error {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loading p, .error p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.error a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #b7a99a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.error a:hover {
+  background-color: #a39587;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #b7a99a;
+  border-radius: 50%;
+  margin: 20px auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estilos para el formulario de búsqueda en la página principal */
+#searchForm {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#searchForm input {
+  flex: 1;
+  min-width: 250px;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 1rem;
+}
+
+#searchForm button {
+  padding: 12px 25px;
+  background-color: #b7a99a;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#searchForm button:hover {
+  background-color: #a39587;
+}
