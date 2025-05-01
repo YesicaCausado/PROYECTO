@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - RecipeMatch</title>
+    <link rel="stylesheet" href="CSS/styles.css" />
+
+    <style>
+        .contact-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba( 0, 0, 0, 0.1);
+        }
+
+        .contact-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+        <header>
+            <div class="logo">🍴 RecipeMatch</div>
+            <nav class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="profile.html">Perfil</a>
+                <a href="history.html">Historial</a>
+                <a href="contact.html">Contacto</a>
+            </nav>
+        </header>
+
+        <div class="contact-container">
+            <h2>Contactanos</h2>
+            <form id="contactForm">
+                <input type="text" id="nombre" placeholder="Tu Nombre" required/>
+                <input type="email" id="correo" placeholder="Tu correo Electronico" required />
+                <textarea id="mensaje" placeholder="Escribe tu Mensaje o Sugerencia" rows="5" required></textarea>
+                <button type="submit">Enviar</button>
+                <div id="formMessage" class="message"></div>
+            </form>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 RecipeMatch. Todos los derechos reservados</p>
+            <div class="footer-links">
+                <a href="#">Politica de privacidad</a>
+                <a href="contact.html">Contacto</a>
+                <a href="#">Preguntas Frecuentes</a>
+            </div>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank">facebook</a>
+                <a href="https://instagram.com" target="_blank">instagram</a>
+                <a href="https://twitter.com" target="_blanck">twitter</a>
+            </div>
+        </footer>
+
+        <script>
+            document.getElementById("contacForm").addEventListener("submit", function(e){
+                e.preventDefault();
+
+                const nombre = documen.getElementById("nombre").value.trim();
+                const correo = documen.getElementById("correo").value.trim();
+                const mensaje = documen.getElementById("mensaje").value.trim();
+                const mensajeDiv = documen.getElementById("formMessage");
+
+                if (nombre && correo && mensaje) {
+                    mensajeDiv.textContent = "¡Mensaje Enviado Con Éxito";
+                    mensajeDiv.className = "message succes";
+                    this.reset(); <!--Limpia El Formulario Mati-->
+                }else {
+                    mensajeDiv.textContent = "Por Favor Complete Todos Los Campos.";
+                    mensajeDiv.className = "message error";
+                }
+            });
+        </script>
+
+</body>
+</html>
