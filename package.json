@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "openai": "^4.96.2"
-  }
+  },
+  "name": "proyecto-main",
+  "version": "1.0.0",
+  "description": "proyecto fundamentos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yesicacausado/PROYECTO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yesicacausado/PROYECTO/issues"
+  },
+  "homepage": "https://github.com/yesicacausado/PROYECTO#readme"
 }

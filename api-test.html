@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba de API RecipeMatch</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 70%;
+      margin-right: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #result {
+      white-space: pre-wrap;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin-top: 20px;
+    }
+    .status {
+      font-weight: bold;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+    .debug {
+      font-family: monospace;
+      font-size: 0.9em;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Prueba de API RecipeMatch</h1>
+  
+  <div class="container">
+    <p>Esta página permite probar directamente la API de RecipeMatch para verificar su funcionamiento.</p>
+    
+    <div>
+      <input type="text" id="ingrediente" placeholder="Ingresa un ingrediente...">
+      <button onclick="testAPI()">Probar API</button>
+    </div>
+    
+    <div id="result">Los resultados aparecerán aquí...</div>
+    
+    <div class="debug" id="debug"></div>
+  </div>
+  
+  <script>
+    async function testAPI() {
+      const ingrediente = document.getElementById('ingrediente').value.trim();
+      const resultDiv = document.getElementById('result');
+      const debugDiv = document.getElementById('debug');
+      
+      if (!ingrediente) {
+        resultDiv.innerHTML = '<span class="error">Por favor ingresa un ingrediente</span>';
+        return;
+      }
+      
+      resultDiv.innerHTML = 'Procesando solicitud...';
+      debugDiv.innerHTML = '';
+      
+      try {
+        // Construir la URL de la API
+        const apiUrl = `/api/generarReceta?ingrediente=${encodeURIComponent(ingrediente)}`;
+        
+        // Información de depuración
+        debugDiv.innerHTML = `
+          <p>URL de la API: ${apiUrl}</p>
+          <p>URL completa: ${window.location.origin + apiUrl}</p>
+          <p>Hora de la solicitud: ${new Date().toLocaleTimeString()}</p>
+        `;
+        
+        // Hacer la solicitud
+        const startTime = Date.now();
+        const response = await fetch(apiUrl);
+        const endTime = Date.now();
+        
+        // Más información de depuración
+        debugDiv.innerHTML += `
+          <p>Tiempo de respuesta: ${endTime - startTime}ms</p>
+          <p>Estado de la respuesta: ${response.status}</p>
+          <p>OK: ${response.ok}</p>
+        `;
+        
+        if (!response.ok) {
+          throw new Error(`Error de API: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Mostrar resultado
+        resultDiv.innerHTML = `
+          <div class="status success">¡Éxito!</div>
+          <div>${data.receta}</div>
+        `;
+        
+        // Más datos de depuración
+        const responseDetails = {
+          headers: Object.fromEntries([...response.headers.entries()]),
+          dataKeys: Object.keys(data)
+        };
+        
+        debugDiv.innerHTML += `
+          <p>Respuesta JSON: ${JSON.stringify(responseDetails, null, 2)}</p>
+        `;
+        
+      } catch (error) {
+        console.error("Error:", error);
+        
+        resultDiv.innerHTML = `
+          <div class="status error">Error</div>
+          <div>${error.message}</div>
+        `;
+        
+        debugDiv.innerHTML += `
+          <p>Error completo: ${error.toString()}</p>
+          <p>User Agent: ${navigator.userAgent}</p>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
