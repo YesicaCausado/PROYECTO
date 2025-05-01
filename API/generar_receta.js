@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   
     try {
       const apiKey = "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
-                       "; // 🔒 Reemplaza esto por tu API Key de OpenAI
+                       ";
   
       const respuesta = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
