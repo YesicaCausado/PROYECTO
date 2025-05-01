@@ -8,12 +8,22 @@
 
 /* Body */
 body {
-  background-color: #f5f5f5; /* Gris claro */
+  background-color: #e2dbdb; /* Fondo oscuro */
   color: #333;
+  margin-top: 0%;
 }
 
 /* Header */
 header {
+  margin-top: 0;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1000; /* Para asegurarse de que quede encima de otros elementos */
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
+  padding: 5px 0; /* Ajusta el espaciado superior e inferior del encabezado */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,59 +39,52 @@ header .logo {
   letter-spacing: 1px;
 }
 
-header .nav-links a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #4e4e4e; /* Gris oscuro */
-  font-weight: 500;
-  transition: color 0.3s ease;
+.nav-links {
+  display: flex;
+  justify-content: center; /* Centra los elementos de los enlaces */
+  gap: 5px; /* Espacio entre los botones igual que antes */
 }
 
-header .nav-links a:hover {
-  color: #b7a99a; /* Beige suave */
+.nav-links a {
+  padding: 10px 15px; /* Espaciado dentro de los botones */
+  text-decoration: none;
+  color: #333;
+  font-weight: normal;
+  transition: background-color 0.3s ease; /* Efecto suave al pasar el ratón */
 }
+
+/* Efecto cuando el ratón pasa sobre los enlaces */
+.nav-links a:hover {
+  background-color: #f2f2f2; /* Color de fondo al pasar el ratón */
+}
+
+
+
 /* Hero Section */
 .hero {
   position: relative;
   text-align: center;
   color: #fff;
-  padding: 150px 20px; /* Reduce aún más el padding superior e inferior */
-  margin: 15px auto; /* Reduce el margen superior e inferior */
-  background-color: #f1e9d2; /* Beige suave */
-  max-width: 1500px; /* Mantén el mismo ancho máximo */
-  width: 90%; /* Asegura que sea responsivo */
-}
-
-.destacadas,
-.tips,
-.sobre {
-  max-width: 1500px; /* Mantén el mismo ancho máximo */
-  margin: 0 auto; /* Centra las secciones */
-  width: 90%; /* Asegura que sea responsivo */
-}
-
-.hero-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(8px);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  padding: 150px 20px;
+  margin: 30px auto;
+  background-color: #f1e9d2;
+  max-width: 1200px;
+  width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
   font-weight: 700;
-  color: #333; /* Gris oscuro */
+  color: #333;
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  color: #333; /* Gris oscuro */
+  color: #333;
 }
 
 .search-box {
@@ -93,16 +96,16 @@ header .nav-links a:hover {
 
 .search-box input {
   padding: 10px;
-  border: 1px solid #ccc; /* Gris claro */
+  border: 1px solid #ccc;
   border-radius: 30px;
   width: 300px;
   font-size: 1rem;
-  background-color: #ffffff; /* Blanco */
+  background-color: #ffffff;
 }
 
 .search-box button {
   padding: 10px 20px;
-  background-color: #f1e9d2; /* Beige suave */
+  background-color: #f1e9d2;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -111,135 +114,41 @@ header .nav-links a:hover {
 }
 
 .search-box button:hover {
-  background-color: #b7a99a; /* Beige más oscuro */
+  background-color: #b7a99a;
   color: white;
 }
 
-/* Estilos generales */
+/* General Section Styles */
 section {
-  padding: 50px 0;
+  max-width: 1200px;
+  width: 90%;
+  margin: 30px auto;
+  padding: 50px 20px;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos de ¿Cómo funciona? */
-.como-funciona {
-  background-color: #f8f8f8;
-}
-
-.como-funciona h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.pasos {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.paso {
-  max-width: 300px;
-  text-align: center;
-}
-
-.paso img {
-  width: 80px;
-  margin-bottom: 10px;
-}
-
-.paso h3 {
-  font-size: 1.5rem;
-  margin: 10px 0;
-}
-
-.paso p {
-  font-size: 1rem;
-}
-
-/* Estilos del Slider de Beneficios */
-.slider-beneficios {
-  background-color: #fff;
-}
-
-.slider-beneficios h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.slider {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  overflow: hidden;
-}
-
-.beneficio {
-  width: 250px;
-  text-align: center;
-}
-
-.beneficio img {
-  width: 50px;
-  margin-bottom: 10px;
-}
-
-.beneficio h3 {
-  font-size: 1.5rem;
-  margin: 10px 0;
-}
-
-.beneficio p {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* Estilos de Sobre nosotros */
-.sobre-nosotros {
-  background-color: #f8f8f8;
-}
-
-.sobre-nosotros h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.sobre-nosotros p {
-  font-size: 1.2rem;
-  color: #777;
-  margin-bottom: 20px;
-}
-
-.imagen-sobre-nosotros img {
-  max-width: 200px;
-  border-radius: 50%;
-}
-
-
-/* Featured Recipes */
-.destacadas {
-  padding: 60px 20px;
-  text-align: center;
-}
-
+/* Destacadas Section */
 .destacadas h2 {
   font-size: 2rem;
   margin-bottom: 40px;
   font-weight: 700;
-  color: #333; /* Gris oscuro */
+  color: #333;
 }
 
 .card-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .circle-card {
   width: 250px;
   height: 250px;
-  background-color: #ffffff; /* Blanco */
+  background-color: #ffffff;
   border-radius: 50%;
   overflow: hidden;
   text-align: center;
@@ -257,7 +166,7 @@ section {
   margin-top: 15px;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #333; /* Gris oscuro */
+  color: #333;
 }
 
 .circle-card:hover {
@@ -269,34 +178,28 @@ section {
   display: inline-block;
   margin-top: 30px;
   font-size: 1.2rem;
-  color: #b7a99a; /* Beige suave */
+  color: #b7a99a;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .ver-mas:hover {
-  color: #333; /* Gris oscuro */
+  color: #333;
 }
 
 /* Tips Section */
-.tips {
-  background-color: #f5f5f5; /* Gris claro */
-  padding: 60px 20px;
-  text-align: center;
-}
-
 .tips h2 {
   font-size: 2rem;
   margin-bottom: 40px;
   font-weight: 700;
-  color: #333; /* Gris oscuro */
+  color: #333;
 }
 
 .card-container .card {
   display: inline-block;
   width: 250px;
-  background-color: #ffffff; /* Blanco */
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -321,59 +224,9 @@ section {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.slider {
-  position: relative;
-  width: 100%;
-  max-width: 1500px;
-  height: 500px; /* Altura más grande */
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  box-sizing: border-box;
-  background-color: #fffdf7;
-}
-
-.slide img {
-  width: 100%;
-  height: 60%;
-  object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-}
-
-.slide h3 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.slide p {
-  font-size: 1.1rem;
-  max-width: 800px;
-}
-
-.slide.active {
-  opacity: 1;
-  z-index: 1;
-}
-
 /* Footer */
 footer {
-  background-color: #333; /* Gris oscuro */
+  background-color: #333;
   color: white;
   text-align: center;
   padding: 30px 20px;
@@ -397,5 +250,177 @@ footer .footer-links a {
 }
 
 footer .footer-links a:hover {
-  color: #b7a99a; /* Beige suave */
+  color: #b7a99a;
+}
+
+/* Sección "¿Cómo funciona?" */
+.como-funciona {
+  max-width: 1200px;
+  width: 90%;
+  margin: 30px auto;
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.como-funciona h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+.como-funciona p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.como-funciona .pasos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.como-funciona .paso {
+  flex: 1 1 300px;
+  max-width: 300px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.como-funciona .paso img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.como-funciona .paso h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.como-funciona .paso p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Sección "Beneficios de RecipeMatch" */
+.beneficios {
+  max-width: 1200px;
+  width: 90%;
+  margin: 30px auto;
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.beneficios h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+.beneficios p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.beneficios .beneficios-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.beneficios .beneficio {
+  flex: 1 1 300px;
+  max-width: 300px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.beneficios .beneficio img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.beneficios .beneficio h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.beneficios .beneficio p {
+  font-size: 1rem;
+  color: #666;
+}
+/* Estilos del slider de beneficios */
+.slider-beneficios {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 400px;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide.active {
+  left: 0;
+  opacity: 1;
+}
+
+.slide img {
+  width: 80%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.slide h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.slide p {
+  font-size: 18px;
+  max-width: 600px;
 }

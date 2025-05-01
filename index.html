@@ -5,42 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RecipeMatch - Inicio</title>
 
-    <!-- Icono de la página -->
-    <link rel="icon" href="imagenes/icono.png" type="image/png" />  
+  <!-- Icono de la página -->
+  <link rel="icon" href="imagenes/icono.png" type="image/png" />
+  
   <!-- Archivo de estilos -->
   <link rel="stylesheet" href="CSS/style.css" />
+  
+
 </head>
 <body>
 
-  <!-- ENCABEZADO:  -->
+  <!-- ENCABEZADO: -->
   <header>
     <div class="logo">🍴 RecipeMatch</div>
     <nav class="nav-links">
-      <a href="#">Inicio</a>
-      <a href="#">¿Cómo funciona?</a>
-      <a href="#">Recetas</a>
-      <a href="#">Sobre nosotros</a>
-      <a href="#">Iniciar sesión/ Registrarse </a>
-
+      <a href="#inicio">Inicio</a>
+      <a href="#como-funciona">¿Cómo funciona?</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#destacadas">Recetas</a>
+      <a href="#sobre-nosotros">Sobre nosotros</a>
+      <a href="#">Iniciar sesión/ Registrarse</a>
     </nav>
   </header>
 
-  <section class="hero">
-    
-     <!-- Contenido de la sección -->
-  <h1>¡Cocina sin desperdiciar!</h1>
-  <p>Descubre recetas deliciosas con los ingredientes que ya tienes en casa.</p>
-  
-  
-   <!-- Formulario de búsqueda -->
-  <form class="search-box">
-    <input type="text" placeholder="Ej: arroz, pollo, tomate..." />
-    <button type="submit">Buscar recetas</button>
-  </form>
-</section>
+  <section class="hero" id="inicio">
+    <!-- Contenido de la sección -->
+    <h1>¡Cocina sin desperdiciar!</h1>
+    <p>Descubre recetas deliciosas con los ingredientes que ya tienes en casa.</p>
 
-    <!-- Sección ¿Cómo funciona? -->
-<section class="como-funciona">
+    <!-- Formulario de búsqueda -->
+    <form id="searchForm">
+      <input type="text" id="ingrediente" placeholder="Buscar ingrediente..." required />
+      <button type="submit">Buscar</button>
+    </form>
+    
+  </section>
+
+  <!-- Sección ¿Cómo funciona? -->
+  <section class="como-funciona" id="como-funciona">
     <h2>¿Cómo funciona?</h2>
     <div class="pasos">
       <div class="paso">
@@ -61,8 +63,8 @@
     </div>
   </section>
 
-<!-- Sección Slider de Beneficios -->
-<section class="slider-beneficios">
+  <!-- Sección Slider de Beneficios -->
+  <section class="slider-beneficios" id="beneficios">
     <h2>Beneficios de RecipeMatch</h2>
     <div class="slider">
       <div class="slide active">
@@ -82,12 +84,9 @@
       </div>
     </div>
   </section>
-  
-    
-  
 
   <!-- SECCIÓN DE RECETAS DESTACADAS -->
-<section class="destacadas" id="destacadas">
+  <section class="destacadas" id="destacadas">
     <h2>Recetas destacadas</h2>
     <div class="card-container circle-layout">
       <a href="receta1.html" class="circle-card">
@@ -125,7 +124,7 @@
   </section>
 
   <!-- SECCIÓN SOBRE NOSOTROS -->
-  <section class="sobre-nosotros">
+  <section class="sobre-nosotros" id="sobre-nosotros">
     <h2>¿Quiénes somos?</h2>
     <p>RecipeMatch es un proyecto que busca ayudar a las personas a cocinar de manera más eficiente y sostenible.</p>
     <p>Nos apasiona la cocina y queremos compartir recetas que sean fáciles de preparar y que utilicen ingredientes comunes.</p>
@@ -135,8 +134,9 @@
     <p>Nos esforzamos por reducir el desperdicio de alimentos y fomentar una cocina más sostenible.</p>
     <p>¡Cocina con nosotros y descubre lo fácil que es preparar platos deliciosos!</p>
   </section>
-<!-- PIE DE PÁGINA -->
-<footer>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
       <a href="#">Política de privacidad</a>
@@ -149,23 +149,6 @@
       <a href="https://twitter.com" target="_blank">Twitter</a>
     </div>
   </footer>
-
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll(".slider .slide");
-  
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove("active"));
-      slides[index].classList.add("active");
-    }
-  
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-  
-    setInterval(nextSlide, 4000);
-  </script>
-   
+  <script src="JS/script.js"></script>
 </body>
 </html>
