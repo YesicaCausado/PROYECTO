@@ -4,39 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-left">
-                <span class="logo">Inventario Gourmet</span>
-            </div>
-          
-            <div class="nav-right">
-                <ul class=" menu">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="#Como Funciona">Como funciona</a></li>
-                    <li><a href="#Recetas">Recetas</a></li>
-                    <li><a href="#Contacto">Contacto</a></li>
-                </ul>
-                <a href="#login" class="login-btn">Iniciar sesion</a>
-            </div>
+    <<header>
+        <div class="logo">🍴 RecipeMatch</div>
+        <nav class="nav-links">
+          <a href="index.html">Inicio</a>
+          <a href="#como-funciona">¿Cómo funciona?</a>
+          <a href="#beneficios">Beneficios</a>
+          <a href="#destacadas">Recetas</a>
+          <a href="#sobre-nosotros">Sobre nosotros</a>
+          <a href="login.html">Iniciar sesión / Registrarse</a>
         </nav>
-    </header>
-    <div class="login-container">
-        <h2>Iniciar Sesión</h2>
-        <form>
-          <input type="email" placeholder="Correo electrónico" required /><br />
-          <input type="password" placeholder="Contraseña" required /><br />
-          <button class="login-btn" type="submit">Entrar</button>
-        </form>
-        <div class="other-methods">
-          <p>O inicia sesión con:</p>
-          <div class="social-btn">🔒 Google</div>
-          <div class="social-btn">📘 Facebook</div>
-          <div class="social-btn">📱 Apple</div>
-        </div>
-      </div>
+      </header>
+        <section class="login" id="login">
+            <h2>Iniciar Sesión</h2>
+            <form action="#" method="POST" class="form-login">
+              <input type="email" name="correo" placeholder="Correo electrónico" required />
+              <input type="password" name="contraseña" placeholder="Contraseña" required />
+              <button type="submit"><a href="#perfil"></a>Ingresar</button>
+              <p>¿No tienes cuenta? <a href="#registro">Regístrate aquí</a></p>
+            </form>
+          </section>
+          <section id="perfil" style="display: none;">
+            <h2>Bienvenido a tu perfil</h2>
+            <p>Este es tu espacio personal.</p>
+        </section>
+    
+        <script>
+            function mostrarPerfil() {
+                document.getElementById('registro').style.display = 'none';
+                document.getElementById('perfil').style.display = 'block';
+            }
+        </script>
+
+          
 </body>
 </html>
