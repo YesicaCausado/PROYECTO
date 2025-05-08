@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - RecipeMatch</title>
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+
+
+        .faq {
+    margin: 40px auto;
+    width: 80%;
+    padding: 20px;
+}
+
+.faq-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+
+}
+
+
+.faq h2 {
+    text-align: center;
+    font-size: 26px;
+    color: #333;
+}
+
+
+.faq-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+.faq-item p {
+    display: none;
+}
+
+.faq-item h3:hover + p {
+    display: none;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a class="logo">🍴 RecipeMatch</a>
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="profile.html">Perfil</a>
+            <a href="privacy.html">Política de Privacidad</a>
+        </nav>
+    </header>
+
+    <section class="faq">
+        <h2>Preguntas Frecuentes</h2>
+    
+        <div class="faq-item">
+            <h3 onclick="toggleAnswer(this)">¿Cómo buscar recetas en RecipeMatch?</h3>
+            <p class="faq-answer">Puedes utilizar la barra de búsqueda para ingresar palabras clave y encontrar recetas recomendadas.</p>
+        </div>
+    
+        <div class="faq-item">
+            <h3 onclick="toggleAnswer(this)">¿RecipeMatch es gratuito?</h3>
+            <p class="faq-answer">Sí, es completamente gratuito y puedes guardar recetas creando una cuenta.</p>
+        </div>
+
+                <div class="faq-item">
+            <h3 onclick="toggleAnswer(this)">¿Puedo contribuir con recetas?</h3>
+            <p>¡Por supuesto! Si deseas compartir tus recetas, puedes registrarte y enviar tu receta a través de la sección de "Compartir Receta". Nos aseguraremos de revisarlas antes de publicarlas.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleAnswer(this)">¿Cómo contacto al soporte si tengo un problema?</h3>
+            <p>Puedes visitar nuestra página de <a href="contact.html">Contacto</a> para obtener asistencia. Nuestro equipo responderá lo antes posible.</p>
+        </div>
+
+    </section>
+
+    <script>
+        function toggleAnswer(element) {
+            let answer = element.nextElementSibling;
+            answer.style.display = answer.style.display === "block" ? "none" : "block";
+        }
+    </script>
+    
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+        <div class="footer-links">
+          <a href="#">Política de privacidad</a>
+          <a href="contact.html">Contacto</a>
+          <a href="Questions.html">Preguntas frecuentes</a>
+        </div>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank">Facebook</a>
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+          <a href="https://twitter.com" target="_blank">Twitter</a>
+        </div>
+    </footer>
+
+</body>
+</html>
