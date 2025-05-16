@@ -3,14 +3,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
 }
 
 /* Body */
 body {
-  background-color: #0c0a0a; /* Fondo oscuro */
+  background-color: #f7f7f7; /* Light neutral background */
   color: #333;
-  margin-top: 0%;
+  margin-top: 0;
+  line-height: 1.6;
 }
 
 /* Header */
@@ -19,72 +20,70 @@ header {
   padding: 0;
   position: sticky;
   top: 0;
-  background-color: #fff;
-  z-index: 1000; /* Para asegurarse de que quede encima de otros elementos */
+  z-index: 1000;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
-  padding: 5px 0; /* Ajusta el espaciado superior e inferior del encabezado */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  background-color: #ffffff; /* Blanco */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 header .logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: #4e4e4e; /* Gris oscuro */
+  font-size: 22px;
+  font-weight: 600;
+  color: #3a6b6b; /* Elegant teal color */
   letter-spacing: 1px;
 }
 
 .nav-links {
   display: flex;
-  justify-content: center; /* Centra los elementos de los enlaces */
-  gap: 5px; /* Espacio entre los botones igual que antes */
+  justify-content: center;
+  gap: 8px;
 }
 
 .nav-links a {
-  padding: 10px 15px; /* Espaciado dentro de los botones */
+  padding: 10px 15px;
   text-decoration: none;
-  color: #333;
-  font-weight: normal;
-  transition: background-color 0.3s ease; /* Efecto suave al pasar el ratón */
+  color: #4e5d5d; /* Desaturated teal for contrast */
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
-/* Efecto cuando el ratón pasa sobre los enlaces */
 .nav-links a:hover {
-  background-color: #f2f2f2; /* Color de fondo al pasar el ratón */
+  background-color: #e8f0f0; /* Light teal background */
+  color: #3a6b6b; /* Darker teal text */
 }
-
-
 
 /* Hero Section */
 .hero {
   position: relative;
   text-align: center;
-  color: #fff;
-  padding: 150px 20px;
-  margin: 30px auto;
-  background-color: #f1e9d2;
+  padding: 120px 20px;
+  margin: 40px auto;
+  background-color: #e8f0f0; /* Light teal background */
   max-width: 1200px;
   width: 90%;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
   font-weight: 700;
-  color: #333;
+  color: #3a6b6b; /* Teal color */
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  color: #333;
+  color: #4e5d5d; /* Desaturated teal */
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .search-box {
@@ -95,64 +94,72 @@ header .logo {
 }
 
 .search-box input {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 12px 20px;
+  border: 1px solid #dce8e8;
   border-radius: 30px;
-  width: 300px;
+  width: 350px;
   font-size: 1rem;
   background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #3a6b6b;
+  box-shadow: 0 0 0 2px rgba(58, 107, 107, 0.1);
 }
 
 .search-box button {
-  padding: 10px 20px;
-  background-color: #f1e9d2;
+  padding: 12px 25px;
+  background-color: #3a6b6b; /* Teal button */
+  color: white;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .search-box button:hover {
-  background-color: #b7a99a;
-  color: white;
+  background-color: #2a5353; /* Darker teal on hover */
+  transform: translateY(-2px);
 }
 
 /* General Section Styles */
 section {
   max-width: 1200px;
   width: 90%;
-  margin: 30px auto;
-  padding: 50px 20px;
+  margin: 40px auto;
+  padding: 50px 30px;
   text-align: center;
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 /* Destacadas Section */
 .destacadas h2 {
   font-size: 2rem;
   margin-bottom: 40px;
-  font-weight: 700;
-  color: #333;
+  font-weight: 600;
+  color: #3a6b6b; /* Teal color */
 }
 
 .card-container {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
 .circle-card {
-  width: 250px;
-  height: 250px;
+  width: 220px;
+  height: 220px;
   background-color: #ffffff;
   border-radius: 50%;
   overflow: hidden;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -166,216 +173,242 @@ section {
   margin-top: 15px;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #333;
+  color: #3a6b6b; /* Teal color */
 }
 
 .circle-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
 }
 
 .ver-mas {
   display: inline-block;
-  margin-top: 30px;
-  font-size: 1.2rem;
-  color: #b7a99a;
+  margin-top: 35px;
+  font-size: 1.1rem;
+  color: #3a6b6b; /* Teal color */
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 8px 20px;
+  border: 1px solid #3a6b6b;
+  border-radius: 30px;
 }
 
 .ver-mas:hover {
-  color: #333;
+  background-color: #3a6b6b;
+  color: white;
 }
 
 /* Tips Section */
 .tips h2 {
   font-size: 2rem;
   margin-bottom: 40px;
-  font-weight: 700;
-  color: #333;
+  font-weight: 600;
+  color: #3a6b6b; /* Teal color */
 }
 
 .card-container .card {
   display: inline-block;
-  width: 250px;
+  width: 280px;
   background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   margin-bottom: 20px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-container .card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
   font-weight: 500;
+  color: #3a6b6b; /* Teal color */
 }
 
 .card-container .card p {
   font-size: 1rem;
-  color: #666;
+  color: #4e5d5d; /* Desaturated teal */
 }
 
 .card-container .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
 /* Footer */
 footer {
-  background-color: #333;
+  background-color: #3a6b6b; /* Teal color */
   color: white;
   text-align: center;
-  padding: 30px 20px;
+  padding: 40px 20px;
 }
 
 footer p {
   font-size: 1rem;
   margin-bottom: 10px;
+  opacity: 0.9;
 }
 
 footer .footer-links {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 footer .footer-links a {
-  margin: 0 10px;
+  margin: 0 15px;
   text-decoration: none;
   color: #fff;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
+  opacity: 0.8;
 }
 
 footer .footer-links a:hover {
-  color: #b7a99a;
+  opacity: 1;
 }
 
 /* Sección "¿Cómo funciona?" */
 .como-funciona {
   max-width: 1200px;
   width: 90%;
-  margin: 30px auto;
-  padding: 50px 20px;
+  margin: 40px auto;
+  padding: 60px 30px;
   text-align: center;
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .como-funciona h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: #333;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #3a6b6b; /* Teal color */
 }
 
 .como-funciona p {
   font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #666;
+  margin-bottom: 40px;
+  color: #4e5d5d; /* Desaturated teal */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .como-funciona .pasos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .como-funciona .paso {
   flex: 1 1 300px;
   max-width: 300px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.como-funciona .paso:hover {
+  transform: translateY(-8px);
 }
 
 .como-funciona .paso img {
   width: 80px;
   height: 80px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .como-funciona .paso h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
   font-weight: 600;
-  color: #333;
+  color: #3a6b6b; /* Teal color */
 }
 
 .como-funciona .paso p {
   font-size: 1rem;
-  color: #666;
+  color: #4e5d5d; /* Desaturated teal */
+  margin-bottom: 0;
 }
 
 /* Sección "Beneficios de RecipeMatch" */
 .beneficios {
   max-width: 1200px;
   width: 90%;
-  margin: 30px auto;
-  padding: 50px 20px;
+  margin: 40px auto;
+  padding: 60px 30px;
   text-align: center;
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .beneficios h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: #333;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #3a6b6b; /* Teal color */
 }
 
 .beneficios p {
   font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #666;
+  margin-bottom: 40px;
+  color: #4e5d5d; /* Desaturated teal */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .beneficios .beneficios-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .beneficios .beneficio {
   flex: 1 1 300px;
   max-width: 300px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.beneficios .beneficio:hover {
+  transform: translateY(-8px);
 }
 
 .beneficios .beneficio img {
   width: 80px;
   height: 80px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .beneficios .beneficio h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
   font-weight: 600;
-  color: #333;
+  color: #3a6b6b; /* Teal color */
 }
 
 .beneficios .beneficio p {
   font-size: 1rem;
-  color: #666;
+  color: #4e5d5d; /* Desaturated teal */
+  margin-bottom: 0;
 }
+
 /* Estilos del slider de beneficios */
 .slider-beneficios {
-  padding: 50px 20px;
-  background-color: #f9f9f9;
+  padding: 60px 30px;
+  background-color: #f7f7f7;
   text-align: center;
 }
 
@@ -411,139 +444,207 @@ footer .footer-links a:hover {
   width: 80%;
   max-height: 250px;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .slide h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #3a6b6b; /* Teal color */
 }
 
 .slide p {
-  font-size: 18px;
+  font-size: 1.1rem;
   max-width: 600px;
+  color: #4e5d5d; /* Desaturated teal */
 }
 
 /* Estilos para la página de resultados */
 #resultados {
-  padding: 50px 20px;
+  padding: 60px 30px;
   text-align: center;
 }
 
 #resultados h1 {
   font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #333;
+  margin-bottom: 40px;
+  color: #3a6b6b; /* Teal color */
 }
 
+/* Ajustes para el contenedor de recetas */
 .receta-container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 30px auto;
   background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
 .receta-container h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 30px;
+  color: #3a6b6b; /* Teal color */
   text-align: center;
 }
 
+/* Recetas mostradas horizontalmente */
+.recetas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
 .receta {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #444;
+  background-color: #f7f7f7;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.receta:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
 .receta h2 {
-  font-size: 1.8rem;
-  color: #333;
+  font-size: 1.6rem;
+  color: #3a6b6b; /* Teal color */
   margin: 20px 0 15px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e8f0f0;
 }
 
 .receta h3 {
-  font-size: 1.4rem;
-  color: #555;
-  margin: 18px 0 12px;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #3a6b6b; /* Teal color */
+}
+
+.receta img {
+  border-radius: 10px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.receta p {
+  font-size: 0.95rem;
+  color: #4e5d5d; /* Desaturated teal */
+  margin: 8px 0;
 }
 
 .receta .ingrediente {
-  margin: 5px 0;
+  margin: 8px 0;
   padding-left: 20px;
   position: relative;
+  text-align: left;
 }
 
 .receta .ingrediente:before {
   content: "•";
   position: absolute;
   left: 0;
-  color: #b7a99a;
+  color: #3a6b6b; /* Teal color */
+}
+
+.receta a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #3a6b6b; /* Teal color */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.receta a:hover {
+  background-color: #2a5353; /* Darker teal */
+  transform: translateY(-2px);
 }
 
 .receta .paso {
-  margin: 10px 0;
+  margin: 12px 0;
   padding-left: 25px;
   position: relative;
+  text-align: left;
+}
+
+.receta .paso:before {
+  content: counter(step);
+  counter-increment: step;
+  position: absolute;
+  left: 0;
+  color: #3a6b6b; /* Teal color */
+  font-weight: bold;
 }
 
 .buscar-mas {
   display: block;
-  margin: 30px auto 0;
-  padding: 12px 25px;
-  background-color: #b7a99a;
+  margin: 40px auto 0;
+  padding: 14px 30px;
+  background-color: #3a6b6b; /* Teal color */
   color: #fff;
   border: none;
   border-radius: 30px;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .buscar-mas:hover {
-  background-color: #a39587;
+  background-color: #2a5353; /* Darker teal */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para mensajes de error y carga */
 .loading, .error {
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 30px;
 }
 
 .loading p, .error p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #555;
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  color: #4e5d5d; /* Desaturated teal */
 }
 
 .error a {
   display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #b7a99a;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #3a6b6b; /* Teal color */
   color: #fff;
   text-decoration: none;
   border-radius: 30px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .error a:hover {
-  background-color: #a39587;
+  background-color: #2a5353; /* Darker teal */
+  transform: translateY(-3px);
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #b7a99a;
+  width: 60px;
+  height: 60px;
+  border: 5px solid #e8f0f0;
+  border-top: 5px solid #3a6b6b; /* Teal color */
   border-radius: 50%;
-  margin: 20px auto;
+  margin: 30px auto;
   animation: spin 1s linear infinite;
 }
 
@@ -557,79 +658,184 @@ footer .footer-links a:hover {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  max-width: 500px;
+  gap: 15px;
+  max-width: 550px;
   margin: 0 auto;
 }
 
 #searchForm input {
   flex: 1;
-  min-width: 250px;
-  padding: 12px 20px;
-  border: 1px solid #ddd;
+  min-width: 280px;
+  padding: 14px 22px;
+  border: 1px solid #dce8e8;
   border-radius: 30px;
   font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#searchForm input:focus {
+  outline: none;
+  border-color: #3a6b6b;
+  box-shadow: 0 0 0 2px rgba(58, 107, 107, 0.1);
 }
 
 #searchForm button {
-  padding: 12px 25px;
-  background-color: #b7a99a;
+  padding: 14px 28px;
+  background-color: #3a6b6b; /* Teal color */
   color: #fff;
   border: none;
   border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 #searchForm button:hover {
-  background-color: #a39587;
+  background-color: #2a5353; /* Darker teal */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 /* Sección Login */
 .login, .perfil {
   background-color: #ffffff;
-  padding: 50px 20px;
-  border-radius: 10px;
-  margin: 30px auto;
+  padding: 60px 40px;
+  border-radius: 12px;
+  margin: 40px auto;
   max-width: 500px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
+}
+
+.login h2, .perfil h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #3a6b6b; /* Teal color */
 }
 
 .form-login input {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: 1px solid #dce8e8;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-login input:focus {
+  outline: none;
+  border-color: #3a6b6b;
+  box-shadow: 0 0 0 2px rgba(58, 107, 107, 0.1);
 }
 
 .form-login button, .btn-salir {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #f1e9d2;
+  margin-top: 25px;
+  padding: 12px 30px;
+  background-color: #3a6b6b; /* Teal color */
+  color: white;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .form-login button:hover, .btn-salir:hover {
-  background-color: #b7a99a;
-  color: white;
+  background-color: #2a5353; /* Darker teal */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-login p {
-  margin-top: 15px;
+  margin-top: 20px;
+  color: #4e5d5d; /* Desaturated teal */
 }
 
 .form-login a {
-  color: #826a5c;
+  color: #3a6b6b; /* Teal color */
   text-decoration: underline;
+  transition: all 0.3s ease;
 }
+
+.form-login a:hover {
+  color: #2a5353; /* Darker teal */
+}
+
 /* Perfil */
+.info-perfil {
+  background-color: #f7f7f7;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
 .info-perfil p {
-  margin: 10px 0;
+  margin: 12px 0;
   text-align: left;
+  color: #4e5d5d; /* Desaturated teal */
+}
+
+.info-perfil strong {
+  color: #3a6b6b; /* Teal color */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .hero {
+    padding: 80px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .search-box input {
+    width: 100%;
+  }
+  
+  .receta {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .nav-links a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .search-box {
+    flex-direction: column;
+  }
+  
+  .search-box input, 
+  .search-box button {
+    width: 100%;
+  }
 }
