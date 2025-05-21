@@ -427,15 +427,72 @@
         height: 100px;
       }
     }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-btn {
+      padding: 10px 15px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: var(--bg-white);
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      z-index: 1;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown-content a {
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      color: var(--text-dark);
+      transition: background-color 0.3s;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: var(--secondary-color);
+    }
+
   </style>
 </head>
 <body>
   <!-- ENCABEZADO -->
   <header>
+
+  <header>
     <div class="logo">🍴 RecipeMatch</div>
     <nav class="nav-links">
-      <a href="index2.html">Inicio</a>
-      <a href="#" id="logout">Cerrar Sesión</a>
+      <a href="index2.html" class="active">Inicio</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">Menú</button>
+        <div class="dropdown-content">
+          <a href="mis-ingredientes.html">Mis Ingredientes</a>
+          <a href="mis-recetas.html">Mis Recetas</a>
+          <a href="history.html">Historial</a>
+          <a href="contact.html">Contacto</a>
+          <a href="#" id="logout-btn">Cerrar Sesión</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -538,7 +595,7 @@
   <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
-      <a href="">Política de privacidad</a>
+      <a href="#">Política de privacidad</a>
       <a href="contact.html">Contacto</a>
       <a href="Questions.html">Preguntas frecuentes</a>
     </div>
