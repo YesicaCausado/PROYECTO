@@ -5,14 +5,437 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RecipeMatch - Mi Perfil</title>
   <link rel="icon" href="imagenes/icono.png" type="image/png">
-  <link rel="stylesheet" href="CSS/style.css">
+  <style>
+    :root {
+      --primary-color: #b7a99a;
+      --primary-dark: #a39587;
+      --secondary-color: #f1e9d2;
+      --text-dark: #333;
+      --text-medium: #4e4e4e;
+      --text-light: #666;
+      --bg-light: #f4f4f4;
+      --bg-white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: var(--bg-white);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-medium);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: var(--text-dark);
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .perfil-container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    /* ===== PERFIL INFO ===== */
+    .perfil-info {
+      background: linear-gradient(135deg, var(--secondary-color) 0%, #fff 100%);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .perfil-info::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(183, 169, 154, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .perfil-header {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 30px;
+    }
+
+    .perfil-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .perfil-avatar:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .user-name {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+
+    .perfil-email {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 30px 0;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-medium);
+      margin-top: 5px;
+    }
+
+    /* ===== BOTONES ===== */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      margin: 5px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      padding: 13px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 5px;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* ===== FORM ===== */
+    .form-perfil {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    /* ===== PERFIL DETALLES ===== */
+    .perfil-detalles {
+      background-color: var(--bg-white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+
+    .perfil-detalles h3 {
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      color: var(--text-dark);
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 10px;
+    }
+
+    .detalles-list {
+      list-style: none;
+    }
+
+    .detalles-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #f0f0f0;
+      transition: all 0.3s ease;
+    }
+
+    .detalles-list li:hover {
+      background-color: #f9f9f9;
+      padding-left: 10px;
+      border-radius: 10px;
+    }
+
+    .detail-label {
+      font-weight: 600;
+      color: var(--text-medium);
+    }
+
+    .detail-value {
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    /* ===== RECETAS FAVORITAS ===== */
+    .perfil-recetas {
+      grid-column: 1 / -1;
+      background-color: var(--bg-white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-top: 20px;
+    }
+
+    .perfil-recetas h3 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: var(--text-dark);
+      text-align: center;
+      position: relative;
+    }
+
+    .perfil-recetas h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+      border-radius: 2px;
+    }
+
+    .recetas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .receta-favorita {
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .receta-favorita:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary-color);
+    }
+
+    .receta-favorita img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-light);
+    }
+
+    .empty-state .icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-links {
+      margin-top: 15px;
+    }
+
+    .footer-links a, .social-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover, .social-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .nav-links {
+        margin-top: 15px;
+      }
+
+      .perfil-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 10px;
+      }
+
+      .perfil-info, .perfil-detalles {
+        padding: 25px;
+      }
+
+      .stats-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .user-name {
+        font-size: 1.5rem;
+      }
+
+      .perfil-avatar {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- ENCABEZADO -->
   <header>
     <div class="logo">🍴 RecipeMatch</div>
     <nav class="nav-links">
-      <a href="index2.html">Inicio</a>
+      <a href="index.html">Inicio</a>
+      <a href="#" id="logout">Cerrar Sesión</a>
     </nav>
   </header>
 
@@ -20,10 +443,23 @@
   <main class="perfil-container">
     <section class="perfil-info">
       <div class="perfil-header">
-        <img src="imagenes/avatar.png" alt="Avatar del usuario" class="perfil-avatar" id="user-avatar">
-        <div>
-          <h2 id="user-name">Nombre del Usuario</h2>
-          <p class="perfil-email" id="user-email">usuario@email.com</p>
+        <img src="/api/placeholder/120/120" alt="Avatar del usuario" class="perfil-avatar" id="user-avatar">
+        <h2 class="user-name" id="user-name">Nombre del Usuario</h2>
+        <p class="perfil-email" id="user-email">usuario@email.com</p>
+      </div>
+      
+      <div class="stats-container">
+        <div class="stat-item">
+          <span class="stat-number" id="saved-recipes">12</span>
+          <span class="stat-label">Recetas Guardadas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="favorite-count">8</span>
+          <span class="stat-label">Favoritas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="created-recipes">5</span>
+          <span class="stat-label">Creadas</span>
         </div>
       </div>
       
@@ -37,29 +473,63 @@
           <input type="file" id="avatar-input" accept="image/*">
         </div>
         <div class="form-actions">
-          <button type="submit" class="btn-guardar">Guardar cambios</button>
-          <button type="button" class="btn-cancelar" id="cancel-edit">Cancelar</button>
+          <button type="submit" class="btn-primary">Guardar cambios</button>
+          <button type="button" class="btn-secondary" id="cancel-edit">Cancelar</button>
         </div>
       </form>
       
-      <button class="btn-editar" id="edit-profile">Editar Perfil</button>
+      <button class="btn-primary" id="edit-profile">✏️ Editar Perfil</button>
     </section>
 
     <section class="perfil-detalles">
-      <h3>Detalles del Perfil</h3>
-      <ul>
-        <li><strong>Nombre:</strong> <span id="detail-name">Nombre del Usuario</span></li>
-        <li><strong>Correo:</strong> <span id="detail-email">usuario@email.com</span></li>
-        <li><strong>Miembro desde:</strong> <span id="member-since">Enero 2025</span></li>
-        <li><strong>Recetas guardadas:</strong> <span id="saved-recipes">12</span></li>
+      <h3>📋 Información Personal</h3>
+      <ul class="detalles-list">
+        <li>
+          <span class="detail-label">👤 Nombre:</span>
+          <span class="detail-value" id="detail-name">Nombre del Usuario</span>
+        </li>
+        <li>
+          <span class="detail-label">📧 Correo:</span>
+          <span class="detail-value" id="detail-email">usuario@email.com</span>
+        </li>
+        <li>
+          <span class="detail-label">📅 Miembro desde:</span>
+          <span class="detail-value" id="member-since">Enero 2025</span>
+        </li>
+        <li>
+          <span class="detail-label">⭐ Nivel:</span>
+          <span class="detail-value">Chef Principiante</span>
+        </li>
+        <li>
+          <span class="detail-label">🏆 Puntuación:</span>
+          <span class="detail-value">1,250 puntos</span>
+        </li>
       </ul>
     </section>
 
     <section class="perfil-recetas">
-      <h3>Mis Recetas Favoritas</h3>
+      <h3>❤️ Mis Recetas Favoritas</h3>
       <div class="recetas-grid" id="favorite-recipes">
-        <!-- Las recetas favoritas se cargarán aquí dinámicamente -->
-        <p>Aún no tienes recetas favoritas.</p>
+        <div class="receta-favorita">
+          <img src="/api/placeholder/80/80" alt="Ensalada Mediterránea">
+          <h4>Ensalada Mediterránea</h4>
+          <p>15 min • Fácil</p>
+        </div>
+        <div class="receta-favorita">
+          <img src="/api/placeholder/80/80" alt="Pasta Carbonara">
+          <h4>Pasta Carbonara</h4>
+          <p>20 min • Medio</p>
+        </div>
+        <div class="receta-favorita">
+          <img src="/api/placeholder/80/80" alt="Pollo al Limón">
+          <h4>Pollo al Limón</h4>
+          <p>35 min • Medio</p>
+        </div>
+        <div class="receta-favorita">
+          <img src="/api/placeholder/80/80" alt="Sopa de Lentejas">
+          <h4>Sopa de Lentejas</h4>
+          <p>45 min • Fácil</p>
+        </div>
       </div>
     </section>
   </main>
@@ -68,7 +538,7 @@
   <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
-      <a href="privacidad.html">Política de privacidad</a>
+      <a href="">Política de privacidad</a>
       <a href="contact.html">Contacto</a>
       <a href="Questions.html">Preguntas frecuentes</a>
     </div>
@@ -83,25 +553,38 @@
     // Cargar datos del usuario
     document.addEventListener('DOMContentLoaded', () => {
       const user = JSON.parse(localStorage.getItem('usuarioActual')) || {
-        nombre: 'Nombre del Usuario',
-        email: 'usuario@email.com',
+        nombre: 'María González',
+        email: 'maria.gonzalez@email.com',
         fechaRegistro: 'Enero 2025',
-        avatar: 'imagenes/avatar.png',
-        recetasGuardadas: 12
+        avatar: '/api/placeholder/120/120',
+        recetasGuardadas: 12,
+        favoritas: 8,
+        creadas: 5
       };
 
       // Mostrar datos del usuario
+      updateUserDisplay(user);
+
+      // Event Listeners
+      setupEventListeners(user);
+    });
+
+    function updateUserDisplay(user) {
       document.getElementById('user-name').textContent = user.nombre;
       document.getElementById('user-email').textContent = user.email;
       document.getElementById('detail-name').textContent = user.nombre;
       document.getElementById('detail-email').textContent = user.email;
       document.getElementById('member-since').textContent = user.fechaRegistro;
       document.getElementById('saved-recipes').textContent = user.recetasGuardadas;
+      document.getElementById('favorite-count').textContent = user.favoritas;
+      document.getElementById('created-recipes').textContent = user.creadas;
       
       if (localStorage.getItem('avatar')) {
         document.getElementById('user-avatar').src = localStorage.getItem('avatar');
       }
+    }
 
+    function setupEventListeners(user) {
       // Botón de edición
       document.getElementById('edit-profile').addEventListener('click', () => {
         document.getElementById('profile-form').style.display = 'block';
@@ -118,38 +601,83 @@
       // Guardar cambios
       document.getElementById('profile-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        const username = document.getElementById('username').value;
-        const avatarFile = document.getElementById('avatar-input').files[0];
-
-        // Actualizar datos
-        user.nombre = username;
-        localStorage.setItem('usuarioActual', JSON.stringify(user));
-
-        if (avatarFile) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            localStorage.setItem('avatar', e.target.result);
-            document.getElementById('user-avatar').src = e.target.result;
-          };
-          reader.readAsDataURL(avatarFile);
-        }
-
-        // Actualizar vista
-        document.getElementById('user-name').textContent = username;
-        document.getElementById('detail-name').textContent = username;
-        document.getElementById('profile-form').style.display = 'none';
-        document.getElementById('edit-profile').style.display = 'block';
-        
-        alert('Perfil actualizado correctamente');
+        saveProfile(user);
       });
 
       // Cerrar sesión
       document.getElementById('logout').addEventListener('click', (e) => {
         e.preventDefault();
-        localStorage.removeItem('usuarioActual');
-        window.location.href = 'index.html';
+        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+          localStorage.removeItem('usuarioActual');
+          window.location.href = 'index.html';
+        }
       });
-    });
+    }
+
+    function saveProfile(user) {
+      const username = document.getElementById('username').value;
+      const avatarFile = document.getElementById('avatar-input').files[0];
+
+      // Actualizar datos
+      user.nombre = username;
+      localStorage.setItem('usuarioActual', JSON.stringify(user));
+
+      if (avatarFile) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          localStorage.setItem('avatar', e.target.result);
+          document.getElementById('user-avatar').src = e.target.result;
+        };
+        reader.readAsDataURL(avatarFile);
+      }
+
+      // Actualizar vista
+      updateUserDisplay(user);
+      document.getElementById('profile-form').style.display = 'none';
+      document.getElementById('edit-profile').style.display = 'block';
+      
+      // Mostrar mensaje de éxito
+      showSuccessMessage('✅ Perfil actualizado correctamente');
+    }
+
+    function showSuccessMessage(message) {
+      const successDiv = document.createElement('div');
+      successDiv.textContent = message;
+      successDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #4CAF50, #45a049);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        font-weight: 500;
+        animation: slideIn 0.3s ease;
+      `;
+      
+      document.body.appendChild(successDiv);
+      
+      setTimeout(() => {
+        successDiv.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => successDiv.remove(), 300);
+      }, 3000);
+    }
+
+    // CSS para las animaciones
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
