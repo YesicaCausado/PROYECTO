@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeMatch - Todas las Recetas</title>
+  <style>
+    /* ESTILOS GENERALES */
+    :root {
+      --primary-color: #b7a99a;
+      --primary-dark: #a39587;
+      --secondary-color: #f1e9d2;
+      --text-dark: #333;
+      --text-medium: #4e4e4e;
+      --text-light: #666;
+      --bg-light: #f4f4f4;
+      --bg-white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+    
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: var(--bg-white);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 1px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .nav-links a {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: background-color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      background-color: #f2f2f2;
+    }
+    
+    .nav-links a.active {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    
+    /* MAIN CONTENT */
+    main {
+      max-width: 1200px;
+      width: 90%;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: var(--primary-dark);
+      text-align: center;
+    }
+    
+    /* FILTROS */
+    .filtros {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .filtro-btn {
+      padding: 8px 16px;
+      background-color: var(--bg-white);
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .filtro-btn:hover, .filtro-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    
+    /* RECETAS GRID */
+    .recetas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .receta-card {
+      background-color: var(--bg-white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+    
+    .receta-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .receta-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .receta-content {
+      padding: 20px;
+    }
+    
+    .receta-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+    
+    .receta-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    
+    .receta-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .receta-desc {
+      margin-bottom: 20px;
+      color: var(--text-medium);
+      line-height: 1.5;
+    }
+    
+    .receta-ingredientes {
+      margin-bottom: 20px;
+    }
+    
+    .receta-ingredientes h3, .receta-preparacion h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+    
+    .receta-ingredientes ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .receta-ingredientes li {
+      margin-bottom: 5px;
+    }
+    
+    .receta-preparacion ol {
+      padding-left: 20px;
+    }
+    
+    .receta-preparacion li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .btn-receta {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-receta:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* FOOTER */
+    footer {
+      background-color: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+    
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+    
+    .social-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .recetas-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header>
+    <div class="logo">🍴 RecipeMatch</div>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#como-funciona">¿Cómo funciona?</a>
+      <a href="index.html#beneficios">Beneficios</a>
+      <a href="recetas.html" class="active">Recetas</a>
+      <a href="index.html#sobre-nosotros">Sobre nosotros</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <h1>Descubre Nuestras Recetas</h1>
+    
+    <div class="filtros">
+      <button class="filtro-btn active">Todas</button>
+      <button class="filtro-btn">Rápidas</button>
+      <button class="filtro-btn">Saludables</button>
+      <button class="filtro-btn">Postres</button>
+      <button class="filtro-btn">Vegetarianas</button>
+    </div>
+    
+    <div class="recetas-grid">
+      <!-- Receta 1 -->
+      <div class="receta-card">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ensalada César" class="receta-img">
+        <div class="receta-content">
+          <h2 class="receta-title">Ensalada César Clásica</h2>
+          <div class="receta-meta">
+            <span>⏱️ 15 min</span>
+            <span>🍽️ 2 personas</span>
+            <span>⭐ 4.8</span>
+          </div>
+          <p class="receta-desc">Una versión clásica de la ensalada César con crotones caseros y aderezo cremoso.</p>
+          
+          <div class="receta-ingredientes">
+            <h3>Ingredientes</h3>
+            <ul>
+              <li>1 lechuga romana</li>
+              <li>1 taza de crotones</li>
+              <li>50g de queso parmesano</li>
+              <li>1 pechuga de pollo</li>
+              <li>3 cucharadas de aderezo César</li>
+            </ul>
+          </div>
+          
+          <div class="receta-preparacion">
+            <h3>Preparación</h3>
+            <ol>
+              <li>Cocinar el pollo a la plancha y cortar en tiras.</li>
+              <li>Lavar y cortar la lechuga en trozos.</li>
+              <li>Mezclar todos los ingredientes en un tazón grande.</li>
+              <li>Añadir el aderezo y mezclar suavemente.</li>
+              <li>Espolvorear con queso parmesano rallado.</li>
+            </ol>
+          </div>
+          
+          <a href="#" class="btn-receta">Guardar Receta</a>
+        </div>
+      </div>
+      
+      <!-- Receta 2 -->
+      <div class="receta-card">
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pasta Carbonara" class="receta-img">
+        <div class="receta-content">
+          <h2 class="receta-title">Pasta Carbonara</h2>
+          <div class="receta-meta">
+            <span>⏱️ 25 min</span>
+            <span>🍽️ 4 personas</span>
+            <span>⭐ 4.6</span>
+          </div>
+          <p class="receta-desc">La auténtica pasta carbonara italiana con huevo, panceta y queso pecorino.</p>
+          
+          <div class="receta-ingredientes">
+            <h3>Ingredientes</h3>
+            <ul>
+              <li>400g de spaghetti</li>
+              <li>150g de panceta</li>
+              <li>3 yemas de huevo</li>
+              <li>50g de queso pecorino</li>
+              <li>Pimienta negra al gusto</li>
+            </ul>
+          </div>
+          
+          <div class="receta-preparacion">
+            <h3>Preparación</h3>
+            <ol>
+              <li>Cocinar la pasta al dente en agua con sal.</li>
+              <li>Dorar la panceta en una sartén.</li>
+              <li>Batir las yemas con el queso rallado.</li>
+              <li>Mezclar la pasta con la panceta y luego con la mezcla de huevo.</li>
+              <li>Servir inmediatamente con pimienta negra.</li>
+            </ol>
+          </div>
+          
+          <a href="#" class="btn-receta">Guardar Receta</a>
+        </div>
+      </div>
+      
+      <!-- Receta 3 -->
+      <div class="receta-card">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bowl Vegetariano" class="receta-img">
+        <div class="receta-content">
+          <h2 class="receta-title">Bowl Vegetariano</h2>
+          <div class="receta-meta">
+            <span>⏱️ 20 min</span>
+            <span>🍽️ 1 persona</span>
+            <span>⭐ 4.9</span>
+          </div>
+          <p class="receta-desc">Un bowl colorido y nutritivo con quinoa, aguacate y vegetales frescos.</p>
+          
+          <div class="receta-ingredientes">
+            <h3>Ingredientes</h3>
+            <ul>
+              <li>1 taza de quinoa cocida</li>
+              <li>1/2 aguacate</li>
+              <li>1 zanahoria rallada</li>
+              <li>1/2 taza de garbanzos</li>
+              <li>1 cucharada de semillas de girasol</li>
+              <li>Aderezo de limón</li>
+            </ul>
+          </div>
+          
+          <div class="receta-preparacion">
+            <h3>Preparación</h3>
+            <ol>
+              <li>Cocinar la quinoa según instrucciones.</li>
+              <li>Cortar el aguacate en rodajas.</li>
+              <li>Rallar la zanahoria.</li>
+              <li>Armar el bowl colocando todos los ingredientes.</li>
+              <li>Agregar el aderezo y las semillas al final.</li>
+            </ol>
+          </div>
+          
+          <a href="#" class="btn-receta">Guardar Receta</a>
+        </div>
+      </div>
+      
+      <!-- Receta 4 -->
+      <div class="receta-card">
+        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Panqueques" class="receta-img">
+        <div class="receta-content">
+          <h2 class="receta-title">Panqueques con Frutas</h2>
+          <div class="receta-meta">
+            <span>⏱️ 30 min</span>
+            <span>🍽️ 3 personas</span>
+            <span>⭐ 4.7</span>
+          </div>
+          <p class="receta-desc">Esponjosos panqueques americanos con frutas frescas y miel.</p>
+          
+          <div class="receta-ingredientes">
+            <h3>Ingredientes</h3>
+            <ul>
+              <li>1 taza de harina</li>
+              <li>1 cucharadita de polvo de hornear</li>
+              <li>1 cucharada de azúcar</li>
+              <li>1 huevo</li>
+              <li>3/4 taza de leche</li>
+              <li>Fruta fresca para acompañar</li>
+            </ul>
+          </div>
+          
+          <div class="receta-preparacion">
+            <h3>Preparación</h3>
+            <ol>
+              <li>Mezclar los ingredientes secos en un bowl.</li>
+              <li>Agregar el huevo y la leche, mezclar sin batir demasiado.</li>
+              <li>Calentar una sartén antiadherente a fuego medio.</li>
+              <li>Cocinar los panqueques hasta que burbujen y dorar por ambos lados.</li>
+              <li>Servir con frutas frescas y miel.</li>
+            </ol>
+          </div>
+          
+          <a href="#" class="btn-receta">Guardar Receta</a>
+        </div>
+      </div>
+      
+      <!-- Receta 5 -->
+      <div class="receta-card">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sopa de Tomate" class="receta-img">
+        <div class="receta-content">
+          <h2 class="receta-title">Sopa de Tomate Cremosa</h2>
+          <div class="receta-meta">
+            <span>⏱️ 40 min</span>
+            <span>🍽️ 4 personas</span>
+            <span>⭐ 4.5</span>
+          </div>
+          <p class="receta-desc">Una reconfortante sopa de tomate con un toque de crema y albahaca fresca.</p>
+          
+          <div class="receta-ingredientes">
+            <h3>Ingredientes</h3>
+            <ul>
+              <li>1kg de tomates maduros</li>
+              <li>1 cebolla</li>
+              <li>2 dientes de ajo</li>
+              <li>1/2 taza de crema</li>
+              <li>Hojas de albahaca</li>
+              <li>Sal y pimienta al gusto</li>
+            </ul>
+          </div>
+          
+          <div class="receta-preparacion">
+            <h3>Preparación</h3>
+            <ol>
+              <li>Picar la cebolla y el ajo, sofreír en una olla.</li>
+              <li>Agregar los tomates picados y cocinar por 20 minutos.</li>
+              <li>Triturar hasta obtener una textura suave.</li>
+              <li>Añadir la crema y sazonar con sal y pimienta.</li>
+              <li>Servir caliente con hojas de albahaca fresca.</li>
+            </ol>
+          </div>
+          
+          <a href="#" class="btn-receta">Guardar Receta</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="politica-privacidad.html">Política de privacidad</a>
+      <a href="contact.html">Contacto</a>
+      <a href="faq.html">Preguntas frecuentes</a>
+    </div>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+    </div>
+  </footer>
+
+  <script>
+    // Filtros de recetas
+    document.querySelectorAll('.filtro-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filtro-btn.active').classList.remove('active');
+        btn.classList.add('active');
+        // Aquí iría la lógica para filtrar las recetas
+      });
+    });
+  </script>
+</body>
+</html>
