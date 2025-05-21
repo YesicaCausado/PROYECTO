@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeMatch - Recetas</title>
+  <style>
+    :root {
+      --primary-color: #b7a99a;
+      --primary-dark: #a39587;
+      --secondary-color: #f1e9d2;
+      --text-dark: #333;
+      --text-medium: #4e4e4e;
+      --text-light: #666;
+      --bg-light: #f4f4f4;
+      --bg-white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: var(--bg-white);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-medium);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #f2f2f2;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+      background-color: var(--secondary-color);
+      padding: 50px 20px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .page-title h1 {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .page-title p {
+      font-size: 1.2rem;
+      color: var(--text-medium);
+    }
+
+    /* ===== RECIPE CARDS ===== */
+    .recetas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .receta-card {
+      background-color: var(--bg-white);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .receta-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .receta-header {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .receta-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .receta-card:hover .receta-header img {
+      transform: scale(1.1);
+    }
+
+    .tiempo-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .dificultad-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: var(--text-dark);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .receta-content {
+      padding: 25px;
+    }
+
+    .receta-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .receta-description {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .receta-details {
+      margin-bottom: 20px;
+    }
+
+    .detail-section {
+      margin-bottom: 15px;
+    }
+
+    .detail-title {
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .ingredientes-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .ingredientes-list li {
+      padding: 3px 0;
+      padding-left: 15px;
+      position: relative;
+      color: var(--text-medium);
+      font-size: 0.9rem;
+    }
+
+    .ingredientes-list li:before {
+      content: "🥄";
+      position: absolute;
+      left: 0;
+    }
+
+    .instrucciones-list {
+      list-style: none;
+      counter-reset: step-counter;
+    }
+
+    .instrucciones-list li {
+      counter-increment: step-counter;
+      margin-bottom: 8px;
+      padding-left: 30px;
+      position: relative;
+      color: var(--text-medium);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .instrucciones-list li:before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: var(--primary-color);
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .receta-stats {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 25px;
+      background-color: var(--bg-light);
+      border-top: 1px solid #eee;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 1.1rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* ===== BACK BUTTON ===== */
+    .back-button {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .back-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateX(-5px);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-links {
+      margin-top: 10px;
+    }
+
+    .footer-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .social-links a {
+      margin: 0 10px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      .recetas-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .page-title h1 {
+        font-size: 2rem;
+      }
+
+      .receta-stats {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🍴 RecipeMatch</div>
+    <nav class="nav-links" role="navigation">
+      <a href="index.html">Inicio</a>
+      <a href="#como-funciona">¿Cómo funciona?</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#sobre-nosotros">Sobre nosotros</a>
+      <a href="login.html" id="authLink">Iniciar sesión / Registrarse</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <a href="index.html" class="back-button">← Volver al inicio</a>
+    
+    <div class="page-title">
+      <h1>Nuestras Recetas</h1>
+      <p>Descubre una variedad de platos deliciosos y fáciles de preparar</p>
+    </div>
+
+    <div class="recetas-grid">
+      <!-- Receta 1: Ensalada Mediterránea -->
+      <div class="receta-card">
+        <div class="receta-header">
+          <img src="/api/placeholder/400/200" alt="Ensalada Mediterránea">
+          <div class="tiempo-badge">15 min</div>
+          <div class="dificultad-badge">Fácil</div>
+        </div>
+        <div class="receta-content">
+          <h3 class="receta-title">Ensalada Mediterránea</h3>
+          <p class="receta-description">Una refrescante ensalada llena de sabores mediterráneos, perfecta para cualquier comida.</p>
+          
+          <div class="receta-details">
+            <div class="detail-section">
+              <div class="detail-title">Ingredientes:</div>
+              <ul class="ingredientes-list">
+                <li>2 tomates grandes cortados en cubos</li>
+                <li>1 pepino pelado y cortado</li>
+                <li>1/2 cebolla roja en rodajas finas</li>
+                <li>200g de queso feta desmenuzado</li>
+                <li>100g de aceitunas negras</li>
+                <li>Aceite de oliva extra virgen</li>
+                <li>Orégano seco y sal al gusto</li>
+              </ul>
+            </div>
+            
+            <div class="detail-section">
+              <div class="detail-title">Preparación:</div>
+              <ol class="instrucciones-list">
+                <li>Corta todos los vegetales en trozos uniformes</li>
+                <li>Coloca en un bowl grande y mezcla suavemente</li>
+                <li>Añade el queso feta y las aceitunas</li>
+                <li>Aliña con aceite de oliva, orégano y sal</li>
+                <li>Deja reposar 10 minutos antes de servir</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="receta-stats">
+          <div class="stat">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Porciones</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">180</div>
+            <div class="stat-label">Calorías</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">15</div>
+            <div class="stat-label">Minutos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receta 2: Pasta con Salsa de Tomate -->
+      <div class="receta-card">
+        <div class="receta-header">
+          <img src="/api/placeholder/400/200" alt="Pasta con Salsa de Tomate">
+          <div class="tiempo-badge">25 min</div>
+          <div class="dificultad-badge">Fácil</div>
+        </div>
+        <div class="receta-content">
+          <h3 class="receta-title">Pasta con Salsa de Tomate Casera</h3>
+          <p class="receta-description">Una clásica pasta italiana con salsa de tomate fresca y aromáticas hierbas.</p>
+          
+          <div class="receta-details">
+            <div class="detail-section">
+              <div class="detail-title">Ingredientes:</div>
+              <ul class="ingredientes-list">
+                <li>400g de pasta (espaguetis o penne)</li>
+                <li>6 tomates maduros pelados</li>
+                <li>3 dientes de ajo picados</li>
+                <li>1 cebolla mediana cortada</li>
+                <li>Aceite de oliva</li>
+                <li>Albahaca fresca</li>
+                <li>Sal, pimienta y queso parmesano</li>
+              </ul>
+            </div>
+            
+            <div class="detail-section">
+              <div class="detail-title">Preparación:</div>
+              <ol class="instrucciones-list">
+                <li>Hierve la pasta en agua con sal según las instrucciones</li>
+                <li>Sofríe la cebolla y ajo en aceite de oliva</li>
+                <li>Añade los tomates triturados y cocina 15 minutos</li>
+                <li>Sazona con sal, pimienta y albahaca</li>
+                <li>Mezcla con la pasta y sirve con queso parmesano</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="receta-stats">
+          <div class="stat">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Porciones</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">420</div>
+            <div class="stat-label">Calorías</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">25</div>
+            <div class="stat-label">Minutos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receta 3: Pollo al Limón -->
+      <div class="receta-card">
+        <div class="receta-header">
+          <img src="/api/placeholder/400/200" alt="Pollo al Limón">
+          <div class="tiempo-badge">35 min</div>
+          <div class="dificultad-badge">Medio</div>
+        </div>
+        <div class="receta-content">
+          <h3 class="receta-title">Pollo al Limón con Hierbas</h3>
+          <p class="receta-description">Jugosas piezas de pollo marinadas en limón y cocinadas con hierbas aromáticas.</p>
+          
+          <div class="receta-details">
+            <div class="detail-section">
+              <div class="detail-title">Ingredientes:</div>
+              <ul class="ingredientes-list">
+                <li>4 pechugas de pollo</li>
+                <li>2 limones (jugo y ralladura)</li>
+                <li>4 dientes de ajo picados</li>
+                <li>Romero y tomillo frescos</li>
+                <li>Aceite de oliva</li>
+                <li>Sal, pimienta negra</li>
+                <li>1 cebolla en rodajas</li>
+              </ul>
+            </div>
+            
+            <div class="detail-section">
+              <div class="detail-title">Preparación:</div>
+              <ol class="instrucciones-list">
+                <li>Marina el pollo con limón, ajo y hierbas por 30 minutos</li>
+                <li>Calienta aceite en una sartén grande</li>
+                <li>Sella el pollo por ambos lados hasta dorar</li>
+                <li>Añade la cebolla y cocina hasta transparentar</li>
+                <li>Hornea a 180°C por 20 minutos hasta cocinar completamente</li>
+                <li>Sirve con el jugo de cocción por encima</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="receta-stats">
+          <div class="stat">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Porciones</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">320</div>
+            <div class="stat-label">Calorías</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">35</div>
+            <div class="stat-label">Minutos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receta 4: Arroz con Verduras -->
+      <div class="receta-card">
+        <div class="receta-header">
+          <img src="/api/placeholder/400/200" alt="Arroz con Verduras">
+          <div class="tiempo-badge">30 min</div>
+          <div class="dificultad-badge">Fácil</div>
+        </div>
+        <div class="receta-content">
+          <h3 class="receta-title">Arroz Colorido con Verduras</h3>
+          <p class="receta-description">Un plato completo y nutritivo con arroz y una variedad de verduras frescas de temporada.</p>
+          
+          <div class="receta-details">
+            <div class="detail-section">
+              <div class="detail-title">Ingredientes:</div>
+              <ul class="ingredientes-list">
+                <li>2 tazas de arroz basmati</li>
+                <li>1 pimiento rojo cortado en tiras</li>
+                <li>1 zanahoria en cubos pequeños</li>
+                <li>100g de guisantes</li>
+                <li>1 calabacín en rodajas</li>
+                <li>Caldo de verduras</li>
+                <li>Cúrcuma, comino y sal</li>
+              </ul>
+            </div>
+            
+            <div class="detail-section">
+              <div class="detail-title">Preparación:</div>
+              <ol class="instrucciones-list">
+                <li>Lava el arroz hasta que el agua salga clara</li>
+                <li>Sofríe las verduras más duras primero (zanahoria)</li>
+                <li>Añade el arroz y mezcla con las especias</li>
+                <li>Agrega el caldo caliente gradualmente</li>
+                <li>Cocina a fuego lento 18-20 minutos tapado</li>
+                <li>Incorpora las verduras más tiernas al final</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="receta-stats">
+          <div class="stat">
+            <div class="stat-value">6</div>
+            <div class="stat-label">Porciones</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">250</div>
+            <div class="stat-label">Calorías</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">30</div>
+            <div class="stat-label">Minutos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receta 5: Sopa de Lentejas -->
+      <div class="receta-card">
+        <div class="receta-header">
+          <img src="/api/placeholder/400/200" alt="Sopa de Lentejas">
+          <div class="tiempo-badge">45 min</div>
+          <div class="dificultad-badge">Fácil</div>
+        </div>
+        <div class="receta-content">
+          <h3 class="receta-title">Sopa Casera de Lentejas</h3>
+          <p class="receta-description">Una sopa reconfortante y nutritiva, perfecta para los días fríos, llena de proteínas vegetales.</p>
+          
+          <div class="receta-details">
+            <div class="detail-section">
+              <div class="detail-title">Ingredientes:</div>
+              <ul class="ingredientes-list">
+                <li>300g de lentejas rojas</li>
+                <li>1 cebolla grande picada</li>
+                <li>2 zanahorias en cubos</li>
+                <li>2 tallos de apio picados</li>
+                <li>3 dientes de ajo picados</li>
+                <li>1.5L de caldo de verduras</li>
+                <li>Laurel, comino, pimentón y sal</li>
+              </ul>
+            </div>
+            
+            <div class="detail-section">
+              <div class="detail-title">Preparación:</div>
+              <ol class="instrucciones-list">
+                <li>Lava las lentejas y déjalas en remojo 15 minutos</li>
+                <li>Sofríe la cebolla, zanahoria y apio hasta ablandar</li>
+                <li>Añade el ajo y las especias, cocina 1 minuto</li>
+                <li>Incorpora las lentejas y el caldo caliente</li>
+                <li>Cocina a fuego medio 25-30 minutos removiendo ocasionalmente</li>
+                <li>Ajusta la consistencia con más caldo si es necesario</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="receta-stats">
+          <div class="stat">
+            <div class="stat-value">6</div>
+            <div class="stat-label">Porciones</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">220</div>
+            <div class="stat-label">Calorías</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">45</div>
+            <div class="stat-label">Minutos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de privacidad</a>
+      <a href="contact.html">Contacto</a>
+      <a href="#">Preguntas frecuentes</a>
+    </div>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+    </div>
+  </footer>
+</body>
+</html>
