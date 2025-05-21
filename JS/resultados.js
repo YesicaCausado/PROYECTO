@@ -88,3 +88,13 @@ function guardarReceta(id) {
     alert("Esta receta ya está guardada.");
   }
 }
+function guardarComoFavorita(id) {
+  const favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+  if (!favoritas.includes(id)) {
+    favoritas.push(id);
+    localStorage.setItem("favoritas", JSON.stringify(favoritas));
+    alert("Receta guardada como favorita.");
+  } else {
+    alert("Esta receta ya está en tus favoritas.");
+  }
+}

@@ -11,12 +11,19 @@
   <header>
     <div class="logo">🍴 RecipeMatch</div>
     <nav class="nav-links">
-    <a href="myperfil.html">Mi Perfil</a>
-    <a href="mis-recetas.html" class="active">Mis Recetas</a> <!-- Destacado -->
-    <a href="comunidad.html">Comunidad</a>
-    <a href="configuracion.html">Configuración</a>
-    <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
-</nav>
+      <div class="dropdown">
+        <button class="dropdown-btn">Menú</button>
+        <div class="dropdown-content">
+          <a href="myperfil.html">Mi Perfil</a>
+          <a href="mis-ingredientes.html">Mis Ingredientes</a>
+          <a href="mis-recetas.html">Mis Recetas</a>
+          <a href="historial.html">Historial</a>
+          <a href="configuracion.html">Configuración</a>
+          <a href="contact.html">Contacto</a>
+          <a href="index.html">Cerrar Sesión</a>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <!-- SECCIÓN DE BIENVENIDA -->
@@ -30,43 +37,12 @@
     </div>
   </section>
 
-  <!-- SECCIÓN DE RECETAS RECOMENDADAS -->
-  <section class="recetas-recomendadas">
-    <h2>Recetas Recomendadas para Ti</h2>
-    <div class="card-container">
-      <div class="card">
-        <img src="imagenes/receta1.jpg" alt="Receta 1">
-        <h3>Receta Exclusiva 1</h3>
-        <p>Descripción breve de la receta exclusiva.</p>
-        <a href="receta1.html" class="btn">Ver Receta</a>
-      </div>
-      <div class="card">
-        <img src="imagenes/receta2.jpg" alt="Receta 2">
-        <h3>Receta Exclusiva 2</h3>
-        <p>Descripción breve de la receta exclusiva.</p>
-        <a href="receta2.html" class="btn">Ver Receta</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN DE ACTIVIDADES RECIENTES -->
-  <section class="actividades-recientes">
-    <h2>Tu Actividad Reciente</h2>
-    <ul>
-      <li>Guardaste la receta <strong>Ensalada Mediterránea</strong>.</li>
-      <li>Agregaste <strong>Tomates</strong> a tu lista de ingredientes.</li>
-      <li>Comentaste en la receta <strong>Pizza Casera</strong>.</li>
-    </ul>
-  </section>
-
-
-
   <!-- PIE DE PÁGINA -->
   <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
       <a href="#">Política de privacidad</a>
-      <a href="#">Contacto</a>
+      <a href="contact.html">Contacto</a>
       <a href="#">Preguntas frecuentes</a>
     </div>
     <div class="social-links">
@@ -76,14 +52,4 @@
     </div>
   </footer>
 </body>
-
-<script>
-
-function cerrarSesion() {
-  const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
-  if (confirmar) {
-    window.location.href = "index.html";
-  }
-}
-</script>
 </html>

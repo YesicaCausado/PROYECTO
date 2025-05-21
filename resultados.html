@@ -23,7 +23,24 @@
     <h1>Recetas encontradas</h1>
     <div id="resultados-lista"></div> 
   </section>
-
+  <section class="filtros">
+    <h2>Filtrar Resultados</h2>
+    <form>
+      <label for="tiempo">Tiempo de preparación:</label>
+      <select id="tiempo">
+        <option value="15">Menos de 15 minutos</option>
+        <option value="30">Menos de 30 minutos</option>
+        <option value="60">Menos de 1 hora</option>
+      </select>
+      <label for="dificultad">Dificultad:</label>
+      <select id="dificultad">
+        <option value="facil">Fácil</option>
+        <option value="media">Media</option>
+        <option value="dificil">Difícil</option>
+      </select>
+      <button type="submit">Aplicar Filtros</button>
+    </form>
+  </section>
   <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
