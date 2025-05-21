@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Ingredientes | RecipeMatch</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <header>
+        <!-- Mismo header que en index.html -->
+    </header>
+
+    <section class="ingredientes-section">
+        <h2>Mis Ingredientes</h2>
+        
+        <!-- Lista de ingredientes -->
+        <div class="ingredientes-container">
+            <div class="ingrediente-card">
+                <span>Tomate</span>
+                <div class="acciones">
+                    <button class="editar-btn">✏️</button>
+                    <button class="eliminar-btn">🗑️</button>
+                </div>
+            </div>
+            
+            <div class="ingrediente-card">
+                <span>Cebolla</span>
+                <div class="acciones">
+                    <button class="editar-btn">✏️</button>
+                    <button class="eliminar-btn">🗑️</button>
+                </div>
+            </div>
+            
+            <!-- Ejemplo dinámico (se agregarían con JS) -->
+        </div>
+
+        <!-- Botón para agregar -->
+        <button class="agregar-btn">+ Añadir Ingrediente</button>
+        
+        <!-- Botón guardar -->
+        <button class="guardar-btn">💾 Guardar Cambios</button>
+    </section>
+
+    <!-- Estilos específicos (opcional agregarlos a style.css) -->
+    <style>
+        .ingredientes-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .ingredientes-container {
+            margin: 30px 0;
+        }
+        
+        .ingrediente-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f7f7f7;
+            border-radius: 8px;
+        }
+        
+        .acciones button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .agregar-btn, .guardar-btn {
+            padding: 12px 25px;
+            background: #3a6b6b;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            margin: 10px 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .agregar-btn:hover, .guardar-btn:hover {
+            background: #2a5353;
+            transform: translateY(-2px);
+        }
+    </style>
+</body>
+</html>
