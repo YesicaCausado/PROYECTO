@@ -1,121 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RecipeMatch - Login/Registro</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <script src"JS/usuario.js"></script>
+    <script src="JS/usuario.js" defer></script>
 </head>
 <body>
     <header>
         <div class="logo">🍴 RecipeMatch</div>
         <nav class="nav-links">
-    <a href="#inicio">Inicio</a>
-    <a href="#como-funciona">¿Cómo funciona?</a>
-    <a href="#beneficios">Beneficios</a>
-    <div class="dropdown">
-        <a href="#destacadas">Recetas </a>
-        <div class="dropdown-content">
-            <a href="#destacadas">Todas las recetas</a>
-            <a href="mis-ingredientes.html">Mis ingredientes</a> <!-- Nueva opción -->
-        </div>
-    </div>
-    <a href="#sobre-nosotros">Sobre nosotros</a>
-     <a href="login.html" id="authLink">Iniciar sesión / Registrarse</a>
-    <!-- Nuevo menú desplegable -->
-    <div class="dropdown">
-        <button class="dropdown-btn">⚙️ Configuración</button>
-        <div class="dropdown-content">
-            <a href="#perfil">Mi perfil</a>
-            <a href="#notificaciones">Notificaciones</a>
-            <a href="#privacidad">Privacidad</a>
-            <a href="#cerrar-sesion">Cerrar sesión</a>
-        </div>
-    </div>
-</nav>
+            <a href="index.html">Inicio</a>
+            <a href="index.html#como-funciona">¿Cómo funciona?</a>
+            <a href="index.html#beneficios">Beneficios</a>
+            <div class="dropdown">
+                <a href="index.html#destacadas">Recetas</a>
+                <div class="dropdown-content">
+                    <a href="index.html#destacadas">Todas las recetas</a>
+                    <a href="mis-ingredientes.html">Mis ingredientes</a>
+                </div>
+            </div>
+            <a href="index.html#sobre-nosotros">Sobre nosotros</a>
+            <a href="login.html" id="authLink" class="active">Iniciar sesión</a>
+        </nav>
     </header>
 
-    <!-- Sección Login (visible por defecto) -->
-    <section class="login" id="login">
-        <h2>Iniciar Sesión</h2>
-        <form id="loginForm" class="form-login">
-          <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
-          <input type="password" id="loginPassword" placeholder="Contraseña" required>
-          <button type="submit">Ingresar</button>
-          <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
-        </form>
-      </section>
+    <main class="auth-container">
+        <!-- Sección Login (visible por defecto) -->
+        <section class="login" id="login">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" class="form-login">
+                <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+                <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+                <div class="social-login">
+                    <p>O inicia sesión con:</p>
+                    <button type="button" class="google-btn">Google</button>
+                </div>
+            </form>
+        </section>
 
-    <!-- Sección Registro (oculta inicialmente) -->
-    <section class="login" id="registro" style="display: none;">
-        <h2>Registro</h2>
-        <form id="registerForm" class="form-login">
-            <input type="text" id="registerName" placeholder="Nombre completo" required>
-            <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
-            <input type="password" id="registerPassword" placeholder="Contraseña" required>
-            <button type="submit">Registrarse</button>
-        </form>
-    </section>
+        <!-- Sección Registro (oculta inicialmente) -->
+        <section class="login" id="registro" style="display: none;">
+            <h2>Registro</h2>
+            <form id="registerForm" class="form-login">
+                <input type="text" id="registerName" placeholder="Nombre completo" required>
+                <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+                <input type="password" id="registerPassword" placeholder="Contraseña" required>
+                <input type="password" id="registerConfirmPassword" placeholder="Confirmar contraseña" required>
+                <button type="submit">Registrarse</button>
+                <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
+            </form>
+        </section>
+    </main>
 
-    <!-- Sección Perfil (oculta inicialmente) -->
-    <section id="perfil" style="display: none;">
-        <h2>Bienvenido a tu perfil</h2>
-        <p>Este es tu espacio personal.</p>
-    </section>
+    <footer>
+        <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="#">Política de privacidad</a>
+            <a href="contact.html">Contacto</a>
+            <a href="#">Preguntas frecuentes</a>
+        </div>
+    </footer>
 
     <script>
         // Alternar entre login y registro
-        function mostrarRegistro() {
+        document.getElementById('showRegister').addEventListener('click', function(e) {
+            e.preventDefault();
             document.getElementById('login').style.display = 'none';
             document.getElementById('registro').style.display = 'block';
-            document.getElementById('perfil').style.display = 'none';
-        }
-    
-        function mostrarLogin() {
+        });
+
+        document.getElementById('showLogin').addEventListener('click', function(e) {
+            e.preventDefault();
             document.getElementById('registro').style.display = 'none';
             document.getElementById('login').style.display = 'block';
-            document.getElementById('perfil').style.display = 'none';
-        }
-    
-        // Simular inicio de sesión (solo para demostración visual)
-        document.querySelector('.form-login button[type="submit"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            // Redirigir al archivo bienvenida.html
-            window.location.href = "bienvenida.html";
         });
-        function onGoogleSignIn(googleUser) {
-    const profile = googleUser.getBasicProfile();
-    console.log("Nombre: " + profile.getName());
-    console.log("Correo: " + profile.getEmail());
-    // Redirigir al usuario a la página principal
-    window.location.href = "index2.html";
-    }
-    document.querySelector("#registro form").addEventListener("submit", (e) => {
-  const password = document.querySelector("input[name='contraseña']").value;
-  const confirmPassword = document.querySelector("input[name='confirmar-contraseña']").value;
-  if (password !== confirmPassword) {
-    e.preventDefault();
-    alert("Las contraseñas no coinciden.");
-  }
-});
-    </script>
-<script>
+
         // Almacenamiento de usuarios en localStorage
         const usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
-
-        // Alternar entre login y registro
-        function mostrarRegistro() {
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('registro').style.display = 'block';
-            document.getElementById('perfil').style.display = 'none';
-        }
-
-        function mostrarLogin() {
-            document.getElementById('registro').style.display = 'none';
-            document.getElementById('login').style.display = 'block';
-            document.getElementById('perfil').style.display = 'none';
-        }
 
         // Validar registro
         document.getElementById('registerForm').addEventListener('submit', function(e) {
@@ -124,6 +89,13 @@
             const nombre = document.getElementById('registerName').value;
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+            // Validar contraseñas coincidan
+            if (password !== confirmPassword) {
+                alert("⚠️ Las contraseñas no coinciden");
+                return;
+            }
 
             // Verificar si el usuario ya existe
             const usuarioExistente = usuariosGuardados.find(user => user.email === email);
@@ -139,10 +111,11 @@
             localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
 
             alert("✅ ¡Registro exitoso! Ahora puedes iniciar sesión.");
-            mostrarLogin(); // Redirigir al login
+            document.getElementById('registro').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
         });
 
-        // Simular inicio de sesión (verificación básica)
+        // Validar login
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -152,7 +125,8 @@
             const usuario = usuariosGuardados.find(user => user.email === email && user.password === password);
 
             if (usuario) {
-                alert("🔓 ¡Inicio de sesión exitoso!");
+                // Guardar sesión activa
+                localStorage.setItem('usuarioActual', JSON.stringify(usuario));
                 window.location.href = "bienvenida.html";
             } else {
                 alert("❌ Correo o contraseña incorrectos.");
