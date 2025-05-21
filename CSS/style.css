@@ -995,3 +995,25 @@ footer .footer-links a:hover {
     background-color: #d1e6e6;
     transform: rotate(15deg);
 }
+/* Estilos para Mis Recetas */
+.mis-recetas h1 {
+    color: #3a6b6b;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn.active {
+    background-color: #3a6b6b;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .recetas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filtros {
+        flex-wrap: wrap;
+    }
+}
