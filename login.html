@@ -3,42 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>RecipeMatch - Login/Registro</title>
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <<header>
+    <header>
         <div class="logo">🍴 RecipeMatch</div>
         <nav class="nav-links">
-          <a href="index.html">Inicio</a>
-          <a href="#como-funciona">¿Cómo funciona?</a>
-          <a href="#beneficios">Beneficios</a>
-          <a href="#destacadas">Recetas</a>
-          <a href="#sobre-nosotros">Sobre nosotros</a>
-          <a href="login.html">Iniciar sesión / Registrarse</a>
-        </nav>
-      </header>
-        <section class="login" id="login">
-            <h2>Iniciar Sesión</h2>
-            <form action="#" method="POST" class="form-login">
-              <input type="email" name="correo" placeholder="Correo electrónico" required />
-              <input type="password" name="contraseña" placeholder="Contraseña" required />
-              <button type="submit"><a href="#perfil"></a>Ingresar</button>
-              <p>¿No tienes cuenta? <a href="#registro">Regístrate aquí</a></p>
-            </form>
-          </section>
-          <section id="perfil" style="display: none;">
-            <h2>Bienvenido a tu perfil</h2>
-            <p>Este es tu espacio personal.</p>
-        </section>
-    
-        <script>
-            function mostrarPerfil() {
-                document.getElementById('registro').style.display = 'none';
-                document.getElementById('perfil').style.display = 'block';
-            }
-        </script>
+    <a href="#inicio">Inicio</a>
+    <a href="#como-funciona">¿Cómo funciona?</a>
+    <a href="#beneficios">Beneficios</a>
+    <div class="dropdown">
+        <a href="#destacadas">Recetas </a>
+        <div class="dropdown-content">
+            <a href="#destacadas">Todas las recetas</a>
+            <a href="mis-ingredientes.html">Mis ingredientes</a> <!-- Nueva opción -->
+        </div>
+    </div>
+    <a href="#sobre-nosotros">Sobre nosotros</a>
+    <a href="login.html#login">Iniciar sesión / Registrarse</a>
+    <!-- Nuevo menú desplegable -->
+    <div class="dropdown">
+        <button class="dropdown-btn">⚙️ Configuración</button>
+        <div class="dropdown-content">
+            <a href="#perfil">Mi perfil</a>
+            <a href="#notificaciones">Notificaciones</a>
+            <a href="#privacidad">Privacidad</a>
+            <a href="#cerrar-sesion">Cerrar sesión</a>
+        </div>
+    </div>
+</nav>
+    </header>
 
-          
+    <!-- Sección Login (visible por defecto) -->
+    <section class="login" id="login">
+        <h2>Iniciar Sesión</h2>
+        <form action="#" method="POST" class="form-login">
+            <input type="email" name="correo" placeholder="Correo electrónico" required />
+            <input type="password" name="contraseña" placeholder="Contraseña" required />
+            <button type="submit">Ingresar</button>
+            <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+        </form>
+    </section>
+
+    <!-- Sección Registro (oculta inicialmente) -->
+    <section class="login" id="registro" style="display: none;">
+        <h2>Registro</h2>
+        <form action="#" method="POST" class="form-login">
+            <input type="text" name="nombre" placeholder="Nombre completo" required />
+            <input type="email" name="correo" placeholder="Correo electrónico" required />
+            <input type="password" name="contraseña" placeholder="Contraseña" required />
+            <input type="password" name="confirmar-contraseña" placeholder="Confirmar contraseña" required />
+            <button type="submit">Registrarse</button>
+            <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarLogin()">Inicia sesión aquí</a></p>
+        </form>
+    </section>
+
+    <!-- Sección Perfil (oculta inicialmente) -->
+    <section id="perfil" style="display: none;">
+        <h2>Bienvenido a tu perfil</h2>
+        <p>Este es tu espacio personal.</p>
+    </section>
+
+    <script>
+        // Alternar entre login y registro
+        function mostrarRegistro() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('registro').style.display = 'block';
+            document.getElementById('perfil').style.display = 'none';
+        }
+
+        function mostrarLogin() {
+            document.getElementById('registro').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('perfil').style.display = 'none';
+        }
+
+        // Simular inicio de sesión (solo para demostración visual)
+        document.querySelector('.form-login button[type="submit"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('perfil').style.display = 'block';
+        });
+    </script>
 </body>
 </html>

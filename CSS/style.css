@@ -32,11 +32,77 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+
 header .logo {
   font-size: 24px;
   font-weight: 700;
   color: #4e4e4e; /* Gris oscuro */
   letter-spacing: 1px;
+}
+/* Estilo específico para el enlace de Configuración */
+.nav-links .config-link {
+    margin-left: 10px;
+    padding: 10px 12px;
+    background-color: #f0f7f7; /* Fondo clarito */
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-links .config-link:hover {
+    background-color: #d1e6e6; /* Fondo más oscuro al hover */
+    transform: rotate(30deg); /* Efecto divertido al pasar el mouse */
+}
+
+/* Estilos para el menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #4e5d5d;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-btn:hover {
+    background-color: #e8f0f0;
+    color: #3a6b6b;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #4e5d5d;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #e8f0f0;
+    color: #3a6b6b;
 }
 
 .nav-links {
@@ -693,3 +759,93 @@ footer .footer-links a:hover {
   margin: 10px 0;
   text-align: left;
 }
+<<<<<<< HEAD
+=======
+
+.info-perfil strong {
+  color: #3a6b6b; /* Teal color */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .hero {
+    padding: 80px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .search-box input {
+    width: 100%;
+  }
+  
+  .receta {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .nav-links a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .search-box {
+    flex-direction: column;
+  }
+  
+  .search-box input, 
+  .search-box button {
+    width: 100%;
+  }
+}
+/* Ajustes para el dropdown de Recetas */
+.nav-links .dropdown > a {
+    display: inline-flex;
+    align-items: center; /* Alinea el texto y el ícono ▼ */
+    padding: 10px 15px; /* Mismo padding que otros enlaces */
+    text-decoration: none;
+    color: #4e5d5d;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-links .dropdown > a:hover {
+    background-color: #e8f0f0; /* Mismo hover que otros enlaces */
+    color: #3a6b6b;
+}
+
+/* Ajuste para el ícono ▼ (opcional) */
+.nav-links .dropdown > a::after {
+    content: "▼";
+    font-size: 0.6rem;
+    margin-left: 5px;
+}
+>>>>>>> da212ae3d232b883f905d29988594b87c95ddc77
