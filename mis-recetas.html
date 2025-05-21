@@ -10,9 +10,7 @@
     <header>
         <div class="logo">🍴 RecipeMatch</div>
         <nav class="nav-links">
-            <a href="myperfil.html">Mi Perfil</a>
             <a href="index2.html">Inicio</a>
-            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
         </nav>
     </header>
 
@@ -155,12 +153,6 @@
             // window.location.href = "crear-receta.html";
         });
 
-        function cerrarSesion() {
-            if (confirm("¿Cerrar sesión?")) {
-                localStorage.removeItem('currentUser');
-                window.location.href = "../index.html";
-            }
-        }
     </script>
 </body>
 </html>
