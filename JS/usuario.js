@@ -66,3 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     updateUI();
 });
+// En el login success:
+if (user) {
+    currentUser = user;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    window.location.href = 'index2.html'; // Redirige al panel
+}
