@@ -54,16 +54,73 @@
         .error {
             color: red;
         }
+
+        /* DROPDOWN */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-btn {
+      padding: 10px 15px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: var(--bg-white);
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      z-index: 1;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown-content a {
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      color: var(--text-dark);
+      transition: background-color 0.3s;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: var(--secondary-color);
+    }
+    
     </style>
 </head>
 <body>
     
-        <header>
-            <div class="logo">🍴 RecipeMatch</div>
-            <nav class="nav-links">
-                <a href="index2.html">Inicio</a>
-            </nav>
-        </header>
+  <header>
+    <div class="logo">🍴 RecipeMatch</div>
+    <nav class="nav-links">
+      <a href="index2.html" class="active">Inicio</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">Menú</button>
+        <div class="dropdown-content">
+          <a href="myperfil.html">Mi Perfil</a>
+          <a href="mis-ingredientes.html">Mis Ingredientes</a>
+          <a href="mis-recetas.html">Mis Recetas</a>
+          <a href="history.html">Historial</a>
+          <a href="contact.html">Contacto</a>
+          <a href="#" id="logout-btn">Cerrar Sesión</a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
         <div class="contact-container">
             <h2>Contactanos</h2>
