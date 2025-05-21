@@ -38,27 +38,21 @@
     <!-- Sección Login (visible por defecto) -->
     <section class="login" id="login">
         <h2>Iniciar Sesión</h2>
-        <form action="#" method="POST" class="form-login">
-          <input type="email" name="correo" placeholder="Correo electrónico" required />
-          <input type="password" name="contraseña" placeholder="Contraseña" required />
-          <button type="submit">Ingresar</button>
-          <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+        <form id="loginForm" class="form-login">
+            <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+            <input type="password" id="loginPassword" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
         </form>
-        <div class="google-login">
-          <button id="google-login-btn">Iniciar sesión con Google</button>
-        </div>
-      </section>
+    </section>
 
     <!-- Sección Registro (oculta inicialmente) -->
     <section class="login" id="registro" style="display: none;">
         <h2>Registro</h2>
-        <form action="#" method="POST" class="form-login">
-            <input type="text" name="nombre" placeholder="Nombre completo" required />
-            <input type="email" name="correo" placeholder="Correo electrónico" required />
-            <input type="password" name="contraseña" placeholder="Contraseña" required />
-            <input type="password" name="confirmar-contraseña" placeholder="Confirmar contraseña" required />
+        <form id="registerForm" class="form-login" style="display:none;">
+            <input type="text" id="registerName" placeholder="Nombre completo" required>
+            <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+            <input type="password" id="registerPassword" placeholder="Contraseña" required>
             <button type="submit">Registrarse</button>
-            <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarLogin()">Inicia sesión aquí</a></p>
         </form>
     </section>
 
