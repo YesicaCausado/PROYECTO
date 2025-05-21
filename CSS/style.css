@@ -1,4 +1,16 @@
-/* General Styles */
+/* ===== RESET & VARIABLES ===== */
+:root {
+  --primary-color: #b7a99a;
+  --primary-dark: #a39587;
+  --secondary-color: #f1e9d2;
+  --text-dark: #333;
+  --text-medium: #4e4e4e;
+  --text-light: #666;
+  --bg-light: #f4f4f4;
+  --bg-white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,453 +18,180 @@
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* Body */
+/* ===== BASE STYLES ===== */
 body {
-  background-color: #f4f4f4; /* Fondo oscuro */
-  color: #333;
-  margin-top: 0%;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
-/* Header */
-header {
-  margin-top: 0;
-  padding: 0;
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  z-index: 1000; /* Para asegurarse de que quede encima de otros elementos */
-  width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
-  padding: 5px 0; /* Ajusta el espaciado superior e inferior del encabezado */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: #ffffff; /* Blanco */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-
-
-header .logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: #4e4e4e; /* Gris oscuro */
-  letter-spacing: 1px;
-}
-/* Estilo específico para el enlace de Configuración */
-.nav-links .config-link {
-    margin-left: 10px;
-    padding: 10px 12px;
-    background-color: #f0f7f7; /* Fondo clarito */
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
-
-.nav-links .config-link:hover {
-    background-color: #d1e6e6; /* Fondo más oscuro al hover */
-    transform: rotate(30deg); /* Efecto divertido al pasar el mouse */
-}
-
-/* Estilos para el menú desplegable */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px 15px;
-    font-size: 1rem;
-    color: #4e5d5d;
-    font-weight: 500;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.dropdown-btn:hover {
-    background-color: #e8f0f0;
-    color: #3a6b6b;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: #fff;
-    min-width: 180px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 1000;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 12px 16px;
-    text-decoration: none;
-    color: #4e5d5d;
-    transition: all 0.3s ease;
-}
-
-.dropdown-content a:hover {
-    background-color: #e8f0f0;
-    color: #3a6b6b;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: center; /* Centra los elementos de los enlaces */
-  gap: 5px; /* Espacio entre los botones igual que antes */
-}
-
-.nav-links a {
-  padding: 10px 15px; /* Espaciado dentro de los botones */
-  text-decoration: none;
-  color: #333;
-  font-weight: normal;
-  transition: background-color 0.3s ease; /* Efecto suave al pasar el ratón */
-}
-
-/* Efecto cuando el ratón pasa sobre los enlaces */
-.nav-links a:hover {
-  background-color: #f2f2f2; /* Color de fondo al pasar el ratón */
-}
-
-
-
-/* Hero Section */
-.hero {
-  position: relative;
-  text-align: center;
-  color: #fff;
-  padding: 150px 20px;
-  margin: 30px auto;
-  background-color: #f1e9d2;
-  max-width: 1200px;
-  width: 90%;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: #333;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.search-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.search-box input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 30px;
-  width: 300px;
-  font-size: 1rem;
-  background-color: #ffffff;
-}
-
-.search-box button {
-  padding: 10px 20px;
-  background-color: #f1e9d2;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.search-box button:hover {
-  background-color: #b7a99a;
-  color: white;
-}
-
-/* General Section Styles */
 section {
   max-width: 1200px;
   width: 90%;
   margin: 30px auto;
   padding: 50px 20px;
   text-align: center;
-  background-color: #ffffff;
+  background-color: var(--bg-white);
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
-/* Destacadas Section */
-.destacadas h2 {
+h1, h2, h3 {
+  color: var(--text-dark);
+}
+
+h2 {
   font-size: 2rem;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-weight: 700;
-  color: #333;
 }
 
-.card-container {
+/* ===== HEADER ===== */
+header {
+  position: sticky;
+  top: 0;
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.circle-card {
-  width: 250px;
-  height: 250px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.circle-card img {
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: var(--bg-white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
-.circle-card h3 {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #333;
-}
-
-.circle-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.ver-mas {
-  display: inline-block;
-  margin-top: 30px;
-  font-size: 1.2rem;
-  color: #b7a99a;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.ver-mas:hover {
-  color: #333;
-}
-
-/* Tips Section */
-.tips h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
+.logo {
+  font-size: 24px;
   font-weight: 700;
-  color: #333;
+  color: var(--text-medium);
+  letter-spacing: 1px;
 }
 
-.card-container .card {
-  display: inline-block;
-  width: 250px;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.nav-links {
+  display: flex;
+  gap: 15px;
 }
 
-.card-container .card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.card-container .card p {
-  font-size: 1rem;
-  color: #666;
-}
-
-.card-container .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-footer p {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-footer .footer-links {
-  margin-top: 10px;
-}
-
-footer .footer-links a {
-  margin: 0 10px;
+.nav-links a {
+  padding: 10px 15px;
   text-decoration: none;
+  color: var(--text-dark);
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: #f2f2f2;
+}
+
+.config-link {
+  margin-left: 10px;
+  padding: 10px 12px;
+  background-color: #f0f7f7;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.config-link:hover {
+  background-color: #d1e6e6;
+  transform: rotate(15deg);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  text-align: center;
+  padding: 150px 20px;
+  margin: 30px auto;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+#searchForm {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#searchForm input {
+  flex: 1;
+  min-width: 250px;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 1rem;
+}
+
+#searchForm button {
+  padding: 12px 25px;
+  background-color: var(--primary-color);
   color: #fff;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-footer .footer-links a:hover {
-  color: #b7a99a;
+#searchForm button:hover {
+  background-color: var(--primary-dark);
 }
 
-/* Sección "¿Cómo funciona?" */
-.como-funciona {
-  max-width: 1200px;
-  width: 90%;
-  margin: 30px auto;
-  padding: 50px 20px;
-  text-align: center;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.como-funciona h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: #333;
-}
-
-.como-funciona p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #666;
-}
-
-.como-funciona .pasos {
+/* ===== HOW IT WORKS SECTION ===== */
+.pasos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
 
-.como-funciona .paso {
+.paso {
   flex: 1 1 300px;
   max-width: 300px;
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   text-align: center;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.como-funciona .paso:hover {
-  background-color: #b7a99a; /* Cambia el color de fondo al pasar el mouse */
-  color: #fff; /* Cambia el color del texto */
-  transform: scale(1.05); /* Efecto de zoom */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+.paso:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.como-funciona .paso img {
+.paso img {
   width: 80px;
   height: 80px;
   margin-bottom: 15px;
 }
 
-.como-funciona .paso h3 {
+.paso h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
   font-weight: 600;
-  color: #333;
 }
 
-.como-funciona .paso p {
+.paso p {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-light);
 }
 
-/* Sección "Beneficios de RecipeMatch" */
-.beneficios {
-  max-width: 1200px;
-  width: 90%;
-  margin: 30px auto;
-  padding: 50px 20px;
-  text-align: center;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.beneficios h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: #333;
-}
-
-.beneficios p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #666;
-}
-
-.beneficios .beneficios-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.beneficios .beneficio {
-  flex: 1 1 300px;
-  max-width: 300px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.beneficios .beneficio img {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 15px;
-}
-
-.beneficios .beneficio h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: #333;
-}
-
-.beneficios .beneficio p {
-  font-size: 1rem;
-  color: #666;
-}
-/* Estilos del slider de beneficios */
-.slider-beneficios {
-  padding: 50px 20px;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
+/* ===== BENEFITS SLIDER ===== */
 .slider {
   position: relative;
   overflow: hidden;
@@ -489,81 +228,124 @@ footer .footer-links a:hover {
   margin-bottom: 20px;
 }
 
-.slide h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
+/* ===== FEATURED RECIPES ===== */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.slide p {
-  font-size: 18px;
-  max-width: 600px;
-}
-
-/* Estilos para la página de resultados */
-#resultados {
-  padding: 50px 20px;
+.circle-card {
+  width: 250px;
+  height: 250px;
+  background-color: var(--bg-white);
+  border-radius: 50%;
+  overflow: hidden;
   text-align: center;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
 }
 
-#resultados h1 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #333;
+.circle-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Contenedor principal de recetas */
-.receta-container {
-  max-width: 1200px;
-  margin: 20px auto;
-  background-color: #ffffff;
-  padding: 30px;
+.circle-card h3 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.circle-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ver-mas {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.ver-mas:hover {
+  color: var(--text-dark);
+}
+
+/* ===== TIPS SECTION ===== */
+.card {
+  display: inline-block;
+  width: 250px;
+  background-color: var(--bg-white);
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-
-.receta-container h2 {
-  font-size: 2rem;
+  box-shadow: var(--shadow);
   margin-bottom: 20px;
-  color: #333;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: var(--text-dark);
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.social-links a {
+  margin: 0 10px;
+}
+
+/* ===== RECIPE CARDS ===== */
 .receta {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   padding: 20px;
-  width: 280px; /* Ancho fijo para cada receta */
+  width: 280px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
+
 .recetas-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Espacio entre las recetas */
-  justify-content: center; /* Centra las recetas horizontalmente */
+  gap: 20px;
+  justify-content: center;
 }
+
 .receta:hover {
-  transform: translateY(-5px); /* Efecto de elevación */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
-}
-
-.receta h2 {
-  font-size: 1.8rem;
-  color: #333;
-  margin: 20px 0 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.receta h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: #4e4e4e; /* Gris oscuro */
-  font-weight: bold;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .receta img {
@@ -573,152 +355,36 @@ footer .footer-links a:hover {
   height: auto;
   transition: transform 0.3s ease;
 }
+
 .receta img:hover {
-  transform: scale(1.1); /* Efecto de zoom en la imagen */
-}
-
-.receta p {
-  font-size: 1rem;
-  color: #666;
-  margin: 10px 0;
-  line-height: 1.5;
-}
-
-.receta .ingrediente {
-  margin: 5px 0;
-  padding-left: 20px;
-  position: relative;
-}
-
-.receta .ingrediente:before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #b7a99a;
+  transform: scale(1.1);
 }
 
 .receta a {
   display: inline-block;
   margin-top: 10px;
   padding: 8px 12px;
-  background-color: #b7a99a;
+  background-color: var(--primary-color);
   color: #fff;
   text-decoration: none;
   border-radius: 30px;
   font-size: 1rem;
-  transition: background-color 0.3s ease,transform 0.3s ease;
+  transition: all 0.3s ease;
 }
+
 .receta a:hover {
-  background-color: #a39587; /* Color más oscuro al pasar el mouse */
-  transform: scale(1.05); /* Efecto de zoom */
+  background-color: var(--primary-dark);
+  transform: scale(1.05);
 }
 
-.receta .paso {
-  margin: 10px 0;
-  padding-left: 25px;
-  position: relative;
-}
-
-.buscar-mas {
-  display: block;
-  margin: 30px auto 0;
-  padding: 12px 25px;
-  background-color: #b7a99a;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.buscar-mas:hover {
-  background-color: #a39587;
-}
-
-/* Estilos para mensajes de error y carga */
-.loading, .error {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.loading p, .error p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #555;
-}
-
-.error a {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #b7a99a;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: background-color 0.3s ease;
-}
-
-.error a:hover {
-  background-color: #a39587;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #b7a99a;
-  border-radius: 50%;
-  margin: 20px auto;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Estilos para el formulario de búsqueda en la página principal */
-#searchForm {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-#searchForm input {
-  flex: 1;
-  min-width: 250px;
-  padding: 12px 20px;
-  border: 1px solid #ddd;
-  border-radius: 30px;
-  font-size: 1rem;
-}
-
-#searchForm button {
-  padding: 12px 25px;
-  background-color: #b7a99a;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#searchForm button:hover {
-  background-color: #a39587;
-}
-/* Sección Login */
+/* ===== LOGIN & PROFILE ===== */
 .login, .perfil {
-  background-color: #ffffff;
+  background-color: var(--bg-white);
   padding: 50px 20px;
   border-radius: 10px;
   margin: 30px auto;
   max-width: 500px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
   text-align: center;
 }
 
@@ -733,287 +399,52 @@ footer .footer-links a:hover {
 .form-login button, .btn-salir {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #f1e9d2;
+  background-color: var(--secondary-color);
   border: none;
   border-radius: 30px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .form-login button:hover, .btn-salir:hover {
-  background-color: #b7a99a;
+  background-color: var(--primary-color);
   color: white;
 }
 
-.form-login p {
-  margin-top: 15px;
-}
-
-.form-login a {
-  color: #826a5c;
-  text-decoration: underline;
-}
-/* Perfil */
-.info-perfil p {
-  margin: 10px 0;
-  text-align: left;
-}
-/* Estilos para la sección de perfil */
-.perfil {
-  max-width: 800px;
-  margin: 50px auto;
+/* ===== UTILITY CLASSES ===== */
+.text-center {
   text-align: center;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.perfil-container {
-  margin-bottom: 20px;
+.mt-30 {
+  margin-top: 30px;
 }
 
-.perfil-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  border: 3px solid #b7a99a;
-}
-
-.perfil h2 {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.perfil-email {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-.btn-editar {
-  padding: 10px 20px;
-  background-color: #b7a99a;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-editar:hover {
-  background-color: #a39587;
-}
-
-.perfil-detalles {
-  text-align: left;
-  margin-top: 20px;
-}
-
-.perfil-detalles h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.perfil-detalles ul {
-  list-style: none;
-  padding: 0;
-}
-
-.perfil-detalles li {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 8px;
-}
-
-.perfil-detalles li strong {
-  color: #333;
-}
-/* Contenedor de bienvenida */
-.bienvenida-container {
-  text-align: center;
-  padding: 50px 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 50px auto;
-}
-
-.bienvenida-container h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.bienvenida-container p {
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-/* Slider */
-.slider {
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  height: 300px;
-  margin: 0 auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.slide {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background-color: #fff;
-}
-
-.slide.active {
-  display: block;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.slide h2 {
-  font-size: 1.8rem;
-  color: #333;
-  margin-top: 10px;
-}
-
-.slide p {
-  font-size: 1rem;
-  color: #666;
-}
-
-/* Controles del slider */
-.slider-controls {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  transform: translateY(-50%);
-}
-
-.prev-btn, .next-btn {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  transition: background-color 0.3s ease;
-}
-
-.prev-btn:hover, .next-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-
-
-/* Botón de cerrar */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem;
-  color: #333;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-  color: #b7a99a;
-}
-
-/* Slider dentro del modal */
-.slider {
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  height: 300px;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-/* Estilos para la ventana modal */
-.modal {
-  display: none; /* Oculta la ventana por defecto */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-  z-index: 1000;
-  display: flex; /* Flexbox para centrar */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-}
-
-/* Contenido de la ventana modal */
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 800px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-/* Estilo para el enlace de Configuración */
-.config-link {
-    margin-left: auto; /* Lo mueve al extremo derecho */
-    padding: 10px 15px;
-    background-color: #f0f7f7;
-    border-radius: 20px;
-    transition: all 0.3s;
-}
-
-.config-link:hover {
-    background-color: #d1e6e6;
-    transform: rotate(15deg);
-}
-/* Estilos para Mis Recetas */
-.mis-recetas h1 {
-    color: #3a6b6b;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.btn.active {
-    background-color: #3a6b6b;
-    color: white;
-}
-
-/* Responsive */
+/* ===== MEDIA QUERIES ===== */
 @media (max-width: 768px) {
-    .recetas-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .filtros {
-        flex-wrap: wrap;
-    }
+  header {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .nav-links {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .hero {
+    padding: 100px 20px;
+  }
+  
+  .paso, .receta {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  
+  .circle-card {
+    width: 200px;
+    height: 200px;
+  }
 }
