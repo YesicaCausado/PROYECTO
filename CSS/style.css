@@ -982,3 +982,16 @@ footer .footer-links a:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
 }
+/* Estilo para el enlace de Configuración */
+.config-link {
+    margin-left: auto; /* Lo mueve al extremo derecho */
+    padding: 10px 15px;
+    background-color: #f0f7f7;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.config-link:hover {
+    background-color: #d1e6e6;
+    transform: rotate(15deg);
+}
