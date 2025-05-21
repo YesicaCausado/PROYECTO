@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Recetas | RecipeMatch</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🍴 RecipeMatch</div>
+        <nav class="nav-links">
+            <a href="myperfil.html">Mi Perfil</a>
+            <a href="mis-recetas.html" class="active">Mis Recetas</a>
+            <a href="comunidad.html">Comunidad</a>
+            <a href="configuracion.html">Configuración</a>
+            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <section class="mis-recetas">
+        <h1>Mis Recetas Guardadas</h1>
+        
+        <!-- Filtros -->
+        <div class="filtros">
+            <button class="btn active">Todas</button>
+            <button class="btn">Favoritas</button>
+            <button class="btn">Creadas por mí</button>
+        </div>
+
+        <!-- Lista de recetas -->
+        <div class="recetas-grid">
+            <!-- Receta 1 -->
+            <div class="receta-card">
+                <img src="../imagenes/receta1.jpg" alt="Ensalada Mediterránea">
+                <div class="receta-info">
+                    <h3>Ensalada Mediterránea</h3>
+                    <p>Fresca y saludable con aceitunas y queso feta.</p>
+                    <div class="acciones">
+                        <button class="btn-ver">👁️ Ver</button>
+                        <button class="btn-editar">✏️ Editar</button>
+                        <button class="btn-eliminar">🗑️ Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receta 2 -->
+            <div class="receta-card">
+                <img src="../imagenes/receta2.jpg" alt="Pasta Alfredo">
+                <div class="receta-info">
+                    <h3>Pasta Alfredo</h3>
+                    <p>Cremosa salsa con champiñones y pollo.</p>
+                    <div class="acciones">
+                        <button class="btn-ver">👁️ Ver</button>
+                        <button class="btn-editar">✏️ Editar</button>
+                        <button class="btn-eliminar">🗑️ Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón para agregar nueva receta -->
+        <button class="btn-agregar">＋ Crear Nueva Receta</button>
+    </section>
+
+    <style>
+        /* Estilos específicos para mis-recetas.html */
+        .mis-recetas {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+        }
+
+        .filtros {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .recetas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .receta-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .receta-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .receta-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .receta-info {
+            padding: 20px;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-ver, .btn-editar, .btn-eliminar {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-ver { background: #3a6b6b; color: white; }
+        .btn-editar { background: #f0f7f7; color: #3a6b6b; }
+        .btn-eliminar { background: #ffecec; color: #d32f2f; }
+
+        .btn-agregar {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 25px;
+            background: #3a6b6b;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        // Simulación de funcionalidad
+        document.querySelector('.btn-agregar').addEventListener('click', () => {
+            alert('Redirigiendo a creación de receta...');
+            // window.location.href = "crear-receta.html";
+        });
+
+        function cerrarSesion() {
+            if (confirm("¿Cerrar sesión?")) {
+                localStorage.removeItem('currentUser');
+                window.location.href = "../index.html";
+            }
+        }
+    </script>
+</body>
+</html>
