@@ -759,93 +759,226 @@ footer .footer-links a:hover {
   margin: 10px 0;
   text-align: left;
 }
-<<<<<<< HEAD
-=======
-
-.info-perfil strong {
-  color: #3a6b6b; /* Teal color */
+/* Estilos para la sección de perfil */
+.perfil {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Media queries para responsividad */
-@media (max-width: 768px) {
-  header {
-    padding: 15px 20px;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .nav-links {
-    width: 100%;
-    justify-content: space-between;
-  }
-  
-  .hero {
-    padding: 80px 20px;
-  }
-  
-  .hero h1 {
-    font-size: 2rem;
-  }
-  
-  .search-box input {
-    width: 100%;
-  }
-  
-  .receta {
-    width: 100%;
-    max-width: 350px;
-  }
+.perfil-container {
+  margin-bottom: 20px;
 }
 
-@media (max-width: 480px) {
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .nav-links a {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-  
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-  
-  .hero p {
-    font-size: 1rem;
-  }
-  
-  .search-box {
-    flex-direction: column;
-  }
-  
-  .search-box input, 
-  .search-box button {
-    width: 100%;
-  }
-}
-/* Ajustes para el dropdown de Recetas */
-.nav-links .dropdown > a {
-    display: inline-flex;
-    align-items: center; /* Alinea el texto y el ícono ▼ */
-    padding: 10px 15px; /* Mismo padding que otros enlaces */
-    text-decoration: none;
-    color: #4e5d5d;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border-radius: 4px;
+.perfil-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #b7a99a;
 }
 
-.nav-links .dropdown > a:hover {
-    background-color: #e8f0f0; /* Mismo hover que otros enlaces */
-    color: #3a6b6b;
+.perfil h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 5px;
 }
 
-/* Ajuste para el ícono ▼ (opcional) */
-.nav-links .dropdown > a::after {
-    content: "▼";
-    font-size: 0.6rem;
-    margin-left: 5px;
+.perfil-email {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
 }
->>>>>>> da212ae3d232b883f905d29988594b87c95ddc77
+
+.btn-editar {
+  padding: 10px 20px;
+  background-color: #b7a99a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+  background-color: #a39587;
+}
+
+.perfil-detalles {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.perfil-detalles h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.perfil-detalles ul {
+  list-style: none;
+  padding: 0;
+}
+
+.perfil-detalles li {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.perfil-detalles li strong {
+  color: #333;
+}
+/* Contenedor de bienvenida */
+.bienvenida-container {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.bienvenida-container h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.bienvenida-container p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slide {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #fff;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.slide h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.slide p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Controles del slider */
+.slider-controls {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.prev-btn, .next-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+/* Botón de cerrar */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #b7a99a;
+}
+
+/* Slider dentro del modal */
+.slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Estilos para la ventana modal */
+.modal {
+  display: none; /* Oculta la ventana por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  z-index: 1000;
+  display: flex; /* Flexbox para centrar */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+/* Contenido de la ventana modal */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}

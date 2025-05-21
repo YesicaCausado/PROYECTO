@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
 async function obtenerRecetas(ingrediente) {
   const apiKey = "ca6497e5ffbb4d6180d17c180e75ff2f"; // Reemplaza con tu API Key de Spoonacular
   const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(ingrediente)}&number=5&apiKey=${apiKey}`;
@@ -74,5 +76,15 @@ async function obtenerRecetas(ingrediente) {
         <a href="index.html" class="buscar-mas">Volver al inicio</a>
       </div>
     `;
+  }
+}
+function guardarReceta(id) {
+  const recetasGuardadas = JSON.parse(localStorage.getItem("recetasGuardadas")) || [];
+  if (!recetasGuardadas.includes(id)) {
+    recetasGuardadas.push(id);
+    localStorage.setItem("recetasGuardadas", JSON.stringify(recetasGuardadas));
+    alert("Receta guardada correctamente.");
+  } else {
+    alert("Esta receta ya está guardada.");
   }
 }

@@ -39,12 +39,15 @@
     <section class="login" id="login">
         <h2>Iniciar Sesión</h2>
         <form action="#" method="POST" class="form-login">
-            <input type="email" name="correo" placeholder="Correo electrónico" required />
-            <input type="password" name="contraseña" placeholder="Contraseña" required />
-            <button type="submit">Ingresar</button>
-            <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+          <input type="email" name="correo" placeholder="Correo electrónico" required />
+          <input type="password" name="contraseña" placeholder="Contraseña" required />
+          <button type="submit">Ingresar</button>
+          <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
         </form>
-    </section>
+        <div class="google-login">
+          <button id="google-login-btn">Iniciar sesión con Google</button>
+        </div>
+      </section>
 
     <!-- Sección Registro (oculta inicialmente) -->
     <section class="login" id="registro" style="display: none;">
@@ -72,19 +75,34 @@
             document.getElementById('registro').style.display = 'block';
             document.getElementById('perfil').style.display = 'none';
         }
-
+    
         function mostrarLogin() {
             document.getElementById('registro').style.display = 'none';
             document.getElementById('login').style.display = 'block';
             document.getElementById('perfil').style.display = 'none';
         }
-
+    
         // Simular inicio de sesión (solo para demostración visual)
         document.querySelector('.form-login button[type="submit"]').addEventListener('click', function(e) {
             e.preventDefault();
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('perfil').style.display = 'block';
+            // Redirigir al archivo bienvenida.html
+            window.location.href = "bienvenida.html";
         });
+        function onGoogleSignIn(googleUser) {
+    const profile = googleUser.getBasicProfile();
+    console.log("Nombre: " + profile.getName());
+    console.log("Correo: " + profile.getEmail());
+    // Redirigir al usuario a la página principal
+    window.location.href = "index2.html";
+    }
+    document.querySelector("#registro form").addEventListener("submit", (e) => {
+  const password = document.querySelector("input[name='contraseña']").value;
+  const confirmPassword = document.querySelector("input[name='confirmar-contraseña']").value;
+  if (password !== confirmPassword) {
+    e.preventDefault();
+    alert("Las contraseñas no coinciden.");
+  }
+});
     </script>
 </body>
 </html>

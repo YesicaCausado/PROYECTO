@@ -4,15 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RecipeMatch - Mi Perfil</title>
-
-    <!-- Icono de la página -->
-    <link rel="icon" href="imagenes/icono.png" type="image/png" />  
-  <!-- Archivo de estilos -->
+  <link rel="icon" href="imagenes/icono.png" type="image/png" />
   <link rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
-
-  <!-- ENCABEZADO:  -->
+  <!-- ENCABEZADO -->
   <header>
     <div class="logo">🍴 RecipeMatch</div>
     <nav class="nav-links">
@@ -20,12 +16,31 @@
       <a href="#">¿Cómo funciona?</a>
       <a href="#">Recetas</a>
       <a href="#">Sobre nosotros</a>
-      <a href="#">Iniciar sesión/ Registrarse </a>
-
+      <a href="#">Iniciar sesión / Registrarse</a>
     </nav>
   </header>
-<!-- PIE DE PÁGINA -->
-<footer>
+
+  <!-- SECCIÓN PERFIL -->
+  <section class="perfil">
+    <div class="perfil-container">
+      <img src="imagenes/avatar.png" alt="Avatar del usuario" class="perfil-avatar" />
+      <h2>Nombre del Usuario</h2>
+      <p class="perfil-email">usuario@email.com</p>
+      <button class="btn-editar">Editar Perfil</button>
+    </div>
+
+    <div class="perfil-detalles">
+      <h3>Detalles del Perfil</h3>
+      <ul>
+        <li><strong>Nombre:</strong> Nombre del Usuario</li>
+        <li><strong>Correo:</strong> usuario@email.com</li>
+        <li><strong>Miembro desde:</strong> Enero 2025</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
       <a href="#">Política de privacidad</a>
@@ -40,21 +55,20 @@
   </footer>
 
   <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll(".slider .slide");
-  
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove("active"));
-      slides[index].classList.add("active");
-    }
-  
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-  
-    setInterval(nextSlide, 4000);
+    document.getElementById("profile-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const avatar = document.getElementById("avatar-input").files[0];
+      localStorage.setItem("username", username);
+      if (avatar) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          localStorage.setItem("avatar", reader.result);
+        };
+        reader.readAsDataURL(avatar);
+      }
+      alert("Perfil actualizado correctamente.");
+    });
   </script>
-   
 </body>
 </html>

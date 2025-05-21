@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeMatch - Mi Panel</title>
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header>
+    <div class="logo">🍴 RecipeMatch</div>
+    <nav class="nav-links">
+      <a href="myperfil.html">Mi Perfil</a>
+      <a href="mis-recetas.html">Mis Recetas</a>
+      <a href="comunidad.html">Comunidad</a>
+      <a href="configuracion.html">Configuración</a>
+      <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+    </nav>
+  </header>
+
+  <!-- SECCIÓN DE BIENVENIDA -->
+  <section class="bienvenida">
+    <h1>¡Hola, [Nombre del Usuario]!</h1>
+    <p>Nos alegra verte de nuevo. Aquí tienes un resumen de tus actividades y recomendaciones personalizadas.</p>
+    <div class="accesos-rapidos">
+      <a href="mis-recetas.html" class="btn">Mis Recetas</a>
+      <a href="mis-ingredientes.html" class="btn">Mis Ingredientes</a>
+      <a href="myperfil.html" class="btn">Editar Perfil</a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE RECETAS RECOMENDADAS -->
+  <section class="recetas-recomendadas">
+    <h2>Recetas Recomendadas para Ti</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="imagenes/receta1.jpg" alt="Receta 1">
+        <h3>Receta Exclusiva 1</h3>
+        <p>Descripción breve de la receta exclusiva.</p>
+        <a href="receta1.html" class="btn">Ver Receta</a>
+      </div>
+      <div class="card">
+        <img src="imagenes/receta2.jpg" alt="Receta 2">
+        <h3>Receta Exclusiva 2</h3>
+        <p>Descripción breve de la receta exclusiva.</p>
+        <a href="receta2.html" class="btn">Ver Receta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE ACTIVIDADES RECIENTES -->
+  <section class="actividades-recientes">
+    <h2>Tu Actividad Reciente</h2>
+    <ul>
+      <li>Guardaste la receta <strong>Ensalada Mediterránea</strong>.</li>
+      <li>Agregaste <strong>Tomates</strong> a tu lista de ingredientes.</li>
+      <li>Comentaste en la receta <strong>Pizza Casera</strong>.</li>
+    </ul>
+  </section>
+
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Contacto</a>
+      <a href="#">Preguntas frecuentes</a>
+    </div>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+    </div>
+  </footer>
+</body>
+
+<script>
+
+function cerrarSesion() {
+  const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
+  if (confirmar) {
+    window.location.href = "index.html";
+  }
+}
+</script>
+</html>
