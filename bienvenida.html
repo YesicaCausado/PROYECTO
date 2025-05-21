@@ -3,114 +3,273 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenida - RecipeMatch</title>
-  <link rel="stylesheet" href="CSS/style.css">
-  <link rel="icon" href="imagenes/icono.png" type="image/png">
+  <title>Bienvenido - RecipeMatch</title>
+  <style>
+    /* ESTILOS GENERALES */
+    :root {
+      --primary-color: #b7a99a;
+      --primary-dark: #a39587;
+      --text-dark: #333;
+      --text-light: #666;
+      --bg-light: #f4f4f4;
+      --bg-white: #ffffff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    
+    body {
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    /* OVERLAY DE BIENVENIDA */
+    .welcome-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .welcome-container {
+      background-color: var(--bg-white);
+      padding: 3rem;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.5s ease;
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .welcome-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+    }
+    
+    .welcome-container p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+    
+    /* SLIDER DE BIENVENIDA */
+    .welcome-slider {
+      margin: 2rem 0;
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .slide.active {
+      opacity: 1;
+    }
+    
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    
+    .slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
+      padding: 1.5rem;
+      text-align: left;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    
+    .slide-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* BOTONES */
+    .btn-primary {
+      padding: 12px 30px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* CONTROLES DEL SLIDER */
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    
+    .slider-controls button {
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .slider-controls button:hover {
+      background-color: white;
+    }
+    
+    /* INDICADORES */
+    .slider-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ddd;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .indicator.active {
+      background-color: var(--primary-color);
+      transform: scale(1.2);
+    }
+  </style>
 </head>
 <body>
-  <!-- ENCABEZADO -->
-  <header>
-    <div class="logo">🍴 RecipeMatch</div>
-    <nav class="nav-links">
-      <a href="index.html">Inicio</a>
-      <a href="index.html#como-funciona">¿Cómo funciona?</a>
-      <div class="dropdown">
-        <a href="index.html#destacadas">Recetas</a>
-        <div class="dropdown-content">
-          <a href="index.html#destacadas">Todas las recetas</a>
-          <a href="mis-ingredientes.html">Mis ingredientes</a>
+  <div class="welcome-overlay">
+    <div class="welcome-container">
+      <h1 id="welcome-title">¡Bienvenido a RecipeMatch!</h1>
+      <p id="welcome-message">Estamos encantados de tenerte aquí</p>
+      
+      <div class="welcome-slider">
+        <div class="slide active">
+          <img src="imagenes/welcome1.jpg" alt="Descubre recetas">
+          <div class="slide-content">
+            <h3>Descubre recetas increíbles</h3>
+            <p>Encuentra inspiración para tus comidas diarias</p>
+          </div>
         </div>
-      </div>
-      <a href="index.html#sobre-nosotros">Sobre nosotros</a>
-      <div class="dropdown">
-        <button class="dropdown-btn">👤 Mi Perfil</button>
-        <div class="dropdown-content">
-          <a href="perfil.html">Configuración</a>
-          <a href="mis-recetas.html">Mis recetas</a>
-          <a href="#" id="logout">Cerrar sesión</a>
+        <div class="slide">
+          <img src="imagenes/welcome2.jpg" alt="Organiza ingredientes">
+          <div class="slide-content">
+            <h3>Organiza tus ingredientes</h3>
+            <p>Optimiza tus compras y evita desperdicios</p>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="bienvenida-container">
-    <h1>¡Bienvenido/a a RecipeMatch!</h1>
-    <p class="bienvenida-subtitulo">Nos alegra tenerte aquí. Explora recetas increíbles y personalizadas para ti.</p>
-    
-    <!-- Slider de bienvenida -->
-    <div class="slider-bienvenida">
-      <div class="slide active">
-        <img src="imagenes/slider1.jpg" alt="Receta 1" loading="lazy">
-        <div class="slide-content">
-          <h2>Descubre recetas deliciosas</h2>
-          <p>Encuentra inspiración para tus comidas diarias.</p>
+        <div class="slide">
+          <img src="imagenes/welcome3.jpg" alt="Comparte recetas">
+          <div class="slide-content">
+            <h3>Comparte tus creaciones</h3>
+            <p>Conecta con otros amantes de la cocina</p>
+          </div>
         </div>
-      </div>
-      <div class="slide">
-        <img src="imagenes/slider2.jpg" alt="Receta 2" loading="lazy">
-        <div class="slide-content">
-          <h2>Organiza tus ingredientes</h2>
-          <p>Optimiza tus compras y evita desperdicios.</p>
-        </div>
-      </div>
-      <div class="slide">
-        <img src="imagenes/slider3.jpg" alt="Receta 3" loading="lazy">
-        <div class="slide-content">
-          <h2>Comparte tus recetas favoritas</h2>
-          <p>Conecta con otros amantes de la cocina.</p>
+        
+        <div class="slider-controls">
+          <button class="prev-btn">❮</button>
+          <button class="next-btn">❯</button>
         </div>
       </div>
       
-      <!-- Controles del slider -->
-      <div class="slider-controls">
-        <button class="prev-btn" aria-label="Anterior">❮</button>
-        <button class="next-btn" aria-label="Siguiente">❯</button>
-      </div>
-      
-      <!-- Indicadores -->
       <div class="slider-indicators">
         <span class="indicator active"></span>
         <span class="indicator"></span>
         <span class="indicator"></span>
       </div>
+      
+      <button id="continue-btn" class="btn-primary">Continuar al Panel</button>
     </div>
-
-    <div class="bienvenida-acciones">
-      <a href="index.html#destacadas" class="btn-primario">Explorar recetas</a>
-      <a href="mis-ingredientes.html" class="btn-secundario">Mis ingredientes</a>
-    </div>
-  </main>
-
-  <!-- PIE DE PÁGINA -->
-  <footer>
-    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
-    <div class="footer-links">
-      <a href="politica-privacidad.html">Política de privacidad</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="faq.html">Preguntas frecuentes</a>
-    </div>
-    <div class="social-links">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-    </div>
-  </footer>
+  </div>
 
   <script>
-    // Slider functionality
     document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('usuarioActual'));
+      
+      // Redirigir si no hay usuario logueado
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      // Personalizar mensaje
+      document.getElementById('welcome-title').textContent = `¡Bienvenido, ${user.nombre || 'Usuario'}!`;
+      document.getElementById('welcome-message').textContent = `Estamos listos para ayudarte a encontrar las mejores recetas`;
+
+      // Slider functionality
       const slides = document.querySelectorAll('.slide');
       const indicators = document.querySelectorAll('.indicator');
       let currentSlide = 0;
+      const totalSlides = slides.length;
       const slideInterval = 5000; // 5 segundos
 
-      // Función para mostrar slide
+      // Mostrar slide
       const showSlide = (index) => {
         slides.forEach(slide => slide.classList.remove('active'));
         indicators.forEach(ind => ind.classList.remove('active'));
         
-        currentSlide = (index + slides.length) % slides.length;
+        currentSlide = (index + totalSlides) % totalSlides;
         slides[currentSlide].classList.add('active');
         indicators[currentSlide].classList.add('active');
       };
@@ -142,11 +301,10 @@
         slideTimer = setInterval(() => showSlide(currentSlide + 1), slideInterval);
       };
 
-      // Cerrar sesión
-      document.getElementById('logout')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        localStorage.removeItem('usuarioActual');
-        window.location.href = 'index.html';
+      // Continuar al panel
+      document.getElementById('continue-btn').addEventListener('click', () => {
+        localStorage.setItem('mostrarBienvenida', 'false');
+        window.location.href = 'index2.html';
       });
     });
   </script>
