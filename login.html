@@ -1,137 +1,391 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecipeMatch - Login/Registro</title>
-    <link rel="stylesheet" href="CSS/style.css">
-    <script src="JS/usuario.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeMatch - Acceso</title>
+  <style>
+    /* RESET Y VARIABLES */
+    :root {
+      --primary-color: #b7a99a;
+      --primary-dark: #a39587;
+      --text-dark: #333;
+      --text-light: #666;
+      --bg-light: #f4f4f4;
+      --bg-white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+    
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: var(--bg-white);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 1px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .nav-links a {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: background-color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      background-color: #f2f2f2;
+    }
+    
+    .nav-links a.active {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    
+    /* AUTH CONTAINER */
+    .auth-container {
+      max-width: 1200px;
+      width: 90%;
+      margin: 50px auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+    }
+    
+    /* LOGIN/REGISTER SECTIONS */
+    .auth-section {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .auth-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--primary-dark);
+    }
+    
+    .form-auth {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .form-group label {
+      font-weight: 500;
+    }
+    
+    .form-group input {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      padding: 12px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .auth-toggle {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .auth-toggle a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .auth-toggle a:hover {
+      text-decoration: underline;
+    }
+    
+    /* SOCIAL LOGIN */
+    .social-login {
+      margin-top: 30px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+    
+    .social-login p {
+      text-align: center;
+      margin-bottom: 15px;
+      color: var(--text-light);
+    }
+    
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .btn-social {
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-social:hover {
+      background-color: #f9f9f9;
+    }
+    
+    /* FOOTER */
+    footer {
+      background-color: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+    
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .auth-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">🍴 RecipeMatch</div>
-        <nav class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="index.html#como-funciona">¿Cómo funciona?</a>
-            <a href="index.html#beneficios">Beneficios</a>
-            <div class="dropdown">
-                <a href="index.html#destacadas">Recetas</a>
-                <div class="dropdown-content">
-                    <a href="index.html#destacadas">Todas las recetas</a>
-                    <a href="mis-ingredientes.html">Mis ingredientes</a>
-                </div>
-            </div>
-            <a href="index.html#sobre-nosotros">Sobre nosotros</a>
-            <a href="login.html" id="authLink" class="active">Iniciar sesión</a>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">🍴 RecipeMatch</div>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#como-funciona">¿Cómo funciona?</a>
+      <a href="index.html#beneficios">Beneficios</a>
+      <a href="index.html#sobre-nosotros">Sobre nosotros</a>
+      <a href="login.html" class="active">Iniciar sesión</a>
+    </nav>
+  </header>
 
-    <main class="auth-container">
-        <!-- Sección Login (visible por defecto) -->
-        <section class="login" id="login">
-            <h2>Iniciar Sesión</h2>
-            <form id="loginForm" class="form-login">
-                <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
-                <input type="password" id="loginPassword" placeholder="Contraseña" required>
-                <button type="submit">Ingresar</button>
-                <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
-                <div class="social-login">
-                    <p>O inicia sesión con:</p>
-                    <button type="button" class="google-btn">Google</button>
-                </div>
-            </form>
-        </section>
-
-        <!-- Sección Registro (oculta inicialmente) -->
-        <section class="login" id="registro" style="display: none;">
-            <h2>Registro</h2>
-            <form id="registerForm" class="form-login">
-                <input type="text" id="registerName" placeholder="Nombre completo" required>
-                <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
-                <input type="password" id="registerPassword" placeholder="Contraseña" required>
-                <input type="password" id="registerConfirmPassword" placeholder="Confirmar contraseña" required>
-                <button type="submit">Registrarse</button>
-                <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
-        <div class="footer-links">
-            <a href="#">Política de privacidad</a>
-            <a href="contact.html">Contacto</a>
-            <a href="#">Preguntas frecuentes</a>
+  <main class="auth-container">
+    <!-- Sección Login -->
+    <section class="auth-section" id="login-section">
+      <h2>Iniciar Sesión</h2>
+      <form id="loginForm" class="form-auth">
+        <div class="form-group">
+          <label for="loginEmail">Correo electrónico</label>
+          <input type="email" id="loginEmail" required>
         </div>
-    </footer>
+        <div class="form-group">
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" required>
+        </div>
+        <button type="submit" class="btn-primary">Ingresar</button>
+      </form>
+      
+      <div class="auth-toggle">
+        <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+      </div>
+      
+      <div class="social-login">
+        <p>O inicia sesión con:</p>
+        <div class="social-buttons">
+          <button type="button" class="btn-social">
+            <img src="imagenes/google-icon.svg" alt="Google" width="20">
+            Google
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        // Alternar entre login y registro
-        document.getElementById('showRegister').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('registro').style.display = 'block';
-        });
+    <!-- Sección Registro (oculta inicialmente) -->
+    <section class="auth-section" id="register-section" style="display: none;">
+      <h2>Crear Cuenta</h2>
+      <form id="registerForm" class="form-auth">
+        <div class="form-group">
+          <label for="registerName">Nombre completo</label>
+          <input type="text" id="registerName" required>
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Correo electrónico</label>
+          <input type="email" id="registerEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Contraseña</label>
+          <input type="password" id="registerPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="registerConfirmPassword">Confirmar contraseña</label>
+          <input type="password" id="registerConfirmPassword" required>
+        </div>
+        <button type="submit" class="btn-primary">Registrarse</button>
+      </form>
+      
+      <div class="auth-toggle">
+        <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
+      </div>
+    </section>
+  </main>
 
-        document.getElementById('showLogin').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('registro').style.display = 'none';
-            document.getElementById('login').style.display = 'block';
-        });
+  <footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="politica-privacidad.html">Política de privacidad</a>
+      <a href="contact.html">Contacto</a>
+      <a href="faq.html">Preguntas frecuentes</a>
+    </div>
+  </footer>
 
-        // Almacenamiento de usuarios en localStorage
-        const usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
+  <script>
+    // Alternar entre login y registro
+    document.getElementById('showRegister').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('login-section').style.display = 'none';
+      document.getElementById('register-section').style.display = 'block';
+    });
 
-        // Validar registro
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+    document.getElementById('showLogin').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('register-section').style.display = 'none';
+      document.getElementById('login-section').style.display = 'block';
+    });
 
-            const nombre = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    // Almacenamiento de usuarios
+    const usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-            // Validar contraseñas coincidan
-            if (password !== confirmPassword) {
-                alert("⚠️ Las contraseñas no coinciden");
-                return;
-            }
+    // Validar registro
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-            // Verificar si el usuario ya existe
-            const usuarioExistente = usuariosGuardados.find(user => user.email === email);
+      const nombre = document.getElementById('registerName').value;
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      const confirmPassword = document.getElementById('registerConfirmPassword').value;
 
-            if (usuarioExistente) {
-                alert("⚠️ Este correo ya está registrado. Inicia sesión o usa otro.");
-                return;
-            }
+      // Validaciones
+      if (password !== confirmPassword) {
+        alert('⚠️ Las contraseñas no coinciden');
+        return;
+      }
 
-            // Guardar nuevo usuario
-            const nuevoUsuario = { nombre, email, password };
-            usuariosGuardados.push(nuevoUsuario);
-            localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
+      if (usuariosGuardados.some(user => user.email === email)) {
+        alert('⚠️ Este correo ya está registrado');
+        return;
+      }
 
-            alert("✅ ¡Registro exitoso! Ahora puedes iniciar sesión.");
-            document.getElementById('registro').style.display = 'none';
-            document.getElementById('login').style.display = 'block';
-        });
+      // Crear nuevo usuario
+      const nuevoUsuario = {
+        nombre,
+        email,
+        password,
+        fechaRegistro: new Date().toLocaleDateString()
+      };
 
-        // Validar login
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+      usuariosGuardados.push(nuevoUsuario);
+      localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
+      localStorage.setItem('usuarioActual', JSON.stringify(nuevoUsuario));
+      localStorage.setItem('mostrarBienvenida', 'true');
 
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
+      alert('✅ ¡Registro exitoso!');
+      window.location.href = 'bienvenida.html';
+    });
 
-            const usuario = usuariosGuardados.find(user => user.email === email && user.password === password);
+    // Validar login
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-            if (usuario) {
-                // Guardar sesión activa
-                localStorage.setItem('usuarioActual', JSON.stringify(usuario));
-                window.location.href = "bienvenida.html";
-            } else {
-                alert("❌ Correo o contraseña incorrectos.");
-            }
-        });
-    </script>
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      const usuario = usuariosGuardados.find(user => 
+        user.email === email && user.password === password
+      );
+
+      if (usuario) {
+        localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+        localStorage.setItem('mostrarBienvenida', 'true');
+        window.location.href = 'bienvenida.html';
+      } else {
+        alert('❌ Correo o contraseña incorrectos');
+      }
+    });
+  </script>
 </body>
 </html>
