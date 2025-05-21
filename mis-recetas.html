@@ -5,63 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Recetas | RecipeMatch</title>
     <link rel="stylesheet" href="../CSS/style.css">
-</head>
-<body>
-    <header>
-        <div class="logo">🍴 RecipeMatch</div>
-        <nav class="nav-links">
-            <a href="myperfil.html">Mi Perfil</a>
-            <a href="mis-recetas.html" class="active">Mis Recetas</a>
-            <a href="comunidad.html">Comunidad</a>
-            <a href="configuracion.html">Configuración</a>
-            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
-        </nav>
-    </header>
-
-    <section class="mis-recetas">
-        <h1>Mis Recetas Guardadas</h1>
-        
-        <!-- Filtros -->
-        <div class="filtros">
-            <button class="btn active">Todas</button>
-            <button class="btn">Favoritas</button>
-            <button class="btn">Creadas por mí</button>
-        </div>
-
-        <!-- Lista de recetas -->
-        <div class="recetas-grid">
-            <!-- Receta 1 -->
-            <div class="receta-card">
-                <img src="../imagenes/receta1.jpg" alt="Ensalada Mediterránea">
-                <div class="receta-info">
-                    <h3>Ensalada Mediterránea</h3>
-                    <p>Fresca y saludable con aceitunas y queso feta.</p>
-                    <div class="acciones">
-                        <button class="btn-ver">👁️ Ver</button>
-                        <button class="btn-editar">✏️ Editar</button>
-                        <button class="btn-eliminar">🗑️ Eliminar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Receta 2 -->
-            <div class="receta-card">
-                <img src="../imagenes/receta2.jpg" alt="Pasta Alfredo">
-                <div class="receta-info">
-                    <h3>Pasta Alfredo</h3>
-                    <p>Cremosa salsa con champiñones y pollo.</p>
-                    <div class="acciones">
-                        <button class="btn-ver">👁️ Ver</button>
-                        <button class="btn-editar">✏️ Editar</button>
-                        <button class="btn-eliminar">🗑️ Eliminar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Botón para agregar nueva receta -->
-        <button class="btn-agregar">＋ Crear Nueva Receta</button>
-    </section>
 
     <style>
         /* Estilos específicos para mis-recetas.html */
@@ -135,6 +78,79 @@
             cursor: pointer;
         }
     </style>
+
+</head>
+<body>
+    <header>
+        <div class="logo">🍴 RecipeMatch</div>
+        <nav class="nav-links">
+            <a href="myperfil.html">Mi Perfil</a>
+            <a href="mis-recetas.html" class="active">Mis Recetas</a>
+            <a href="comunidad.html">Comunidad</a>
+            <a href="configuracion.html">Configuración</a>
+            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <section class="mis-recetas">
+        <h1>Mis Recetas Guardadas</h1>
+        
+        <!-- Filtros -->
+        <div class="filtros">
+            <button class="btn active">Todas</button>
+            <button class="btn">Favoritas</button>
+            <button class="btn">Creadas por mí</button>
+        </div>
+
+        <!-- Lista de recetas -->
+        <div class="recetas-grid">
+            <!-- Receta 1 -->
+            <div class="receta-card">
+                <img src="../imagenes/receta1.jpg" alt="Ensalada Mediterránea">
+                <div class="receta-info">
+                    <h3>Ensalada Mediterránea</h3>
+                    <p>Fresca y saludable con aceitunas y queso feta.</p>
+                    <div class="acciones">
+                        <button class="btn-ver">👁️ Ver</button>
+                        <button class="btn-editar">✏️ Editar</button>
+                        <button class="btn-eliminar">🗑️ Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receta 2 -->
+            <div class="receta-card">
+                <img src="../imagenes/receta2.jpg" alt="Pasta Alfredo">
+                <div class="receta-info">
+                    <h3>Pasta Alfredo</h3>
+                    <p>Cremosa salsa con champiñones y pollo.</p>
+                    <div class="acciones">
+                        <button class="btn-ver">👁️ Ver</button>
+                        <button class="btn-editar">✏️ Editar</button>
+                        <button class="btn-eliminar">🗑️ Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón para agregar nueva receta -->
+        <button class="btn-agregar">＋ Crear Nueva Receta</button>
+    </section>
+
+      <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="contact.html">Contacto</a>
+      <a href="Questions.html">Preguntas frecuentes</a>
+    </div>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+    </div>
+  </footer>
 
     <script>
         // Simulación de funcionalidad

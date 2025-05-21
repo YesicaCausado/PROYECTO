@@ -5,6 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Ingredientes | RecipeMatch</title>
     <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+        .ingredientes-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .ingredientes-container {
+            margin: 30px 0;
+        }
+        
+        .ingrediente-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f7f7f7;
+            border-radius: 8px;
+        }
+        
+        .acciones button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .agregar-btn, .guardar-btn {
+            padding: 12px 25px;
+            background: #3a6b6b;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            margin: 10px 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .agregar-btn:hover, .guardar-btn:hover {
+            background: #2a5353;
+            transform: translateY(-2px);
+        }
+    </style>
+
 </head>
 <body>
     <header>
@@ -60,54 +110,20 @@
         <button class="guardar-btn">💾 Guardar Cambios</button>
     </section>
 
-    <!-- Estilos específicos (opcional agregarlos a style.css) -->
-    <style>
-        .ingredientes-section {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        
-        .ingredientes-container {
-            margin: 30px 0;
-        }
-        
-        .ingrediente-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            margin-bottom: 10px;
-            background: #f7f7f7;
-            border-radius: 8px;
-        }
-        
-        .acciones button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            margin-left: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .agregar-btn, .guardar-btn {
-            padding: 12px 25px;
-            background: #3a6b6b;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            margin: 10px 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .agregar-btn:hover, .guardar-btn:hover {
-            background: #2a5353;
-            transform: translateY(-2px);
-        }
-    </style>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="contact.html">Contacto</a>
+      <a href="Questions.html">Preguntas frecuentes</a>
+    </div>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+    </div>
+  </footer>
+
 </body>
 </html>
