@@ -5,67 +5,149 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bienvenida - RecipeMatch</title>
   <link rel="stylesheet" href="CSS/style.css">
+  <link rel="icon" href="imagenes/icono.png" type="image/png">
 </head>
 <body>
-  <!-- Ventana modal de bienvenida -->
-  <div class="modal" id="modal-bienvenida">
-    <div class="modal-content">
-      <span class="close-btn" id="close-modal">&times;</span>
-      <h1>¡Bienvenido/a a RecipeMatch!</h1>
-      <p>Nos alegra tenerte aquí. Explora recetas increíbles y personalizadas para ti.</p>
-      
-      <!-- Slider -->
-      <div class="slider">
-        <div class="slide active">
-          <img src="imagenes/slider1.jpg" alt="Receta 1">
+  <!-- ENCABEZADO -->
+  <header>
+    <div class="logo">🍴 RecipeMatch</div>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#como-funciona">¿Cómo funciona?</a>
+      <div class="dropdown">
+        <a href="index.html#destacadas">Recetas</a>
+        <div class="dropdown-content">
+          <a href="index.html#destacadas">Todas las recetas</a>
+          <a href="mis-ingredientes.html">Mis ingredientes</a>
+        </div>
+      </div>
+      <a href="index.html#sobre-nosotros">Sobre nosotros</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">👤 Mi Perfil</button>
+        <div class="dropdown-content">
+          <a href="perfil.html">Configuración</a>
+          <a href="mis-recetas.html">Mis recetas</a>
+          <a href="#" id="logout">Cerrar sesión</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="bienvenida-container">
+    <h1>¡Bienvenido/a a RecipeMatch!</h1>
+    <p class="bienvenida-subtitulo">Nos alegra tenerte aquí. Explora recetas increíbles y personalizadas para ti.</p>
+    
+    <!-- Slider de bienvenida -->
+    <div class="slider-bienvenida">
+      <div class="slide active">
+        <img src="imagenes/slider1.jpg" alt="Receta 1" loading="lazy">
+        <div class="slide-content">
           <h2>Descubre recetas deliciosas</h2>
           <p>Encuentra inspiración para tus comidas diarias.</p>
         </div>
-        <div class="slide">
-          <img src="imagenes/slider2.jpg" alt="Receta 2">
+      </div>
+      <div class="slide">
+        <img src="imagenes/slider2.jpg" alt="Receta 2" loading="lazy">
+        <div class="slide-content">
           <h2>Organiza tus ingredientes</h2>
           <p>Optimiza tus compras y evita desperdicios.</p>
         </div>
-        <div class="slide">
-          <img src="imagenes/slider3.jpg" alt="Receta 3">
+      </div>
+      <div class="slide">
+        <img src="imagenes/slider3.jpg" alt="Receta 3" loading="lazy">
+        <div class="slide-content">
           <h2>Comparte tus recetas favoritas</h2>
           <p>Conecta con otros amantes de la cocina.</p>
         </div>
       </div>
-
+      
       <!-- Controles del slider -->
       <div class="slider-controls">
-        <button class="prev-btn">❮</button>
-        <button class="next-btn">❯</button>
+        <button class="prev-btn" aria-label="Anterior">❮</button>
+        <button class="next-btn" aria-label="Siguiente">❯</button>
+      </div>
+      
+      <!-- Indicadores -->
+      <div class="slider-indicators">
+        <span class="indicator active"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
       </div>
     </div>
-  </div>
 
-  <script src="JS/slider.js"></script>
+    <div class="bienvenida-acciones">
+      <a href="index.html#destacadas" class="btn-primario">Explorar recetas</a>
+      <a href="mis-ingredientes.html" class="btn-secundario">Mis ingredientes</a>
+    </div>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="politica-privacidad.html">Política de privacidad</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="faq.html">Preguntas frecuentes</a>
+    </div>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+    </div>
+  </footer>
+
   <script>
-    // Mostrar y cerrar la ventana modal
-    const modal = document.getElementById('modal-bienvenida');
-    const closeModal = document.getElementById('close-modal');
+    // Slider functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.slide');
+      const indicators = document.querySelectorAll('.indicator');
+      let currentSlide = 0;
+      const slideInterval = 5000; // 5 segundos
 
-    // Mostrar la ventana modal al cargar la página
-    window.onload = () => {
-      modal.style.display = 'block';
-    };
+      // Función para mostrar slide
+      const showSlide = (index) => {
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active'));
+        
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.add('active');
+      };
 
-    // Cerrar la ventana modal al hacer clic en el botón de cerrar
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-      // Redirigir a index2.html después de cerrar el modal
-      window.location.href = "index2.html";
-    });
+      // Event listeners para controles
+      document.querySelector('.prev-btn').addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+        resetTimer();
+      });
 
-    // Cerrar la ventana modal al hacer clic fuera del contenido
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        // Redirigir a index2.html después de cerrar el modal
-        window.location.href = "index2.html";
-      }
+      document.querySelector('.next-btn').addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+        resetTimer();
+      });
+
+      // Event listeners para indicadores
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          showSlide(index);
+          resetTimer();
+        });
+      });
+
+      // Auto-avance
+      let slideTimer = setInterval(() => showSlide(currentSlide + 1), slideInterval);
+
+      const resetTimer = () => {
+        clearInterval(slideTimer);
+        slideTimer = setInterval(() => showSlide(currentSlide + 1), slideInterval);
+      };
+
+      // Cerrar sesión
+      document.getElementById('logout')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('usuarioActual');
+        window.location.href = 'index.html';
+      });
     });
   </script>
 </body>
