@@ -1,73 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RecipeMatch - Mi Perfil</title>
-  <link rel="icon" href="imagenes/icono.png" type="image/png" />
-  <link rel="stylesheet" href="CSS/style.css" />
+  <link rel="icon" href="imagenes/icono.png" type="image/png">
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
   <!-- ENCABEZADO -->
   <header>
     <div class="logo">🍴 RecipeMatch</div>
     <nav class="nav-links">
-      <a href="#">Inicio</a>
-      <a href="#">¿Cómo funciona?</a>
-      <a href="#">Recetas</a>
-      <a href="#">Sobre nosotros</a>
-      <a href="#">Iniciar sesión / Registrarse</a>
+      <a href="index.html">Inicio</a>
+      <a href="index.html#como-funciona">¿Cómo funciona?</a>
+      <div class="dropdown">
+        <a href="index.html#destacadas">Recetas</a>
+        <div class="dropdown-content">
+          <a href="index.html#destacadas">Todas las recetas</a>
+          <a href="mis-ingredientes.html">Mis ingredientes</a>
+        </div>
+      </div>
+      <a href="index.html#sobre-nosotros">Sobre nosotros</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">👤 Mi Perfil</button>
+        <div class="dropdown-content">
+          <a href="perfil.html">Configuración</a>
+          <a href="mis-recetas.html">Mis recetas</a>
+          <a href="#" id="logout">Cerrar sesión</a>
+        </div>
+      </div>
     </nav>
   </header>
 
   <!-- SECCIÓN PERFIL -->
-  <section class="perfil">
-    <div class="perfil-container">
-      <img src="imagenes/avatar.png" alt="Avatar del usuario" class="perfil-avatar" />
-      <h2>Nombre del Usuario</h2>
-      <p class="perfil-email">usuario@email.com</p>
-      <button class="btn-editar">Editar Perfil</button>
-    </div>
+  <main class="perfil-container">
+    <section class="perfil-info">
+      <div class="perfil-header">
+        <img src="imagenes/avatar.png" alt="Avatar del usuario" class="perfil-avatar" id="user-avatar">
+        <div>
+          <h2 id="user-name">Nombre del Usuario</h2>
+          <p class="perfil-email" id="user-email">usuario@email.com</p>
+        </div>
+      </div>
+      
+      <form id="profile-form" class="form-perfil" style="display: none;">
+        <div class="form-group">
+          <label for="username">Nombre:</label>
+          <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+          <label for="avatar-input">Foto de perfil:</label>
+          <input type="file" id="avatar-input" accept="image/*">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-guardar">Guardar cambios</button>
+          <button type="button" class="btn-cancelar" id="cancel-edit">Cancelar</button>
+        </div>
+      </form>
+      
+      <button class="btn-editar" id="edit-profile">Editar Perfil</button>
+    </section>
 
-    <div class="perfil-detalles">
+    <section class="perfil-detalles">
       <h3>Detalles del Perfil</h3>
       <ul>
-        <li><strong>Nombre:</strong> Nombre del Usuario</li>
-        <li><strong>Correo:</strong> usuario@email.com</li>
-        <li><strong>Miembro desde:</strong> Enero 2025</li>
+        <li><strong>Nombre:</strong> <span id="detail-name">Nombre del Usuario</span></li>
+        <li><strong>Correo:</strong> <span id="detail-email">usuario@email.com</span></li>
+        <li><strong>Miembro desde:</strong> <span id="member-since">Enero 2025</span></li>
+        <li><strong>Recetas guardadas:</strong> <span id="saved-recipes">12</span></li>
       </ul>
-    </div>
-  </section>
+    </section>
+
+    <section class="perfil-recetas">
+      <h3>Mis Recetas Favoritas</h3>
+      <div class="recetas-grid" id="favorite-recipes">
+        <!-- Las recetas favoritas se cargarán aquí dinámicamente -->
+        <p>Aún no tienes recetas favoritas.</p>
+      </div>
+    </section>
+  </main>
 
   <!-- PIE DE PÁGINA -->
   <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
-      <a href="#">Política de privacidad</a>
-      <a href="#">Contacto</a>
-      <a href="#">Preguntas frecuentes</a>
+      <a href="politica-privacidad.html">Política de privacidad</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="faq.html">Preguntas frecuentes</a>
     </div>
     <div class="social-links">
-      <a href="https://facebook.com" target="_blank">Facebook</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
     </div>
   </footer>
 
   <script>
-    document.getElementById("profile-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const username = document.getElementById("username").value;
-      const avatar = document.getElementById("avatar-input").files[0];
-      localStorage.setItem("username", username);
-      if (avatar) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          localStorage.setItem("avatar", reader.result);
-        };
-        reader.readAsDataURL(avatar);
+    // Cargar datos del usuario
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('usuarioActual')) || {
+        nombre: 'Nombre del Usuario',
+        email: 'usuario@email.com',
+        fechaRegistro: 'Enero 2025',
+        avatar: 'imagenes/avatar.png',
+        recetasGuardadas: 12
+      };
+
+      // Mostrar datos del usuario
+      document.getElementById('user-name').textContent = user.nombre;
+      document.getElementById('user-email').textContent = user.email;
+      document.getElementById('detail-name').textContent = user.nombre;
+      document.getElementById('detail-email').textContent = user.email;
+      document.getElementById('member-since').textContent = user.fechaRegistro;
+      document.getElementById('saved-recipes').textContent = user.recetasGuardadas;
+      
+      if (localStorage.getItem('avatar')) {
+        document.getElementById('user-avatar').src = localStorage.getItem('avatar');
       }
-      alert("Perfil actualizado correctamente.");
+
+      // Botón de edición
+      document.getElementById('edit-profile').addEventListener('click', () => {
+        document.getElementById('profile-form').style.display = 'block';
+        document.getElementById('edit-profile').style.display = 'none';
+        document.getElementById('username').value = user.nombre;
+      });
+
+      // Cancelar edición
+      document.getElementById('cancel-edit').addEventListener('click', () => {
+        document.getElementById('profile-form').style.display = 'none';
+        document.getElementById('edit-profile').style.display = 'block';
+      });
+
+      // Guardar cambios
+      document.getElementById('profile-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const avatarFile = document.getElementById('avatar-input').files[0];
+
+        // Actualizar datos
+        user.nombre = username;
+        localStorage.setItem('usuarioActual', JSON.stringify(user));
+
+        if (avatarFile) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            localStorage.setItem('avatar', e.target.result);
+            document.getElementById('user-avatar').src = e.target.result;
+          };
+          reader.readAsDataURL(avatarFile);
+        }
+
+        // Actualizar vista
+        document.getElementById('user-name').textContent = username;
+        document.getElementById('detail-name').textContent = username;
+        document.getElementById('profile-form').style.display = 'none';
+        document.getElementById('edit-profile').style.display = 'block';
+        
+        alert('Perfil actualizado correctamente');
+      });
+
+      // Cerrar sesión
+      document.getElementById('logout').addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('usuarioActual');
+        window.location.href = 'index.html';
+      });
     });
   </script>
 </body>
