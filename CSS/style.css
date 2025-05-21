@@ -30,11 +30,26 @@ header {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+
+
 header .logo {
   font-size: 22px;
   font-weight: 600;
   color: #3a6b6b; /* Elegant teal color */
   letter-spacing: 1px;
+}
+/* Estilo específico para el enlace de Configuración */
+.nav-links .config-link {
+    margin-left: 10px;
+    padding: 10px 12px;
+    background-color: #f0f7f7; /* Fondo clarito */
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-links .config-link:hover {
+    background-color: #d1e6e6; /* Fondo más oscuro al hover */
+    transform: rotate(30deg); /* Efecto divertido al pasar el mouse */
 }
 
 .nav-links {
