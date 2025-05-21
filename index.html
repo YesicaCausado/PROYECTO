@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RecipeMatch - Inicio</title>
-  
-  <!-- Archivo de estilos -->
-  <link rel="stylesheet" href="CSS/style.css" />
-  
-
+  <link rel="stylesheet" href="CSS/style.css">
+ <link rel="preload" href="CSS/style.css" as="style">
 </head>
 <body>
-  <!-- ENCABEZADO: -->
   <header>
     <div class="logo">🍴 RecipeMatch</div>
-    <nav class="nav-links">
+    <nav class="nav-links" role="navigation">
       <a href="#inicio">Inicio</a>
       <a href="#como-funciona">¿Cómo funciona?</a>
       <a href="#beneficios">Beneficios</a>
@@ -22,114 +18,110 @@
       <a href="login.html" id="authLink">Iniciar sesión / Registrarse</a>
     </nav>
   </header>
-  <section class="hero" id="inicio">
-    <!-- Contenido de la sección -->
-    <h1>¡Cocina sin desperdiciar!</h1>
-    <p>Descubre recetas deliciosas con los ingredientes que ya tienes en casa.</p>
 
-    <!-- Formulario de búsqueda -->
-    <form id="searchForm">
-      <input type="text" id="ingrediente" placeholder="Buscar ingrediente..." required />
-      <button type="submit">Buscar</button>
-    </form>
-    
-  </section>
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+      <h1>¡Cocina sin desperdiciar!</h1>
+      <p>Descubre recetas deliciosas con los ingredientes que ya tienes en casa.</p>
+      <form id="searchForm" aria-label="Buscar recetas por ingrediente">
+        <input type="text" id="ingrediente" placeholder="Buscar ingrediente..." required>
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
 
-  <!-- Sección ¿Cómo funciona? -->
-  <section class="como-funciona" id="como-funciona">
-    <h2>¿Cómo funciona?</h2>
-    <div class="pasos">
-      <div class="paso">
-        <img src="imagenes/lupa.png" alt="Paso 1" />
-        <h3>Paso 1</h3>
-        <p>Ingresa los ingredientes que tienes en casa.</p>
+    <!-- CÓMO FUNCIONA -->
+    <section class="como-funciona" id="como-funciona">
+      <h2>¿Cómo funciona?</h2>
+      <div class="pasos">
+        <div class="paso">
+          <img src="imagenes/lupa.png" alt="Icono de lupa - Ingresar ingredientes" loading="lazy">
+          <h3>Paso 1</h3>
+          <p>Ingresa los ingredientes que tienes en casa.</p>
+        </div>
+        <div class="paso">
+          <img src="imagenes/libro-de-recetas.png" alt="Icono de libro - Recibir recetas" loading="lazy">
+          <h3>Paso 2</h3>
+          <p>Recibe una lista de recetas que puedes preparar.</p>
+        </div>
+        <div class="paso">
+          <img src="imagenes/sombrero-de-cocinero.png" alt="Icono de cocinero - Cocinar" loading="lazy">
+          <h3>Paso 3</h3>
+          <p>Comienza a cocinar y disfruta de tus platos.</p>
+        </div>
       </div>
-      <div class="paso">
-        <img src="imagenes/libro-de-recetas.png" alt="Paso 2" />
-        <h3>Paso 2</h3>
-        <p>Recibe una lista de recetas que puedes preparar.</p>
-      </div>
-      <div class="paso">
-        <img src="imagenes/sombrero-de-cocinero.png" alt="Paso 3" />
-        <h3>Paso 3</h3>
-        <p>Comienza a cocinar y disfruta de tus platos.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Sección Slider de Beneficios -->
-  <section class="slider-beneficios" id="beneficios">
-    <h2>Beneficios de RecipeMatch</h2>
-    <div class="slider">
-      <div class="slide active">
-        <img src="imagenes/24c6a7e6e183d78d9d1beea77b6d160e.jpg" alt="Beneficio 1" />
-        <h3>Comida sin desperdicio</h3>
-        <p>Usa los ingredientes que ya tienes en casa para evitar el desperdicio de alimentos.</p>
+    <!-- BENEFICIOS -->
+    <section class="slider-beneficios" id="beneficios">
+      <h2>Beneficios de RecipeMatch</h2>
+      <div class="slider">
+        <div class="slide active">
+          <img src="imagenes/24c6a7e6e183d78d9d1beea77b6d160e.jpg" alt="Comida sin desperdicio" loading="lazy">
+          <h3>Comida sin desperdicio</h3>
+          <p>Usa los ingredientes que ya tienes en casa para evitar el desperdicio de alimentos.</p>
+        </div>
+        <div class="slide">
+          <img src="imagenes/6a8832d29a911b320f9c68af86f8e134.jpg" alt="Recetas fáciles" loading="lazy">
+          <h3>Recetas fáciles y rápidas</h3>
+          <p>Recetas simples, rápidas y deliciosas que puedes hacer en minutos.</p>
+        </div>
+        <div class="slide">
+          <img src="imagenes/d6f19d6712962532c89fac6af7dfc191.jpg" alt="Ahorro de tiempo" loading="lazy">
+          <h3>Ahorro de tiempo</h3>
+          <p>Encuentra la receta perfecta sin perder tiempo buscando en muchos sitios.</p>
+        </div>
       </div>
-      <div class="slide">
-        <img src="imagenes/6a8832d29a911b320f9c68af86f8e134.jpg" alt="Beneficio 2" />
-        <h3>Recetas fáciles y rápidas</h3>
-        <p>Recetas simples, rápidas y deliciosas que puedes hacer en minutos.</p>
-      </div>
-      <div class="slide">
-        <img src="imagenes/d6f19d6712962532c89fac6af7dfc191.jpg" alt="Beneficio 3" />
-        <h3>Ahorro de tiempo</h3>
-        <p>Encuentra la receta perfecta sin perder tiempo buscando en muchos sitios.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECCIÓN DE RECETAS DESTACADAS -->
-  <section class="destacadas" id="destacadas">
-    <h2>Recetas destacadas</h2>
-    <div class="card-container circle-layout">
-      <a href="receta1.html" class="circle-card">
-        <img src="imagenes/24c6a7e6e183d78d9d1beea77b6d160e.jpg" alt="Receta 1">
-        <h3>Ensalada fresca</h3>
-        <p>Una mezcla perfecta de vegetales frescos y aderezo ligero.</p>
-      </a>
-      <a href="receta2.html" class="circle-card">
-        <img src="imagenes/6a8832d29a911b320f9c68af86f8e134.jpg" alt="Receta 2">
-        <h3>Arroz con verduras</h3>
-        <p>Un plato saludable y fácil de preparar con ingredientes básicos.</p>
-      </a>
-      <a href="receta3.html" class="circle-card">
-        <img src="imagenes/d6f19d6712962532c89fac6af7dfc191.jpg" alt="Receta 3">
-        <h3>Pasta cremosa</h3>
-        <p>Una receta rápida con una salsa cremosa y deliciosa.</p>
-      </a>
-    </div>
-    <a href="#recetas" class="ver-mas">Ver más recetas</a>
-  </section>
-
-  <!-- SECCIÓN DE TIPS Y NOTAS -->
-  <section class="tips">
-    <h2>Tips y notas</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>Cómo conservar frutas</h3>
-        <p>Guía rápida para evitar que se dañen.</p>
+    <!-- RECETAS DESTACADAS -->
+    <section class="destacadas" id="destacadas">
+      <h2>Recetas destacadas</h2>
+      <div class="card-container circle-layout">
+        <a href="receta1.html" class="circle-card">
+          <img src="imagenes/24c6a7e6e183d78d9d1beea77b6d160e.jpg" alt="Ensalada fresca" loading="lazy">
+          <h3>Ensalada fresca</h3>
+          <p>Una mezcla perfecta de vegetales frescos y aderezo ligero.</p>
+        </a>
+        <a href="receta2.html" class="circle-card">
+          <img src="imagenes/6a8832d29a911b320f9c68af86f8e134.jpg" alt="Arroz con verduras" loading="lazy">
+          <h3>Arroz con verduras</h3>
+          <p>Un plato saludable y fácil de preparar con ingredientes básicos.</p>
+        </a>
+        <a href="receta3.html" class="circle-card">
+          <img src="imagenes/d6f19d6712962532c89fac6af7dfc191.jpg" alt="Pasta cremosa" loading="lazy">
+          <h3>Pasta cremosa</h3>
+          <p>Una receta rápida con una salsa cremosa y deliciosa.</p>
+        </a>
       </div>
-      <div class="card">
-        <h3>Ideas con sobras</h3>
-        <p>Reinventa lo que quedó del almuerzo.</p>
+      <a href="#recetas" class="ver-mas">Ver más recetas</a>
+    </section>
+
+    <!-- TIPS -->
+    <section class="tips">
+      <h2>Tips y notas</h2>
+      <div class="card-container">
+        <div class="card">
+          <h3>Cómo conservar frutas</h3>
+          <p>Guía rápida para evitar que se dañen.</p>
+        </div>
+        <div class="card">
+          <h3>Ideas con sobras</h3>
+          <p>Reinventa lo que quedó del almuerzo.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECCIÓN SOBRE NOSOTROS -->
-  <section class="sobre-nosotros" id="sobre-nosotros">
-    <h2>¿Quiénes somos?</h2>
-    <p>RecipeMatch es un proyecto que busca ayudar a las personas a cocinar de manera más eficiente y sostenible.</p>
-    <p>Nos apasiona la cocina y queremos compartir recetas que sean fáciles de preparar y que utilicen ingredientes comunes.</p>
-    <p>Creemos que cocinar no tiene por qué ser complicado y que todos pueden disfrutar de una buena comida sin importar su nivel de habilidad en la cocina.</p>
-    <p>¡Únete a nosotros en esta aventura culinaria!</p>
-    <p>RecipeMatch es una plataforma que conecta a los amantes de la cocina con recetas adaptadas a los ingredientes que ya tienen en casa.</p>
-    <p>Nos esforzamos por reducir el desperdicio de alimentos y fomentar una cocina más sostenible.</p>
-    <p>¡Cocina con nosotros y descubre lo fácil que es preparar platos deliciosos!</p>
-  </section>
+    <!-- SOBRE NOSOTROS -->
+    <section class="sobre-nosotros" id="sobre-nosotros">
+      <h2>¿Quiénes somos?</h2>
+      <p>RecipeMatch es un proyecto que busca ayudar a las personas a cocinar de manera más eficiente y sostenible. Nos apasiona la cocina y queremos compartir recetas que sean fáciles de preparar con ingredientes comunes.</p>
+      <p>Creemos que cocinar no tiene por qué ser complicado y que todos pueden disfrutar de una buena comida sin importar su nivel de habilidad. ¡Únete a nosotros en esta aventura culinaria!</p>
+      <p>Nos esforzamos por reducir el desperdicio de alimentos y fomentar una cocina más sostenible. ¡Cocina con nosotros y descubre lo fácil que es preparar platos deliciosos!</p>
+    </section>
+  </main>
 
-  <!-- PIE DE PÁGINA -->
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
@@ -138,11 +130,12 @@
       <a href="#">Preguntas frecuentes</a>
     </div>
     <div class="social-links">
-      <a href="https://facebook.com" target="_blank">Facebook</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
     </div>
   </footer>
+
   <script src="JS/script.js"></script>
 </body>
 </html>
