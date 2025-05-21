@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RecipeMatch - Mi Panel</title>
   <link rel="stylesheet" href="CSS/style.css">
+  <link rel="icon" href="imagenes/icono.png" type="image/png">
 </head>
 <body>
   <!-- ENCABEZADO -->
   <header>
     <div class="logo">🍴 RecipeMatch</div>
     <nav class="nav-links">
+      <a href="index2.html" class="active">Inicio</a>
       <div class="dropdown">
         <button class="dropdown-btn">Menú</button>
         <div class="dropdown-content">
@@ -20,36 +22,104 @@
           <a href="historial.html">Historial</a>
           <a href="configuracion.html">Configuración</a>
           <a href="contact.html">Contacto</a>
-          <a href="index.html">Cerrar Sesión</a>
+          <a href="#" id="logout-btn">Cerrar Sesión</a>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- SECCIÓN DE BIENVENIDA -->
-  <section class="bienvenida">
-    <h1>¡Hola, [Nombre del Usuario]!</h1>
-    <p>Nos alegra verte de nuevo. Aquí tienes un resumen de tus actividades y recomendaciones personalizadas.</p>
-    <div class="accesos-rapidos">
-      <a href="mis-recetas.html" class="btn">Mis Recetas</a>
-      <a href="mis-ingredientes.html" class="btn">Mis Ingredientes</a>
-      <a href="myperfil.html" class="btn">Editar Perfil</a>
-    </div>
-  </section>
+  <main class="panel-container">
+    <section class="bienvenida-usuario">
+      <h1 id="welcome-message">¡Hola, Usuario!</h1>
+      <p>Nos alegra verte de nuevo. Aquí tienes un resumen de tus actividades y recomendaciones personalizadas.</p>
+      
+      <div class="accesos-rapidos">
+        <a href="mis-recetas.html" class="btn-primario">
+          <img src="imagenes/icono-recetas.svg" alt="" class="btn-icon">
+          Mis Recetas
+        </a>
+        <a href="mis-ingredientes.html" class="btn-primario">
+          <img src="imagenes/icono-ingredientes.svg" alt="" class="btn-icon">
+          Mis Ingredientes
+        </a>
+        <a href="myperfil.html" class="btn-secundario">
+          <img src="imagenes/icono-perfil.svg" alt="" class="btn-icon">
+          Editar Perfil
+        </a>
+      </div>
+    </section>
+
+    <!-- Sección de recomendaciones -->
+    <section class="recomendaciones">
+      <h2>Tus recomendaciones</h2>
+      <div class="recetas-grid" id="recommended-recipes">
+        <!-- Las recetas recomendadas se cargarán aquí dinámicamente -->
+      </div>
+    </section>
+  </main>
 
   <!-- PIE DE PÁGINA -->
   <footer>
     <p>&copy; 2025 RecipeMatch. Todos los derechos reservados.</p>
     <div class="footer-links">
-      <a href="#">Política de privacidad</a>
+      <a href="politica-privacidad.html">Política de privacidad</a>
       <a href="contact.html">Contacto</a>
-      <a href="#">Preguntas frecuentes</a>
+      <a href="faq.html">Preguntas frecuentes</a>
     </div>
     <div class="social-links">
-      <a href="https://facebook.com" target="_blank">Facebook</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
     </div>
   </footer>
+
+  <!-- Ventana modal de bienvenida -->
+  <div class="modal" id="welcome-modal">
+    <div class="modal-content welcome-modal">
+      <h1>¡Bienvenido de nuevo!</h1>
+      <p id="welcome-personalized">Estamos encantados de verte otra vez.</p>
+      <div class="welcome-actions">
+        <button id="close-welcome" class="btn-primario">Comenzar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Verificación de sesión y carga de datos
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('usuarioActual'));
+      const welcomeModal = document.getElementById('welcome-modal');
+      
+      // Redirigir si no hay sesión activa
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      // Personalizar mensajes con datos del usuario
+      document.getElementById('welcome-message').textContent = `¡Hola, ${user.nombre || 'Usuario'}!`;
+      document.getElementById('welcome-personalized').textContent = 
+        `¡Qué bueno verte de nuevo, ${user.nombre || 'Usuario'}! ¿Qué cocinaremos hoy?`;
+
+      // Mostrar modal de bienvenida
+      welcomeModal.style.display = 'flex';
+      
+      // Cerrar modal de bienvenida
+      document.getElementById('close-welcome').addEventListener('click', () => {
+        welcomeModal.style.display = 'none';
+      });
+
+      // Cerrar sesión
+      document.getElementById('logout-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('usuarioActual');
+        window.location.href = 'index.html';
+      });
+
+      // Aquí iría la carga de recetas recomendadas...
+      // loadRecommendedRecipes(user);
+    });
+  </script>
 </body>
 </html>
