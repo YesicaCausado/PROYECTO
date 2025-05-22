@@ -131,7 +131,6 @@
           <a href="myperfil.html">Mi Perfil</a>
           <a href="mis-ingredientes.html">Mis Ingredientes</a>
           <a href="mis-recetas.html">Mis Recetas</a>
-          <a href="history.html">Historial</a>
           <a href="contact.html">Contacto</a>
           <a href="#" id="logout-btn">Cerrar Sesión</a>
         </div>
@@ -189,6 +188,17 @@
       <a href="https://twitter.com" target="_blank">Twitter</a>
     </div>
   </footer>
+
+  <script>
+          // Cerrar sesión
+      document.getElementById('logout').addEventListener('click', (e) => {
+        e.preventDefault();
+        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+          localStorage.removeItem('usuarioActual');
+          window.location.href = 'index.html';
+        }
+      });
+  </script>
 
 </body>
 </html>
