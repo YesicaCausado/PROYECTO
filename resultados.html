@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recetas encontradas</title>
   <link rel="stylesheet" href="CSS/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -15,8 +15,9 @@
     </nav>
   </header>
 
+
   <section id="resultados">
-    <h1>Recetas encontradas</h1>
+    <!-- Aquí va el título dinámico "Recetas con..." y las recetas -->
     <div id="resultados-lista"></div> 
   </section>
   <section class="filtros">
@@ -52,6 +53,15 @@
     </div>
   </footer>
 
-  <script src="JS/resultados.js"></script> <!-- Asegúrate de que esta ruta sea correcta -->
+  <div class="estrellas" data-rating="0">
+    <span class="estrella" data-value="1">&#9734;</span>
+    <span class="estrella" data-value="2">&#9734;</span>
+    <span class="estrella" data-value="3">&#9734;</span>
+    <span class="estrella" data-value="4">&#9734;</span>
+    <span class="estrella" data-value="5">&#9734;</span>
+  </div>
+  <img src="imagenes/iconoimagen.png" alt="Perfil" class="icono-perfil" id="iconoPerfil" />
+
+  <script src="JS/resultados.js"></script> 
 </body>
 </html>

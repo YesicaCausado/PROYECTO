@@ -569,6 +569,33 @@
       setupEventListeners(user);
     });
 
+    function saveProfile(user) {
+      const username = document.getElementById('username').value;
+      const avatarFile = document.getElementById('avatar-input').files[0];
+
+      // Actualizar datos
+      user.nombre = username;
+
+      if (avatarFile) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          user.avatar = e.target.result; // Guarda la imagen en el objeto usuarioActual
+          localStorage.setItem('usuarioActual', JSON.stringify(user));
+          document.getElementById('user-avatar').src = user.avatar;
+          updateUserDisplay(user);
+        };
+        reader.readAsDataURL(avatarFile);
+      } else {
+        localStorage.setItem('usuarioActual', JSON.stringify(user));
+        updateUserDisplay(user);
+      }
+
+      document.getElementById('profile-form').style.display = 'none';
+      document.getElementById('edit-profile').style.display = 'block';
+
+      showSuccessMessage('✅ Perfil actualizado correctamente');
+    }
+
     function updateUserDisplay(user) {
       document.getElementById('user-name').textContent = user.nombre;
       document.getElementById('user-email').textContent = user.email;
@@ -578,9 +605,12 @@
       document.getElementById('saved-recipes').textContent = user.recetasGuardadas;
       document.getElementById('favorite-count').textContent = user.favoritas;
       document.getElementById('created-recipes').textContent = user.creadas;
-      
-      if (localStorage.getItem('avatar')) {
-        document.getElementById('user-avatar').src = localStorage.getItem('avatar');
+
+      // Mostrar avatar desde usuarioActual
+      if (user.avatar && user.avatar.startsWith('data:image')) {
+        document.getElementById('user-avatar').src = user.avatar;
+      } else {
+        document.getElementById('user-avatar').src = 'imagenes/iconoimagen.png';
       }
     }
 
@@ -612,32 +642,6 @@
           window.location.href = 'index.html';
         }
       });
-    }
-
-    function saveProfile(user) {
-      const username = document.getElementById('username').value;
-      const avatarFile = document.getElementById('avatar-input').files[0];
-
-      // Actualizar datos
-      user.nombre = username;
-      localStorage.setItem('usuarioActual', JSON.stringify(user));
-
-      if (avatarFile) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          localStorage.setItem('avatar', e.target.result);
-          document.getElementById('user-avatar').src = e.target.result;
-        };
-        reader.readAsDataURL(avatarFile);
-      }
-
-      // Actualizar vista
-      updateUserDisplay(user);
-      document.getElementById('profile-form').style.display = 'none';
-      document.getElementById('edit-profile').style.display = 'block';
-      
-      // Mostrar mensaje de éxito
-      showSuccessMessage('✅ Perfil actualizado correctamente');
     }
 
     function showSuccessMessage(message) {

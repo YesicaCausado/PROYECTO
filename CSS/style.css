@@ -20,7 +20,7 @@
 
 /* ===== BASE STYLES ===== */
 body {
-  background-color: var(--bg-light);
+  background-color: #f9f6f1; /* Beige clarito */
   color: var(--text-dark);
 }
 
@@ -326,7 +326,7 @@ footer {
 
 /* ===== RECIPE CARDS ===== */
 .receta {
-  background-color: #f9f9f9;
+  background-color: #f5ecd7; /* Beige suave */
   border: 1px solid #ddd;
   border-radius: 12px;
   box-shadow: var(--shadow);
@@ -412,6 +412,39 @@ footer {
   color: white;
 }
 
+/* ===== ESTRELLAS ===== */
+.estrellas {
+  margin-top: 10px;
+  font-size: 2.6rem; /* Más grandes */
+  color: #ffd700;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.estrella {
+  font-size: 2.6rem;
+  color: #ccc; /* Gris claro cuando no está calificada */
+  -webkit-text-stroke: 2px #b7a99a; /* Borde neutro */
+  text-shadow: 2px #b7a99a;
+  cursor: pointer;
+  transition: color 0.2s, -webkit-text-stroke 0.2s, transform 0.2s;
+  background: none;
+  border: none;
+  padding: 0 2px;
+  user-select: none;
+}
+
+.estrella.selected,
+.estrella.hovered,
+.estrella:hover {
+  color: #ffd700; /* Dorado */
+  -webkit-text-stroke: 2px #e67e22;
+  text-shadow: 2px #e67e22;
+  transform: scale(1.1);
+}
+
 /* ===== UTILITY CLASSES ===== */
 .text-center {
   text-align: center;
@@ -447,4 +480,356 @@ footer {
     width: 200px;
     height: 200px;
   }
+}
+
+/* Estilos para el botón de favoritos */
+.favorito-btn {
+  background: none;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;             /* Cambia a flex para centrar el icono */
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 0;            /* Elimina el margen izquierdo para centrar */
+  position: relative;
+  overflow: hidden;
+}
+
+.favorito-btn:hover {
+  border-color: #ffd700;
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.favorito-btn:active {
+  transform: scale(0.95);
+}
+
+.favorito-icon {
+  fill: #ddd;
+  transition: all 0.3s ease;
+}
+
+.favorito-btn:hover .favorito-icon {
+  fill: #ffd700;
+}
+
+/* Estado activo (favorito guardado) */
+.favorito-btn.favorito-activo {
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  animation: pulse-favorito 0.3s ease;
+}
+
+.favorito-btn.favorito-activo .favorito-icon {
+  fill: #fff;
+}
+
+.favorito-btn.favorito-activo:hover {
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+/* Animación al agregar a favoritos */
+@keyframes pulse-favorito {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Contenedor de estrellas y favorito */
+.estrellas-favorito {
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* Centra ambos elementos horizontalmente */
+  gap: 18px;                 /* Espacio entre estrellas y botón */
+  margin-top: 15px;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+}
+
+/* Estilos para las estrellas */
+.estrellas {
+  display: flex;
+  gap: 2px;
+}
+
+.estrella {
+  font-size: 20px;
+  color: #ddd;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.estrella:hover,
+.estrella.hovered {
+  color: #ffd700;
+  transform: scale(1.1);
+}
+
+.estrella.selected {
+  color: #ffd700;
+}
+
+/* Estilos para las notificaciones */
+.notificacion {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 350px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.notificacion.mostrar {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.notificacion-contenido {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.notificacion-success .notificacion-contenido {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  border-left: 4px solid #2e7d32;
+}
+
+.notificacion-info .notificacion-contenido {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  border-left: 4px solid #1565c0;
+}
+
+.notificacion-icono {
+  font-size: 18px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.notificacion-texto {
+  flex: 1;
+  font-size: 14px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .estrellas-favorito {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .favorito-btn {
+    align-self: flex-end;
+  }
+  
+  .notificacion {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}
+
+/* Efectos adicionales para mejor UX */
+.receta:hover .favorito-btn {
+  border-color: #ffd700;
+}
+
+.receta:hover .favorito-btn .favorito-icon {
+  fill: #ffd700;
+}
+
+/* Tooltip mejorado */
+.favorito-btn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.titulo-recetas {
+  font-size: 1.4rem;
+  color: #b48a4a;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: bold;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #f3e1b7 60%, #ffe9b0 100%);
+  padding: 20px 0 20px 0;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(180, 138, 74, 0.08);
+  border-bottom: 4px solid #e7cfa3;
+  text-shadow: 1px 2px 0 #fffbe6, 0 2px 8px #e7cfa3;
+  display: inline-block;
+}
+
+.seccion-titulo {
+  width: 100%;
+  background: linear-gradient(90deg, #f5ecd7 60%, #ffe9b0 100%);
+  padding: 40px 0 20px 0;
+  text-align: center;
+  margin-bottom: 0;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 16px rgba(180, 138, 74, 0.08);
+}
+
+.titulo-recetas {
+  font-size: 2.2rem;
+  color: #bc9c6a;
+  font-family: 'Georgia', 'Times New Roman', serif !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 1px 2px 0 #fffbe6, 0 2px 8px #e7cfa3;
+  display: inline-block;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.buscar-mas {
+  display: inline-block;
+  margin: 35px auto 0 auto;
+  padding: 16px 48px; /* Más grande que el botón normal */
+  background-color: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1.25rem; /* Más grande */
+  font-family: 'Montserrat', Arial, sans-serif !important;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 12px rgba(180, 138, 74, 0.08);
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: 
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s,
+    transform 0.2s;
+}
+
+.buscar-mas:hover {
+  background-color: var(--primary-dark);
+  color: #fff;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 4px 18px rgba(180, 138, 74, 0.18);
+}
+
+.ver-mas-recetas {
+  display: inline-block;
+  margin: 30px auto 0 auto;
+  padding: 16px 48px;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1.25rem;
+  font-family: 'Montserrat', Arial, sans-serif !important;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 12px rgba(180, 138, 74, 0.08);
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s,
+    transform 0.2s;
+  text-align: center;
+}
+
+.ver-mas-recetas:hover {
+  background-color: var(--primary-dark);
+  color: #fff;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 4px 18px rgba(180, 138, 74, 0.18);
+}
+
+.menu-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-right: 16px;
+  color: #b48a4a;
+  font-family: 'Montserrat', Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.perfil-usuario {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  margin-left: 8px;
+}
+
+.icono-perfil {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  object-fit: cover;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  background: #fff;
+}
+
+.nombre-usuario {
+  display: none;
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: #b48a4a;
+  padding: 6px 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(180,138,74,0.10);
+  white-space: nowrap;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.perfil-usuario:hover .nombre-usuario,
+.perfil-usuario:focus-within .nombre-usuario {
+  display: block;
 }
